@@ -10,6 +10,6 @@ class TestController extends Controller
 
     public function testcai()
     {
-        return view('Front-end-Admin.auth.register');
+        return view('Front-end-Shopping.profile_customer');
     }
 }

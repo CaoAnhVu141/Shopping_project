@@ -18,8 +18,25 @@
             <strong>Login</strong>
         </div>
 
-        <form method="post" autocomplete="on">
- 
+        <!-- Thêm thông báo ở đây -->
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
             <!---Email ID---->
             <div class="box">
                 <label for="email" class="fl fontLabel"> Email ID: </label>
@@ -35,19 +52,21 @@
                 <label for="password" class="fl fontLabel"> Password: </label>
                 <div class="fl iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
                 <div class="fr">
-                    <input type="Password" required name="password" placeholder="Password" class="textBox">
+                    <input type="password" required name="password" placeholder="Password" class="textBox">
                 </div>
             </div>
             <!---Password---->
 
             <!---Submit Button------>
             <div class="box box-submit">
-                <input type="Submit" name="Submit" class="submit" value="SUBMIT">
+                <input type="submit" name="Submit" class="submit" value="SUBMIT">
             </div>
             <!---Submit Button----->
+
         </form>
     </div>
     <!--Body of Form ends--->
+
 </body>
 
 </html>
