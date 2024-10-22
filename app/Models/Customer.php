@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable; // Thêm dòng này
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Customer extends Authenticatable // Thay đổi từ Model thành Authenticatable
 {
     use HasFactory;
 
