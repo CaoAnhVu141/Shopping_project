@@ -29,7 +29,7 @@
     <!-- Morris chart -->
     <link rel="stylesheet" href="{{ asset('admin/bower_components/morris.js/morris.css') }}">
     <!-- jvectormap -->
-    <link rel="stylesheet" href="{{ asset('admin/bower_components/jvecto  rmap/jquery-jvectormap.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/bower_components/jvectormap/jquery-jvectormap.css') }}">
     <!-- Date Picker -->
     <link rel="stylesheet" href="{{ asset('admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
     <!-- Daterange picker -->
@@ -256,7 +256,7 @@
             </li>
 
             <li class="{{ Request::is('admin-datn/rating*') ? 'active' : '' }}">
-                <a href="">
+                <a href="{{route('events.index')}}">
                     <i class="fa fa-commenting"></i> <span>Envents</span>
                 </a>
             </li>

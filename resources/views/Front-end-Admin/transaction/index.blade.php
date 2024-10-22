@@ -52,17 +52,18 @@
                       <th>Time</th>
                       <th>Action</th>
                     </tr>
+                    @foreach ($orders as $item)
                             <tr>
                                 <td></td>
                                 <td>
                                     <ul>
-                                        <li>Name: Cao Anh Vũ</li>
+                                        <li>Name: {{ $item->id_customer }}</li>
                                         <li>Email:</li>
                                         <li>Phone:</li>
-                                        <li>Address:</li>
+                                        <li>Address: {{ $item->shipping_address }}</li>
                                     </ul>
                                 </td>
-                                
+
                                 <td></td>
                                 <td>
                                     {{-- @comment --}}
@@ -85,7 +86,7 @@
                                 
                                 <td>{{ date("d/m/Y H:i:s") }}</td>
                                 <td>
-                                    <a href="" class="btn btn-xs btn-info js-preview-view"><i class="fa fa-eye"></i>View</a>
+                                    <a href="{{ route("view") }}" class="btn btn-xs btn-info js-preview-view"><i class="fa fa-eye"></i>View</a>
 
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-success btn-xs">Action</button>
@@ -111,6 +112,7 @@
                                     </div>
                                 </td>
                             </tr>
+                        @endforeach
                   </tbody>
                 </table>
               </div>

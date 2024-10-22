@@ -11,7 +11,10 @@
 </head>
 
 <body>
-
+    <div class="logo">
+    <img class="hinh hinh1" src="{{ asset("images/black_logo.png") }}" alt="">
+    <img class="hinh hinh2" src="{{ asset("images/white_logo.png") }}" alt="">
+    </div>
     <div class="circle"></div>
     <div class="container">
         <div class="tieude">
@@ -208,7 +211,7 @@
     .circle {
         z-index: -1;
         position: fixed;
-        background-color: white;
+        background-color: #ededed;
         width: 2600px;
         height: 2600px;
         border-radius: 50%;
@@ -216,7 +219,7 @@
         top: -1860px;
         animation: circle 9s infinite ease-in-out;
     }
-@keyframes circle {
+@keyframes circl1e {
     0%{
         left: -125px;
         top: -1860px;
@@ -231,5 +234,32 @@
         top: -1860px;
     }
 }
-
+.logo{
+    position: absolute;
+    top: 45%;
+    left: 30%;
+    transform: translate(-50%,-50%);
+}
+.hinh{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%,-50%);
+    width: 700px;
+}
+.hinh2{
+    opacity: 1;
+    animation: hinh2 4s infinite ease-in-out;
+}
+@keyframes hinh2 {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
 </style>

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AttributeViewController;
+use App\Http\Controllers\CategoryViewController;
+use App\Http\Controllers\Demo_OderController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -18,6 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 // Route::get('/demo',TestController::class,'testcai');
 Route::get('demo',[TestController::class,'testcai']);
 //Đăng nhập
@@ -25,3 +30,9 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.for
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+
+Route::get('category', [CategoryViewController::class, 'index']);
+
+
+Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
+>>>>>>> test_demo01
