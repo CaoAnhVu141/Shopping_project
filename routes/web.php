@@ -23,10 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
+
 // Route::get('/demo',TestController::class,'testcai');
 Route::get('demo',[TestController::class,'testcai']);
-//Đăng nhập
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -36,10 +36,8 @@ Route::get('category', [CategoryViewController::class, 'index']);
 
 
 Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
-<<<<<<< HEAD
->>>>>>> test_demo01
-=======
+
 
 Route::get('/demo',[RegistController::class, 'showRegistrationForm'])->name('register');
 Route::post('/demo',[RegistController::class, 'register'])->name('index.register');
->>>>>>> test_demo01
+
