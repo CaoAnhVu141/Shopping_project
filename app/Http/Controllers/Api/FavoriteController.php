@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Favorite;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FavoriteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    // GET /api/favorites - Lấy danh sách yêu thích
-    // Lấy danh sách sản phẩm yêu thích của người dùng
     public function index($customerId)
     {
+        // Lấy danh sách sản phẩm yêu thích của khách hàng
         $favorites = Favorite::where('id_customer', $customerId)
             ->with('product')
             ->get();
@@ -25,10 +26,9 @@ class FavoriteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    // POST /api/favorites - Thêm sản phẩm vào danh sách yêu thích
-    // Thêm sản phẩm vào danh sách yêu thích
     public function store(Request $request)
     {
+        // Xác thực dữ liệu đầu vào
         $validated = $request->validate([
             'id_customer' => 'required|exists:customers,id_customer',
             'id_product' => 'required|exists:products,id_product',
@@ -40,6 +40,15 @@ class FavoriteController extends Controller
             return response()->json(['error' => 'Sản phẩm bạn muốn thêm không còn tồn tại.'], 404);
         }
 
+        // Kiểm tra xem sản phẩm đã có trong danh sách yêu thích chưa
+        $existingFavorite = Favorite::where('id_customer', $validated['id_customer'])
+            ->where('id_product', $validated['id_product'])
+            ->first();
+
+        if ($existingFavorite) {
+            return response()->json(['error' => 'Sản phẩm đã có trong danh sách yêu thích.'], 409);
+        }
+
         $favorite = Favorite::create($validated);
         return response()->json($favorite, 201);
     }
@@ -47,8 +56,6 @@ class FavoriteController extends Controller
     /**
      * Display the specified resource.
      */
-    // GET /api/favorites/{id} - Lấy thông tin một mục yêu thích
-    // Xem chi tiết sản phẩm yêu thích
     public function show($customerId, $favoriteId)
     {
         $favorite = Favorite::where('id_customer', $customerId)
@@ -67,36 +74,23 @@ class FavoriteController extends Controller
         return response()->json($favorite);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      */
-    // DELETE /api/favorites/{id} - Xóa mục yêu thích
-    // Xóa sản phẩm yêu thích
     public function destroy($customerId, $favoriteId)
     {
+        // Tìm sản phẩm yêu thích dựa trên customerId và favoriteId
         $favorite = Favorite::where('id_customer', $customerId)
             ->where('id_favorite', $favoriteId)
-            ->lockForUpdate()
             ->first();
 
         if (!$favorite) {
             return response()->json(['error' => 'Không tìm thấy sản phẩm để xóa.'], 404);
         }
 
-        DB::transaction(function () use ($favorite) {
-            $favorite->delete();
-        });
+        // Xóa sản phẩm yêu thích
+        $favorite->delete();
 
         return response()->json(['message' => 'Sản phẩm đã được xóa khỏi danh sách yêu thích.'], 200);
     }
 }
-

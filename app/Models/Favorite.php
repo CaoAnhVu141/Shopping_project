@@ -23,7 +23,7 @@ class Favorite extends Model
         return $this->belongsTo(Customer::class, 'id_customer');
     }
 
-    // Thiết lập quan hệ với model Product
+    // Thiết lập quan hệ với model Product 
     public function product()
     {
         return $this->belongsTo(Product::class, 'id_product');
