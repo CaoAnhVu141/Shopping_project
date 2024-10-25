@@ -256,7 +256,7 @@
             </li>
 
             <li class="{{ Request::is('admin-datn/rating*') ? 'active' : '' }}">
-                <a href="{{route('events.index')}}">
+                <a href="">
                     <i class="fa fa-commenting"></i> <span>Envents</span>
                 </a>
             </li>

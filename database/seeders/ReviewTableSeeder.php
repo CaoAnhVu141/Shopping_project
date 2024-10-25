@@ -19,7 +19,7 @@ class ReviewTableSeeder extends Seeder
                 'id_product' => rand(1, 30), // Giả sử có 30 sản phẩm
                 'id_customer' => rand(1, 10), // Giả sử có 10 khách hàng
                 'comment' => $faker->text(200), // Bình luận ngẫu nhiên
-                //'image' => 'review_image' . $i . '.jpg', // Giả sử có hình ảnh đánh giá với tên như vậy
+                'image' => 'review_image' . $i . '.jpg', // Giả sử có hình ảnh đánh giá với tên như vậy
                 'created_at' => now(),
                 'updated_at' => now(),
             ];

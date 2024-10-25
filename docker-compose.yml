@@ -1,0 +1,48 @@
+services:
+  # PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - laravel
+    depends_on:
+      - db
+
+  # MySQL Service
+  db: # đây là giá trị db_host trong .env
+    image: mysql:8.0
+    container_name: laravel_db
+    environment:
+      MYSQL_ROOT_PASSWORD: 21102004
+      MYSQL_DATABASE: laravel
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - laravel
+
+  # Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: laravel_webserver
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - laravel
+    depends_on:
+      - app
+
+networks:
+  laravel:
+    driver: bridge
+
+volumes:
+  dbdata:
