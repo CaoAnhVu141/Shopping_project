@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Favorite;
 
 class FavoriteController extends Controller
 {
-    public function showFavorites()
+    public function index()
     {
-        $favorites = Auth::user()->favorites()->with('product')->get(); // Lấy danh sách sản phẩm yêu thích của người dùng
-
-        return view('favorites.index', compact('favorites')); // Trả về view với danh sách sản phẩm yêu thích
+        return view('Front-end-Shopping.favorite_product'); // Trả về view danh sách yêu thích
     }
 
-    // Các phương thức addToFavorites và removeFromFavorites ở đây...
+    public function show($customerId, $favoriteId)
+    {
+        $favorite = Favorite::where('id_customer', $customerId)->findOrFail($favoriteId);
+        return view('favorites.show', compact('favorite')); // Trả về view chi tiết sản phẩm yêu thích
+    }
 }

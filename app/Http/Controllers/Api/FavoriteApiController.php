@@ -8,17 +8,16 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class FavoriteController extends Controller
+class FavoriteApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index($customerId)
     {
-        // Lấy danh sách sản phẩm yêu thích của khách hàng
         $favorites = Favorite::where('id_customer', $customerId)
             ->with('product')
-            ->get();
+            ->paginate(3); // Số lượng mục mỗi trang
 
         return response()->json($favorites);
     }

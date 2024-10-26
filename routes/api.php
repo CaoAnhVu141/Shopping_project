@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Models\Attribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\FavoriteApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ Route::delete('/attribute/{id}',[AttributeController::class, 'deteleDataAttribut
 
 Route::get('/attribute/create',[AttributeController::class, 'showCreateAttribute']);
 
-// Route để lấy sản phẩm yêu thích của khách hàng
-Route::get('favorites/{customerId}', [FavoriteController::class, 'indexfavorites']);
-// Route để xóa sản phẩm yêu thích
-Route::post('favorites/{customerId}/delete/{favoriteId}', [FavoriteController::class, 'destroy']);
+Route::get('/favorites/{customerId}', [FavoriteApiController::class, 'index']); // Lấy danh sách yêu thích
+Route::post('/favorites', [FavoriteApiController::class, 'store']); // Thêm sản phẩm yêu thích
+Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'show']); // Xem sản phẩm yêu thích
+Route::delete('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'destroy']); // Xóa sản phẩm yêu thích
