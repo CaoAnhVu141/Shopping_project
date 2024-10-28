@@ -5,7 +5,70 @@ let currentMaxPrice = Infinity;
 let currentLoadMoreType = 'category';
 let currentSearchQuery = '';
 
+// Function to initialize event listeners for wishlist and cart
+function initializeWishlistEvents() {
+    const addWishButtons = document.querySelectorAll('.js-addwish-b2, .js-addwish-detail');
+
+    addWishButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+        });
+    });
+
+    const addWishButtonsB2 = document.querySelectorAll('.js-addwish-b2');
+    addWishButtonsB2.forEach(button => {
+        const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-b2');
+
+        if (productNameElement) {
+            const nameProduct = productNameElement.innerHTML;
+
+            button.addEventListener('click', function () {
+                swal(nameProduct, "is added to wishlist!", "success");
+
+                this.classList.add('js-addedwish-b2');
+                this.removeEventListener('click', arguments.callee); // Remove event listener after adding
+            });
+        } else {
+            console.warn('Product name element not found for button:', button);
+        }
+    });
+
+    const addWishButtonsDetail = document.querySelectorAll('.js-addwish-detail');
+    addWishButtonsDetail.forEach(button => {
+        const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-detail');
+
+        if (productNameElement) {
+            const nameProduct = productNameElement.innerHTML;
+
+            button.addEventListener('click', function () {
+                swal(nameProduct, "is added to wishlist!", "success");
+
+                this.classList.add('js-addedwish-detail');
+                this.removeEventListener('click', arguments.callee); // Remove event listener after adding
+            });
+        } else {
+            console.warn('Product name element not found for button:', button);
+        }
+    });
+
+    const addCartDetailButtons = document.querySelectorAll('.js-addcart-detail');
+    addCartDetailButtons.forEach(button => {
+        const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-detail');
+
+        if (productNameElement) {
+            const nameProduct = productNameElement.innerHTML;
+
+            button.addEventListener('click', function () {
+                swal(nameProduct, "is added to cart!", "success");
+            });
+        } else {
+            console.warn('Product name element not found for button:', button);
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    initializeWishlistEvents();
     console.log('Home js');
 
     const filterCategories = document.querySelectorAll('.filter-tope-group button');
@@ -187,6 +250,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!productContainer && !loadMoreBtn) return;
 
+        const favorites = JSON.parse(sessionStorage.getItem('favorites')) || [];
+
         if (page === 1) {
             productContainer.innerHTML = '';
         }
@@ -215,8 +280,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
 
                         <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" data-product-id="${product.id}">
-                                <i class="fa fa-heart${favorites.includes(product.id) ? '' : '-o'} text-secondary"></i> <!-- Toggle icon class based on favorites -->
+                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" data-product-id="${product.id_product}">
+                                <i class="fa fa-heart${favorites.includes(product.id_product) ? '' : '-o'} text-secondary"></i> <!-- Toggle icon class based on favorites -->
                             </a>
                         </div>
                     </div>
@@ -224,6 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
             productContainer.innerHTML += productCard;
+            initializeWishlistEvents();
             updateHeartIcons();
         });
 
@@ -239,15 +305,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to toggle wishlist status
     function toggleWishlist(productId) {
         let favorites = JSON.parse(sessionStorage.getItem('favorites')) || [];
+        const notification = document.getElementById('notification');
 
         if (favorites.includes(productId)) {
             // If already in favorites, remove it
             favorites = favorites.filter(id => id !== productId);
-            alert('Removed from favorites!');
         } else {
             // Add to favorites
             favorites.push(productId);
-            alert('Added to favorites!');
         }
 
         // Save updated favorites back to session storage
@@ -255,8 +320,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Update the heart icon
         updateHeartIcons();
-        renderFavorites();
     }
+
+
 
     function updateHeartIcons() {
         const favorites = JSON.parse(sessionStorage.getItem('favorites')) || [];
@@ -309,9 +375,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const favorites = JSON.parse(sessionStorage.getItem('favorites')) || [];
 
         for (const productId of favorites) {
-            // Fetch product data if necessary or have it stored in a way you can access it
-            // Assuming you have a function getProductById that fetches product data by ID
-            const product = await getProductById(productId); // You may need to adjust this based on your data structure
+            if (!productId) {
+                console.warn(`Invalid product ID in favorites: ${productId}`);
+                continue;
+            }
+
+            const product = await getProductById(productId);
+
+            // If the product is null, skip rendering
+            if (!product) {
+                console.warn(`Product data not found for ID: ${productId}`);
+                continue;
+            }
 
             const favoriteItem = `
             <li class="header-favorites-item flex-w flex-t p-b-10">
