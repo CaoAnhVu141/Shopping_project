@@ -100,4 +100,18 @@ class HomeController extends Controller
             'total' => $products->total(),
         ]);
     }
+
+    public function getProductById($productId)
+    {
+        // Find the product by ID
+        $product = Product::find($productId);
+
+        // Check if the product exists
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+
+        // Return the product details as a JSON response
+        return response()->json($product);
+    }
 }

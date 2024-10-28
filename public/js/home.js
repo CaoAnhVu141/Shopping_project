@@ -13,6 +13,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const sortFilters = document.querySelectorAll('#filter-sort .filter-link');
     const searchInput = document.querySelector('#search-product');
     const loadMoreBtn = document.querySelector('#load-more-button');
+    const productContainer = document.querySelector('.product-grid');
+    document.querySelector('.header-favorites-icon').addEventListener('click', showFavorites);
+    const hideFavorite = document.querySelector('.js-hide-favorites');
+
+    if (hideFavorite) {
+        hideFavorite.addEventListener('click', hideFavorites)
+    }
+
 
     if (sortFilters.length > 0) {
         sortFilters.forEach(link => {
@@ -207,8 +215,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
 
                         <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <i class="fa fa-heart text-secondary"></i> <!-- Sử dụng Bootstrap để đổi màu -->
+                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" data-product-id="${product.id}">
+                                <i class="fa fa-heart${favorites.includes(product.id) ? '' : '-o'} text-secondary"></i> <!-- Toggle icon class based on favorites -->
                             </a>
                         </div>
                     </div>
@@ -216,9 +224,9 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
             productContainer.innerHTML += productCard;
+            updateHeartIcons();
         });
 
-        console.log(total, page);
         if (total <= page * 8) {
             loadMoreBtn.classList.add('d-none');
             loadMoreBtn.classList.remove('d-flex');
@@ -227,4 +235,117 @@ document.addEventListener('DOMContentLoaded', function () {
             loadMoreBtn.classList.remove('d-none');
         }
     }
+
+    // Function to toggle wishlist status
+    function toggleWishlist(productId) {
+        let favorites = JSON.parse(sessionStorage.getItem('favorites')) || [];
+
+        if (favorites.includes(productId)) {
+            // If already in favorites, remove it
+            favorites = favorites.filter(id => id !== productId);
+            alert('Removed from favorites!');
+        } else {
+            // Add to favorites
+            favorites.push(productId);
+            alert('Added to favorites!');
+        }
+
+        // Save updated favorites back to session storage
+        sessionStorage.setItem('favorites', JSON.stringify(favorites));
+
+        // Update the heart icon
+        updateHeartIcons();
+        renderFavorites();
+    }
+
+    function updateHeartIcons() {
+        const favorites = JSON.parse(sessionStorage.getItem('favorites')) || [];
+        const wishButtons = document.querySelectorAll('.js-addwish-b2');
+
+        wishButtons.forEach(button => {
+            const productId = parseInt(button.dataset.productId);
+            const heartIcon = button.querySelector('i');
+
+            if (heartIcon) { // Check if heartIcon exists
+                if (favorites.includes(productId)) {
+                    heartIcon.classList.remove('fa-heart-o');
+                    heartIcon.classList.add('fa-heart');
+                } else {
+                    heartIcon.classList.remove('fa-heart');
+                    heartIcon.classList.add('fa-heart-o');
+                }
+            } else {
+                console.warn(`Heart icon not found for product ID: ${productId}`);
+            }
+        });
+    }
+
+    // Event listener for adding/removing from wishlist
+    if (productContainer) {
+        productContainer.addEventListener('click', function (event) {
+            if (event.target.closest('.js-addwish-b2')) {
+                event.preventDefault();
+                const productId = parseInt(event.target.closest('.js-addwish-b2').dataset.productId);
+                toggleWishlist(productId);
+            }
+        });
+    }
+
+    async function getProductById(productId) {
+        try {
+            const response = await fetch(`/product/${productId}`);
+            if (!response.ok) throw new Error("Product not found");
+            return await response.json();
+        } catch (error) {
+            console.error(`Error fetching product with ID ${productId}:`, error);
+            return null;
+        }
+    }
+
+    async function renderFavorites() {
+        const favoritesList = document.getElementById('favorites-list');
+        favoritesList.innerHTML = ''; // Clear existing items
+
+        const favorites = JSON.parse(sessionStorage.getItem('favorites')) || [];
+
+        for (const productId of favorites) {
+            // Fetch product data if necessary or have it stored in a way you can access it
+            // Assuming you have a function getProductById that fetches product data by ID
+            const product = await getProductById(productId); // You may need to adjust this based on your data structure
+
+            const favoriteItem = `
+            <li class="header-favorites-item flex-w flex-t p-b-10">
+                <div class="header-favorites-pic size-w-65 flex-c-m">
+                    <img src="${product.images}" alt="${product.name}">
+                </div>
+                <div class="header-favorites-txt flex-col-l">
+                    <a href="product-detail.html" class="header-favorites-name stext-104 cl4 hov-cl1 trans-04 js-name-b2">
+                        ${product.name}
+                    </a>
+                    <span class="header-favorites-price stext-105 cl3">
+                        ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)}
+                    </span>
+                </div>
+            </li>
+        `;
+            favoritesList.innerHTML += favoriteItem;
+        }
+    }
+
+    // Show favorites
+    function showFavorites(event) {
+        const favoritesSection = document.querySelector('.header-favorites');
+        favoritesSection.classList.add('active');
+        renderFavorites(); // Update the favorites list when shown
+    }
+
+    // Hide favorites
+    function hideFavorites() {
+        const favoritesSection = document.querySelector('.header-favorites');
+        favoritesSection.classList.remove('active');
+    }
+
+
+    // Initial call to update heart icons on page load
+    updateHeartIcons();
 });

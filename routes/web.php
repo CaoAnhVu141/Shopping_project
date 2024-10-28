@@ -42,3 +42,6 @@ Route::get('/events', [EventController::class, 'index'])->name('events.index');
 Route::get('/events/create', [EventController::class, 'create'])->name('create');
 Route::post('/events/store', [EventController::class, 'store'])->name('events.store');
 Route::delete('/events/{id}/delete', [EventController::class, 'destroy'])->name('deleteEvent');
+
+// Route Product
+Route::get('/product/{productId}', [HomeController::class, 'getProductById']);

@@ -299,7 +299,7 @@
                         </div>
 
                         <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" data-product-id="{{ $product->id_product }}">
                                 <i class="fa fa-heart text-secondary"></i> <!-- Sử dụng Bootstrap để đổi màu -->
                             </a>
                         </div>
