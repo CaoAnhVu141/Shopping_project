@@ -16,7 +16,6 @@ class ShoppingCartController extends Controller
         // thực thi trả về id_session và id_customer
         $id_session = session()->getId();
         $id_customer = auth()->check() ? auth()->id() :null;
-
         // thực thi kiểm tra sản phẩm
         $product = Product::find($Idproduct);
         if(!$product)
@@ -25,7 +24,6 @@ class ShoppingCartController extends Controller
                 'message' => 'Dữ liệu không tồn tại',
             ],404);
         }
-
         // tìm kiếm sản phẩm dựa trên trạng thái đăng nhập
         $itemsValues = null;
         if($id_customer)

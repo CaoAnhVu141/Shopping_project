@@ -1,6 +1,5 @@
 @extends('LayOut.shopping.master_shopping')
 @section('content')
-
 <div class="bg0 m-t-23 p-b-140">
     <div class="container">
         <div class="flex-w flex-sb-m p-b-52">
@@ -251,6 +250,10 @@
             </div>
         </div>
 
+        <div id="row">
+            {{-- hiển thị sản phẩm chi tiết--}}
+        </div>
+
         <div class="row isotope-grid">
             @foreach ($product as $items)
             <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -266,7 +269,7 @@
                     </div>
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l ">
-                            <a href="{{ Route('showdetail',['id_product' => $items->id_product]) }}"
+                            <a href=""
                                 class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 product-link"
                                 data-id="{{ $items->id_product }}">
                                 {{ $items->name }}
@@ -304,5 +307,7 @@
 </div>
 <!-- Modal1 -->
 @include("Front-end-Shopping.model_shopping_cart")
-<script src="{{ asset(" shopping/data_rest/product.js") }}"></script>
+{{-- <script src="{{ asset(" shopping/data_rest/product.js") }}"></script> --}}
+{{-- <script src="{{ asset(" shopping/data_rest/shopping_cart.js") }}"></script> --}}
+
 @endsection
