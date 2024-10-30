@@ -1,46 +1,8 @@
-<meta name="csrf-token" content="{{ csrf_token() }}">
+@extends('LayOut.shopping.master_shopping')
+@section('content')
+<section class="sec-product-detail bg0 p-t-65 p-b-60">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-lg-7 p-b-30">
-                <div class="p-l-25 p-r-30 p-lr-0-lg">
-                    <div class="wrap-slick3 flex-sb flex-w">
-                        <div class="wrap-slick3-dots"></div>
-                        <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-                        <div class="slick3 gallery-lb">
-                            <div class="item-slick3" data-thumb="{{asset($product->images) }}">
-                                <div class="wrap-pic-w pos-relative">
-                                    <img src="{{asset($product->images) }}" alt="IMG-PRODUCT">
-
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="item-slick3" data-thumb="{{asset($product->images) }}">
-                                <div class="wrap-pic-w pos-relative">
-                                    <img src="{{asset($product->images) }}" alt="IMG-PRODUCT">
-
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="item-slick3" data-thumb="{{asset($product->images) }}">
-                                <div class="wrap-pic-w pos-relative">
-                                    <img src="{{asset($product->images) }}" alt="IMG-PRODUCT">
-
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             {{-- @hiển thị sản phẩm chi tiết --}}
             <div class="col-md-6 col-lg-5 p-b-30">
                 <div class="p-r-50 p-t-5 p-lr-0-lg">
@@ -102,7 +64,7 @@
                                     </div>
                                 </div>
                                 <button
-                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" data-id="{{ $product->id_product }}">
+                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                     Add to cart
                                 </button>
                             </div>
@@ -297,6 +259,7 @@
                                                     type="text" name="email">
                                             </div>
                                         </div>
+
                                         <button
                                             class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
                                             Submit
@@ -370,7 +333,6 @@
             </div>
         </div>
     </div>
-<script src="{{ asset(" shopping/data_rest/product.js") }}"></script>
-<script src="{{ asset(" shopping/data_rest/shopping_cart.js") }}"></script>
 </section>
-
+<script src="{{ asset(" shopping/data_rest/product.js") }}"></script>
+@endsection

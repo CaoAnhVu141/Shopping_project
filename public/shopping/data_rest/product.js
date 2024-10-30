@@ -102,6 +102,7 @@
 //     });
 // });
 
+
 // // Hàm tải modal sản phẩm
 function loadModalProducts(productId) {
     fetch(`api/get-product/${productId}`)
@@ -181,6 +182,7 @@ function loadModalProducts(productId) {
                     </div>`;
                 // Nhúng nội dung vào modal
                 document.querySelector('.wrap-modal1').innerHTML = rowModal;
+
                 // Hiển thị modal
                 const modal = document.querySelector('.js-modal1');
                 if (modal) {
@@ -215,40 +217,31 @@ document.querySelectorAll('.js-show-modal1').forEach(button => {
     });
 });
 
-// // Hàm hiển thị dữ liệu chi tiết sản phẩm (product_detail)
+// Hàm hiển thị dữ liệu chi tiết sản phẩm (product_detail)
 function loadDataProductDetail(Idproduct) {
-    fetch(`/product_detail/${Idproduct}`)
+    fetch(`product_detail/${Idproduct}`)
         .then(response => response.text())
         .then(html => {
-            // Kiểm tra xem phần tử `#row` có tồn tại không
-            const rowElement = document.querySelector('#row');
-            if (rowElement) {
-                rowElement.innerHTML = html;
-                // Cập nhật URL mà không reload
-                history.pushState({
-                    productId: Idproduct
-                }, '', `/product_detail/${Idproduct}`);
-            } else {
-                console.error("Không tìm thấy phần tử #row trong DOM.");
-            }
+            document.getAttribute('#row').innerHTML = html;  // Đảm bảo chỉ chọn phần tử đầu tiên có ID "row"
+            // Cập nhật URL mà không cần reload lại trang
+            history.pushState(null, '', `product_detail/${Idproduct}`);
         })
-        .catch(error => console.error('Đã có lỗi xảy ra:', error));
+        .catch(error => console.error('Đã có lỗi xảy ra', error));
 }
 
-// Thực thi sự kiện khi bấm vào liên kết sản phẩm
-document.querySelectorAll('.product-link').forEach(link => {
-    link.addEventListener('click', function (event) {
+// Xử lý sự kiện khi người dùng nhấn nút "quay lại" trên trình duyệt
+window.addEventListener('popstate', function() {
+    location.reload();
+});
+
+// Thực thi sự kiện cho bấm vào chi tiết
+document.querySelectorAll('product-link').forEach(link => {
+    link.addEventListener('click', function(event) {
         event.preventDefault();
+        // Lấy product ID và gọi hàm tải chi tiết sản phẩm
         const productId = this.getAttribute('data-id');
         loadDataProductDetail(productId);
     });
 });
 
-// Xử lý sự kiện khi người dùng nhấn nút "quay lại" trên trình duyệt
-// window.addEventListener('popstate', function (event) {
-//     if (event.state && event.state.productId) {
-//         loadDataProductDetail(event.state.productId); // Tải lại nội dung của sản phẩm
-//     } else {
-//         location.reload(); // Nếu không có state, reload lại trang
-//     }
-// });
+
