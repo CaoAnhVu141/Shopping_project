@@ -7,6 +7,7 @@ use App\Models\Attribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FavoriteApiController;
+use App\Http\Controllers\Api\ShippingMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,8 @@ Route::get('/favorites/{customerId}', [FavoriteApiController::class, 'index']); 
 Route::post('/favorites', [FavoriteApiController::class, 'store']); // Thêm sản phẩm yêu thích
 Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'show']); // Xem sản phẩm yêu thích
 Route::delete('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'destroy']); // Xóa sản phẩm yêu thích
+
+Route::get('/shipping-methods', [ShippingMethodController::class, 'index']);
+Route::post('/shipping-methods', [ShippingMethodController::class, 'store']);
+Route::put('/shipping-methods/{id}', [ShippingMethodController::class, 'update']);
+Route::delete('/shipping-methods/{id}', [ShippingMethodController::class, 'destroy']);

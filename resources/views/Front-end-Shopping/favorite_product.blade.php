@@ -44,27 +44,27 @@
                 let html = '';
                 favorites.forEach(function(favorite) {
                     html += `
-                    <div class="row product-card" data-id="${favorite.id}">
-                        <div class="col-md-2 d-flex align-items-center">
-                            <img src="${favorite.product.image_url || 'https://via.placeholder.com/100'}" alt="Product Image" class="img-fluid product-img">
-                        </div>
-                        <div class="col-md-8">
-                            <p class="product-title">${favorite.product.name}</p>
-                            <div class="rating mb-2">
-                                <span>4</span>
-                                <i class="fa fa-star"></i>
-                                <span class="text-muted">| 297 đánh giá | 1.1k đã bán</span>
-                            </div>
-                            <p>
-                                <span class="product-old-price">${favorite.product.old_price}đ</span>
-                                <span class="product-price">${favorite.product.price}đ</span>
-                            </p>
-                        </div>
-                        <div class="col-md-2 buttons">
-                            <button class="btn btn-remove" data-id="${favorite.id}">Xóa</button>
-                            <button class="btn btn-view">Xem</button>
-                        </div>
-                    </div>`;
+        <div class="row product-card" data-id="${favorite.id_favorite}"> <!-- Thay đổi ở đây -->
+            <div class="col-md-2 d-flex align-items-center">
+                <img src="${favorite.product.images || 'https://via.placeholder.com/100'}" alt="Product Image" class="img-fluid product-img">
+            </div>
+            <div class="col-md-8">
+                <p class="product-title">${favorite.product.name}</p>
+                <div class="rating mb-2">
+                    <span>4</span>
+                    <i class="fa fa-star"></i>
+                    <span class="text-muted">| 297 đánh giá | 1.1k đã bán</span>
+                </div>
+                <p>
+                    <span class="product-old-price">${favorite.product.old_price}đ</span>
+                    <span class="product-price">${favorite.product.price}đ</span>
+                </p>
+            </div>
+            <div class="col-md-2 buttons">
+                <button class="btn btn-remove" data-id="${favorite.id_favorite}">Xóa</button> <!-- Cập nhật ở đây -->
+                <button class="btn btn-view">Xem</button>
+            </div>
+        </div>`;
                 });
                 $('#favorites-list').html(html);
             }
@@ -82,12 +82,14 @@
             $(document).on('click', '.btn-page', function() {
                 const page = $(this).data('page');
                 loadFavorites(page);
+
             });
 
             // Sự kiện click cho nút xóa
             $(document).on('click', '.btn-remove', function() {
                 const favoriteId = $(this).data('id'); // Lấy ID sản phẩm yêu thích từ thuộc tính data-id
                 const customerId = 2; // Thay thế với ID khách hàng thực tế
+                const self = $(this); // Lưu đối tượng nút bấm
 
                 // Kiểm tra nếu favoriteId không được định nghĩa
                 if (favoriteId === undefined) {
@@ -102,8 +104,8 @@
                     success: function(response) {
                         alert("Đã xóa sản phẩm yêu thích.");
                         // Xóa sản phẩm khỏi giao diện ngay lập tức
-                        $(this).closest('.product-card')
-                    .remove(); // Gọi lại DOM element phù hợp
+                        self.closest('.product-card')
+                    .remove(); // Sử dụng self để gọi lại DOM element phù hợp
                     },
                     error: function(xhr) {
                         console.error('Error:', xhr.responseText);
