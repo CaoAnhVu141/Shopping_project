@@ -70,8 +70,4 @@ Route::get('/events/create', [EventController::class, 'create'])->name('create')
 Route::post('/events/store', [EventController::class, 'store'])->name('events.store');
 Route::delete('/events/{id}/delete', [EventController::class, 'destroy'])->name('deleteEvent');
 
-<<<<<<< HEAD
-// Route Product
-Route::get('/product/{productId}', [HomeController::class, 'getProductById']);
-=======
->>>>>>> trang_about_dotiendai
+
