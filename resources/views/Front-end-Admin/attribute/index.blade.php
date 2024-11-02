@@ -1,5 +1,4 @@
 @extends('LayOut.admin-dashboard.master_admin')
-
 @section('content')
 <section class="content-header">
     <h1>
@@ -23,7 +22,7 @@
                   <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" id="search-key" class="form-control pull-right" placeholder="Search">
                     <div class="input-group-btn">
-                      <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
+                      <button type="button" class="btn btn-default" id="btn-search"><i class="fa fa-search"></i></button>
                     </div>
                   </div>
                 </div>
@@ -56,7 +55,6 @@
             </div>
           </div>
     </div>
-    <script src="{{ asset('shopping/js/attribute.js') }}"></script>
   </section>
 <script src="{{ asset("shopping/data_rest/attribute.js") }}"></script>
 @endsection

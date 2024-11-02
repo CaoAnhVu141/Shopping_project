@@ -65,9 +65,8 @@
                                 <td>id</td>
                                 {{-- hinh anh--}}
                                 {{-- <td><img src="{{ parse_url($item->image)['path'] }}" alt="" width="150px"
-                                    height="100px"></td> --}}
-                                <td><img src="" alt="" width="150px"
-                                        height="100px"></td>
+                                        height="100px"></td> --}}
+                                <td><img src="" alt="" width="150px" height="100px"></td>
                                 <td>name</td>
                                 <td>description</td>
                                 {{-- check ative--}}
@@ -91,12 +90,10 @@
                                 {{-- hanh dong--}}
 
                                 <td>
-                                    <a href=""
-                                        class="btn btn-xs btn-primary"
+                                    <a href="" class="btn btn-xs btn-primary"
                                         onclick="return confirm('Bạn chắc chắn là sửa chứ')"><i
                                             class="fa fa-pencil"></i> Edit</a>
-                                    <a href=""
-                                        class="btn btn-xs btn-danger js-delete-confirm"
+                                    <a href="" class="btn btn-xs btn-danger js-delete-confirm"
                                         onclick="return confirm('Bạn chắc chắn là xoá chứ')"><i class="fa fa-trash"></i>
                                         Delete</a>
                                 </td>

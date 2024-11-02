@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardViewController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\AttributeViewController;
 use App\Http\Controllers\CategoryViewController;
 use App\Http\Controllers\Auth\RegistController;
@@ -34,6 +36,13 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('category', [CategoryViewController::class, 'index']);
+Route::get('/attribute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
+
+// thực thi với theme dashboard
+Route::get('/dashboard',[AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
+Route::get('/get-orders',[AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
+Route::get('view-detail/{id}',[AdminDashboardViewController::class,'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
+
 
 
 Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);

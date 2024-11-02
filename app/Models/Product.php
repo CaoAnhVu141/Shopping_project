@@ -64,8 +64,6 @@ class Product extends Model
         return $this->belongsToMany(Customer::class,'favorite','id_product','id_customer');
     }
 
-
-
     // thực thi thiết lập quan hệ giữa 3 bảng ==> bảng phụ:  Product_attributes
     //quan hệ với attribute
     public function attribute()
@@ -80,13 +78,11 @@ class Product extends Model
     }
 
     //
-
-
-    // thiết lập quan hệ giữa order và product (n-n)
-    public function order()
+    // viết đếm số lượng sản phẩm trong table product
+    public static function countDataProducts()
     {
-        return $this->belongsToMany(Order::class,'order_item','id_order','id_product')
-                                    ->withPivot('quantity','price','status');
+        return self::count();
     }
+
 
 }

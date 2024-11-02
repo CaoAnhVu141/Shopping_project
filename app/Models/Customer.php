@@ -19,6 +19,8 @@ class Customer extends Authenticatable
         'email',
         'password',
         'phone',
+        'verification_token',
+        'is_verified',
         'address',
         'status',
         'token'

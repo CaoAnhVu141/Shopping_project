@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AtributeController;
 use App\Http\Controllers\Api\AttributeController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Models\Attribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/category', [CategoryController::class, 'index']);
 
+// Thực thi với attribute
 Route::get('/attribute',[AttributeController::class,'getDataJson']);
 Route::delete('/attribute/{id}',[AttributeController::class, 'deteleDataAttribute']);
-
 Route::get('/attribute/create',[AttributeController::class, 'showCreateAttribute']);
 
 Route::get('/favorites/{customerId}', [FavoriteApiController::class, 'index']); // Lấy danh sách yêu thích
