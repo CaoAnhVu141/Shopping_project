@@ -190,7 +190,7 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="{{route('home')}}">Home</a>
+					<a href="">Home</a>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
