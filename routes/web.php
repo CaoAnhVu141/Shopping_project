@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\AdminDashboardViewController;
+use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\GetCartShoppingController;
+use App\Http\Controllers\AttributeViewController;
 use App\Http\Controllers\CategoryViewController;
 use App\Http\Controllers\Demo_OderController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\Api\GetAllItemsShoppingCart;
+use App\Http\Controllers\GetCartShoppingViewController;
+use App\Http\Controllers\GetViewAllItemsShoppingCart;
+use App\Http\Controllers\ShoppingCartViewController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,49 +28,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/demo',TestController::class,'testcai');
-
-Route::get('demo',[TestController::class,'testcai']);
-
-
-
-
-
-
-Route::get('add-category-product', [CategoryProductController::class, 'add_category_product'])->name('add_category_product');
-Route::get('all-category-product', [CategoryProductController::class, 'all_category_product'])->name('all_category_product');
-Route::post('save-category-product', [CategoryProductController::class, 'save_category_product'])->name('save_category_product');
-
-Route::get('unactive-category-product/{category_product_id}', [CategoryProductController::class, 'unactive_category_product'])->name('unactive_category_product');
-Route::get('active-category-product/{category_product_id}', [CategoryProductController::class, 'active_category_product'])->name('active_category_product');
-//Sua
-Route::get('edit-category-product/{category_product_id}', [CategoryProductController::class, 'edit_category_product'])->name('edit_category_product');
-Route::post('update-category-product/{category_product_id}', [CategoryProductController::class, 'update_category_product'])->name('update_category_product');
-// //Xoa
-Route::get('delete-category-product/{category_product_id}', [CategoryProductController::class, 'delete_category_product'])->name('delete_category_product');
-
-Route::get('demo', [Demo_OderController::class, 'showData']);
-Route::get('view', [Demo_OderController::class, 'showView'])->name("view");
+Route::get('/testcai', [App\Http\Controllers\TestController::class, 'testcai']);
+// Route::get('demo',[Demo_OderController::class,'showData']);
+// Route::get('view',[Demo_OderController::class,'showView'])->name("view");
 
 Route::get('category', [CategoryViewController::class, 'index']);
+Route::get('/attribute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
 
-// Route home
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/filter/products', [HomeController::class, 'filter'])->name('filter.products');
-Route::post('/filter/price', [HomeController::class, 'filterByPrice'])->name('filter.price');
-Route::post('/filter/sort', [HomeController::class, 'filterSort'])->name('filter.sort');
-Route::post('/search/products', [HomeController::class, 'searchProducts']);
-Route::post('/load-more/products', [HomeController::class, 'loadMore']);
+// thực thi với theme dashboard
+Route::get('/dashboard',[AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
+Route::get('/get-orders',[AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
+Route::get('view-detail/{id}',[AdminDashboardViewController::class,'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
 
 
-//Route About
+Route::get('product_detail/{id_product}',[ShoppingCartViewController::class, 'showViewProductDetail'])->name("showdetail"); // hiển thị sản phẩm chi tiết
 
-Route::get('/about', [AboutController::class, 'about'])->name('about');
-
-// Route Event
-Route::get('/events', [EventController::class, 'index'])->name('events.index');
-Route::get('/events/create', [EventController::class, 'create'])->name('create');
-Route::post('/events/store', [EventController::class, 'store'])->name('events.store');
-Route::delete('/events/{id}/delete', [EventController::class, 'destroy'])->name('deleteEvent');
+// hiển thị và thực thi với giỏ hàng
+Route::get('/shopping-cart',[GetViewAllItemsShoppingCart::class, 'showAllItemsShoppingCart'])->name('showShoppingCart'); //hiển thị trang giỏ hàng
+// Route::get('/shopping-cart',[GetAllItemsShoppingCart::class, 'getAllItemsShoppingCart']); // lấy dữ liệu toàn bộ giỏ hàng @todo
+Route::get('/get/cart',[GetCartShoppingController::class, 'getItemsCartShopping']); //thực thi trang giỏ hàng matter layout lấy dạng json
+Route::get('add_shopping_cart/{id_product}',[ShoppingCartViewController::class, 'showViewModelCart']); // thêm giá trị vào giỏ hàng
 
 
+// test cái nha @phần này test chưa có sửa lại
+Route::get('/product',[ShoppingCartViewController::class, 'showDemoNha'])->name('showItems'); // chỉ là demo thôi nè
+
+//

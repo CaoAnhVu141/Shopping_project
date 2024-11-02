@@ -12,8 +12,6 @@ class CategoryViewController extends Controller
     //
     public function index()
     {
-        return view('Front-end-Admin.category.demo', compact('categories'));
+        return view('Front-end-Admin.category.demo');
     }
-
-   
 }

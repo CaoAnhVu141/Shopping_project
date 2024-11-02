@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Shopping</title>
     {{-- @todo lai --}}
     @if (session('toastr'))
@@ -38,26 +38,7 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <link rel="stylesheet" href="{{ asset('admin/bower_components/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{asset('backend/css/bootstrap.min.css')}}" >
-<!-- //bootstrap-css -->
-<!-- Custom CSS -->
-<!-- <link href="{{asset('backend/css/style.css')}}" rel='stylesheet' type='text/css' /> -->
-<link href="{{asset('backend/css/style-responsive.css')}}" rel="stylesheet"/>
-<!-- font CSS -->
-<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<!-- font-awesome icons -->
-<link rel="stylesheet" href="{{asset('backend/css/font.css')}}" type="text/css"/>
-<link href="{{asset('backend/css/font-awesome.css')}}" rel="stylesheet"> 
-<link rel="stylesheet" href="{{asset('backend/css/morris.css')}}" type="text/css"/>
-<!-- calendar -->
-<link rel="stylesheet" href="{{asset('backend/css/monthly.css')}}">
-<!-- //calendar -->
 
-<!-- //font-awesome icons -->
-<script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
-<script src="{{asset('backend/js/raphael-min.js')}}"></script>
-<script src="{{asset('backend/js/morris.js')}}"></script>
-<link rel="stylesheet" href="{{asset('backend/css/darkmode.css')}}" media="(prefers-color: scheme-dark)" >
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -315,9 +296,13 @@
       <div class="content-wrapper">
         @yield('content')
       </div>
-      <!-- /.content-wrapper -->
-
-     
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 2.4.0
+        </div>
+        <strong>Copyright &copy; 2023 <a href="#">Cao Anh Vũ</a>.</strong> All rights
+        reserved.
+      </footer>
       <!-- Control Sidebar -->
 
       <!-- /.control-sidebar -->
@@ -377,6 +362,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="{{ asset("shopping/data_rest/dashboard.js") }}"></script>
     <script>
         if(typeof TYPE_MESSAGE != "undefined"){
             switch(TYPE_MESSAGE){
@@ -545,7 +531,7 @@
 
         });
     </script>
-   <script type="text/javascript" src="{{asset('backend/js/monthly.js')}}"></script>
+    @yield('script')
 
   </body>
 </html>
