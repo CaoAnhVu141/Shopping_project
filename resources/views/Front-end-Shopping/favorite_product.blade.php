@@ -44,7 +44,7 @@
                 let html = '';
                 favorites.forEach(function(favorite) {
                     html += `
-                    <div class="row product-card" data-id="${favorite.id}">
+                    <div class="row product-card" data-id="${favorite.id_favorite}">
                         <div class="col-md-2 d-flex align-items-center">
                             <img src="${favorite.product.image_url || 'https://via.placeholder.com/100'}" alt="Product Image" class="img-fluid product-img">
                         </div>
@@ -61,7 +61,7 @@
                             </p>
                         </div>
                         <div class="col-md-2 buttons">
-                            <button class="btn btn-remove" data-id="${favorite.id}">Xóa</button>
+                            <button class="btn btn-remove" data-id="${favorite.id_favorite}">Xóa</button>
                             <button class="btn btn-view">Xem</button>
                         </div>
                     </div>`;
@@ -102,8 +102,8 @@
                     success: function(response) {
                         alert("Đã xóa sản phẩm yêu thích.");
                         // Xóa sản phẩm khỏi giao diện ngay lập tức
-                        $(this).closest('.product-card')
-                    .remove(); // Gọi lại DOM element phù hợp
+                        $(`.product-card[data-id="${favoriteId}"]`)
+                    .remove(); // Gọi lại DOM element phù hợp và xóa
                     },
                     error: function(xhr) {
                         console.error('Error:', xhr.responseText);
