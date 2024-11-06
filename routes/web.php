@@ -11,6 +11,8 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ShippingMethodController; // Đảm bảo bạn đã import đúng namespac
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,3 +56,5 @@ Route::post('/demo',[RegistController::class, 'register'])->name('index.register
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index'); // Trang hiển thị danh sách
 Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteController::class, 'show'])->name('favorites.show'); // Trang xem chi tiết
 
+//Method
+Route::get('/shipping-methods', [ShippingMethodController::class, 'indexView'])->name('shipping-methods.index');
