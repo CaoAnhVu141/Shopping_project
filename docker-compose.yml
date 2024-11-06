@@ -15,6 +15,10 @@ services:
       - db
     expose:
       - "9000"
+    volumes:
+    - .:/var/www
+    - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+
 
   # MySQL Service
   db:
@@ -42,16 +46,7 @@ services:
       - laravel
     depends_on:
       - app
-  # Adminer Service
-  adminer:
-    image: adminer
-    container_name: adminer
-    ports:
-      - "8080:8080"
-    networks:
-      - laravel
-    depends_on:
-      - db
+
 networks:
   laravel:
     driver: bridge
