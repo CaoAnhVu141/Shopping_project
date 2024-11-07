@@ -1,0 +1,88 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.error-container h1 {
+    font-size: 10rem;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 20px;
+}
+
+.error-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.error-container p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.error-container a {
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.error-container .btn-home {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.error-container .btn-home:hover {
+    background-color: #0056b3;
+}
+
+.error-container .btn-contact {
+    background-color: #28a745;
+    color: #fff;
+    margin-left: 10px;
+}
+
+.error-container .btn-contact:hover {
+    background-color: #218838;
+}
+
+.error-image {
+    width: 250px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .error-container h1 {
+        font-size: 6rem;
+    }
+
+    .error-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .error-container p {
+        font-size: 1rem;
+    }
+
+    .error-image {
+        width: 200px;
+    }
+}

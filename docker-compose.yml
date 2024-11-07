@@ -1,0 +1,57 @@
+
+services:
+  # PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        COMPOSER_ALLOW_SUPERUSER: 1
+        COMPOSER_MEMORY_LIMIT: -1
+    container_name: laravel_app
+    working_dir: /var/www
+    networks:
+      - laravel
+    depends_on:
+      - db
+    expose:
+      - "9000"
+    volumes:
+      - .:/var/www:cached  # Sử dụng option cached để tăng tốc độ
+      - ./storage:/var/www/storage
+      - ./public:/var/www/public  # Mount thư mục public để Nginx có thể truy cập
+
+  # MySQL Service
+  db:
+    image: mysql:8.0
+    container_name: laravel_db
+    environment:
+      MYSQL_ROOT_PASSWORD: 21102004
+      MYSQL_DATABASE: laravel
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+      MYSQL_INITDB_ARGS: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - laravel
+
+  # Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: laravel_webserver
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./public:/var/www/public  # Chỉ mount thư mục public để Nginx truy cập file tĩnh
+    networks:
+      - laravel
+    depends_on:
+      - app
+
+networks:
+  laravel:
+    driver: bridge
+
+volumes:
+  dbdata:

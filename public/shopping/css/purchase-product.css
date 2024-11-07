@@ -1,0 +1,136 @@
+
+
+.history-container {
+    margin: 30px auto;
+    max-width: 1100px;
+    padding: 10px;
+
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.history-header h2 {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+}
+
+.history-header input {
+    width: 250px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.history-header input:focus {
+    border-color: #007bff;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #fdfdfd;
+    transition: box-shadow 0.3s ease;
+}
+
+.order-item:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.order-img {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.order-info {
+    flex: 2;
+}
+
+.order-info p {
+    margin: 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.order-info p strong {
+    color: #333;
+}
+
+.order-price {
+    flex: 1;
+    text-align: right;
+}
+
+.order-price del {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.order-price .new-price {
+    color: #ff4d4f;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.order-total {
+    margin-top: 20px;
+}
+
+.order-total p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style for "Mua lại" button */
+.order-action {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-rebuy {
+    border: 1px solid #ddd;
+    padding: 8px 20px;
+    background-color: #fff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-rebuy:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .order-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .order-price,
+    .order-action {
+        text-align: center;
+        margin-top: 20px;
+    }
+}

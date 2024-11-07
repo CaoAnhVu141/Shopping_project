@@ -1,0 +1,103 @@
+body {
+    background-color: #f1f1f1;
+}
+
+.account-container {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.nav-pills .nav-link {
+    color: #333;
+    border-radius: 0;
+    font-weight: 600;
+    padding: 15px;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: transparent;
+    border-bottom: 2px solid #ff3e3e;
+}
+
+.nav-pills .nav-link.active {
+    background-color: transparent;
+    border-bottom: 2px solid #ff3e3e;
+    color: #ff3e3e;
+}
+
+.account-section h6 {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-item img {
+    width: 60px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-logout {
+    background-color: #ff3e3e;
+    color: white;
+    font-weight: 600;
+    border-radius: 30px;
+}
+
+.btn-logout:hover {
+    background-color: #d62e2e;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background-color: #ff3e3e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #d62e2e;
+}
+
+.tab-pane {
+    padding: 30px;
+}
+
+.order-item p {
+    margin: 0;
+}
+
+.order-item strong {
+    font-size: 1.1rem;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+}
+
+.profile-info label {
+    font-weight: 600;
+}
+
+.form-section {
+    margin-top: 30px;
+}
