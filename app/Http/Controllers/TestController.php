@@ -13,7 +13,7 @@ class TestController extends Controller
         // return view('Front-end-Admin.transaction.view');
 
 
-        // return view('Front-end-Admin.index');
+         return view('Front-end-Admin.index');
 
         // return view('Front-end-Admin.transaction.index');
 

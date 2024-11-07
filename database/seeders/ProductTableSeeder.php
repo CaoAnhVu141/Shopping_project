@@ -18,7 +18,7 @@ class ProductTableSeeder extends Seeder
                 'name' => 'Sản phẩm ' . $i,
                 'describe' => 'Mô tả cho sản phẩm ' . $i,
                 'price' => rand(100000, 1000000), // Giá sản phẩm ngẫu nhiên từ 100.000 đến 1.000.000
-                'images' => 'image' . $i . '.jpg', // Giả sử có các hình ảnh với tên như vậy
+                'images' => 'product-01.jpg', // Giả sử có các hình ảnh với tên như vậy
                 'hot' => rand(0, 1) == 1, // Ngẫu nhiên có sản phẩm hot hay không
                 'is_active' => rand(0, 1) == 1, // Ngẫu nhiên có còn hàng hay không
                 'sale' => rand(0, 1) == 1, // Ngẫu nhiên có sale hay không
