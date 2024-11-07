@@ -34,7 +34,7 @@ Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai
 // Route::get('view',[Demo_OderController::class,'showView'])->name("view");
 
 // Route::get('/demo',TestController::class,'testcai');
-Route::get('demo',[TestController::class,'testcai']);
+// Route::get('demo',[TestController::class,'testcai']);
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -52,14 +52,12 @@ Route::get('view-detail/{id}', [AdminDashboardViewController::class, 'showViewDa
 
 
 // đăng ký
-Route::get('/demo',[RegistController::class, 'showRegistrationForm'])->name('register');
-Route::post('/demo',[RegistController::class, 'register'])->name('index.register');
+
 
 Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
 
 
-Route::get('/demo',[RegistController::class, 'showRegistrationForm'])->name('register');
-Route::post('/demo',[RegistController::class, 'register'])->name('index.register');
+
 
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index'); // Trang hiển thị danh sách
 Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteController::class, 'show'])->name('favorites.show'); // Trang xem chi tiết
