@@ -265,11 +265,12 @@
                     </div>
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l ">
-                            <a href="{{ Route('showdetail',['id_product' => $items->id_product]) }}"
+                            <a href="{{ Route('showdetail', ['id_slug' => $items->id_product . '_' . Str::slug($items->name)]) }}"
                                 class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 product-link"
                                 data-id="{{ $items->id_product }}">
                                 {{ $items->name }}
-                            </a>
+                             </a>
+
                             <span class="stext-105 cl3">
                                 {{ $items->price }}
                             </span>

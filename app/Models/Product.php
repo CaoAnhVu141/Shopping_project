@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 class Product extends Model
 {
     use HasFactory;
@@ -36,45 +36,45 @@ class Product extends Model
 
     public function shoppingCart()
     {
-        $this->hasMany(ShoppingCart::class,'id_product');
+        $this->hasMany(ShoppingCart::class, 'id_product');
     }
 
     // thực thi cấu hình quan hệ giữa product và review (1-n)
 
     public function review()
     {
-        return $this->hasMany(Review::class,'id_product');
+        return $this->hasMany(Review::class, 'id_product');
     }
 
     // thực thi cấu hình quan hệ giữa discount và product (n-n)
     public function discount()
     {
-        return $this->belongsToMany(Discount::class,'product_discount','id_product','id_discount');
+        return $this->belongsToMany(Discount::class, 'product_discount', 'id_product', 'id_discount');
     }
 
     // thực thi cấu hình quan hệ giữa post và product (n-n)
     public function post()
     {
-        return $this->belongsToMany(Post::class,'post_product','id_product','id_post');
+        return $this->belongsToMany(Post::class, 'post_product', 'id_product', 'id_post');
     }
 
     // thực thi cấu hình giữa customer và product (n-n)
     public function customer()
     {
-        return $this->belongsToMany(Customer::class,'favorite','id_product','id_customer');
+        return $this->belongsToMany(Customer::class, 'favorite', 'id_product', 'id_customer');
     }
 
     // thực thi thiết lập quan hệ giữa 3 bảng ==> bảng phụ:  Product_attributes
     //quan hệ với attribute
     public function attribute()
     {
-        return $this->belongsToMany(Attribute::class,'product_attribute','id_product','id_attribute');
+        return $this->belongsToMany(Attribute::class, 'product_attribute', 'id_product', 'id_attribute');
     }
 
     //quan hệ với attribute_value
     public function attributeValue()
     {
-        return $this->belongsToMany(AttributeValue::class,'product_attribute','id_product','id_attribute_value');
+        return $this->belongsToMany(AttributeValue::class, 'product_attribute', 'id_product', 'id_attribute_value');
     }
 
     //
@@ -82,5 +82,15 @@ class Product extends Model
     public static function countDataProducts()
     {
         return self::count();
+    }
+
+    // thực thi mã hoá lại trường slug để hiện thị trên url
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($product) {
+            $product->slug = Str::slug($product->name); // Tạo slug từ tên sản phẩm
+        });
     }
 }
