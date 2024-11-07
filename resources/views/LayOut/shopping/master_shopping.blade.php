@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/css/util.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/css/main.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('shopping/css/header.css') }}">
 
 
 	{{--  --}}
@@ -28,6 +29,23 @@
 </head>
 
 <body>
+	<div class="header-favorites flex-col-l p-l-65 p-r-25">
+			<div class="header-favorites-title">
+				<span class="mtext-103 cl2">
+					Your Favorites
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer js-hide-favorites">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+
+			<div class="header-favorites-content flex-w js-pscroll">
+				<ul class="header-favorites-wrapitem w-full" id="favorites-list">
+					<!-- Favorite items will be populated here dynamically -->
+				</ul>
+			</div>
+	</div>
 	<header class="header-v4">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
@@ -101,10 +119,10 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti header-favorites-icon"
 							data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
+						</div>
 					</div>
 				</nav>
 			</div>
@@ -128,10 +146,10 @@
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+				<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti header-favorites-icon"
 					data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
+				</div>
 			</div>
 
 			<!-- Button show menu -->
@@ -141,6 +159,8 @@
 				</span>
 			</div>
 		</div>
+
+
 
 
 		<!-- Menu Mobile -->
@@ -175,12 +195,7 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul>
+					<a href="{{route('home')}}">Home</a>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>

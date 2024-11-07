@@ -96,3 +96,6 @@ Route::post('/auth/get_password/{customer}/{token}', [UserController::class, 'su
 // Hàm này mục đích chỉ để hiển thị trang chi tiết sản phẩm sẽ bị thay thế
 Route::get('/product-detail', [ReviewController::class, 'index'])->name('product_detail');
 
+// Route Product
+Route::get('/product/{productId}', [HomeController::class, 'getProductById']);
+
