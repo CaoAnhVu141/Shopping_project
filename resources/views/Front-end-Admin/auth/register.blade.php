@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Form</title>
-    <link href="css/style.css" type="text/css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
         rel="stylesheet">

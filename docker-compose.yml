@@ -1,3 +1,4 @@
+
 services:
   # PHP Service
   app:
@@ -15,6 +16,10 @@ services:
       - db
     expose:
       - "9000"
+    volumes:
+      - .:/var/www:cached  # Sử dụng option cached để tăng tốc độ
+      - ./storage:/var/www/storage
+      - ./public:/var/www/public  # Mount thư mục public để Nginx có thể truy cập
 
   # MySQL Service
   db:
@@ -38,6 +43,7 @@ services:
       - "8000:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./public:/var/www/public  # Chỉ mount thư mục public để Nginx truy cập file tĩnh
     networks:
       - laravel
     depends_on:
