@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/vendor/bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
@@ -64,12 +65,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="index.html">Home</a>
-								<ul class="sub-menu">
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul>
+								<a href="{{route('home')}}">Home</a>
 							</li>
 
 							<li class="active-menu">
@@ -312,6 +308,7 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 
@@ -726,7 +723,7 @@
 	</script>
 	<!--===============================================================================================-->
 	<script src="{{ asset('shopping/js/main.js') }}"></script>
-
+	<script src="{{ asset('js/home.js') }}" defer></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </html>
