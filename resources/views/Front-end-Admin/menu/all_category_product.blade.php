@@ -45,7 +45,9 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+
                                 <th>ID</th>
+
                                 <th>Tên danh mục</th>
                                 <th>Hiển thị</th>
                                 <th>Thao tác</th>
@@ -54,7 +56,10 @@
                         <tbody>
                             @foreach($all_category_product as $key => $cate_pro)
                             <tr>
+
                                 <td>{{ $cate_pro->category_id }}</td>
+                             
+
                                 <td>{{ $cate_pro->category_name }}</td>
                                 <td>
                                     @if($cate_pro->category_status == 0)

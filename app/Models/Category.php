@@ -14,7 +14,7 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'describe',
+        'description',
     ];
 
     // thực thi cấu hình quan hệ giữa product và category

@@ -826,14 +826,15 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8"
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455"
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/guzzle/promises/zipball/6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
                 "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
                 "shasum": "",
@@ -843,6 +844,11 @@
                         "preferred": true
                     }
                 ]
+=======
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": "^7.2.5 || ^8.0"
@@ -895,7 +901,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.0.3"
+                "source": "https://github.com/guzzle/promises/tree/2.0.4"
             },
             "funding": [
                 {
@@ -911,7 +917,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-18T10:29:17+00:00"
+            "time": "2024-10-17T10:06:22+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -3428,6 +3434,7 @@
         },
         {
             "name": "symfony/console",
+<<<<<<< HEAD
             "version": "v6.4.8",
             "source": {
                 "type": "git",
@@ -3445,6 +3452,19 @@
                         "preferred": true
                     }
                 ]
+=======
+            "version": "v6.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/console.git",
+                "reference": "897c2441ed4eec8a8a2c37b943427d24dba3f26b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/897c2441ed4eec8a8a2c37b943427d24dba3f26b",
+                "reference": "897c2441ed4eec8a8a2c37b943427d24dba3f26b",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1",
@@ -3508,7 +3528,11 @@
                 "terminal"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/console/tree/v6.4.8"
+=======
+                "source": "https://github.com/symfony/console/tree/v6.4.14"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -3524,18 +3548,23 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-05-31T14:49:08+00:00"
+=======
+            "time": "2024-11-05T15:34:40+00:00"
+>>>>>>> add_product_dotiendai
         },
         {
             "name": "symfony/css-selector",
-            "version": "v7.1.1",
+            "version": "v7.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "1c7cee86c6f812896af54434f8ce29c8d94f9ff4"
+                "reference": "4aa4f6b3d6749c14d3aa815eef8226632e7bbc66"
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/1c7cee86c6f812896af54434f8ce29c8d94f9ff4",
                 "reference": "1c7cee86c6f812896af54434f8ce29c8d94f9ff4",
                 "shasum": "",
@@ -3545,6 +3574,11 @@
                         "preferred": true
                     }
                 ]
+=======
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/4aa4f6b3d6749c14d3aa815eef8226632e7bbc66",
+                "reference": "4aa4f6b3d6749c14d3aa815eef8226632e7bbc66",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.2"
@@ -3579,7 +3613,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v7.1.1"
+                "source": "https://github.com/symfony/css-selector/tree/v7.1.6"
             },
             "funding": [
                 {
@@ -3595,7 +3629,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-31T14:57:53+00:00"
+            "time": "2024-09-25T14:20:29+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3672,14 +3706,15 @@
         },
         {
             "name": "symfony/error-handler",
-            "version": "v6.4.10",
+            "version": "v6.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/error-handler.git",
-                "reference": "231f1b2ee80f72daa1972f7340297d67439224f0"
+                "reference": "9e024324511eeb00983ee76b9aedc3e6ecd993d9"
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/symfony/error-handler/zipball/231f1b2ee80f72daa1972f7340297d67439224f0",
                 "reference": "231f1b2ee80f72daa1972f7340297d67439224f0",
                 "shasum": "",
@@ -3689,6 +3724,11 @@
                         "preferred": true
                     }
                 ]
+=======
+                "url": "https://api.github.com/repos/symfony/error-handler/zipball/9e024324511eeb00983ee76b9aedc3e6ecd993d9",
+                "reference": "9e024324511eeb00983ee76b9aedc3e6ecd993d9",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1",
@@ -3733,7 +3773,7 @@
             "description": "Provides tools to manage errors and ease debugging PHP code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/error-handler/tree/v6.4.10"
+                "source": "https://github.com/symfony/error-handler/tree/v6.4.14"
             },
             "funding": [
                 {
@@ -3749,18 +3789,19 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-26T12:30:32+00:00"
+            "time": "2024-11-05T15:34:40+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v7.1.1",
+            "version": "v7.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "9fa7f7a21beb22a39a8f3f28618b29e50d7a55a7"
+                "reference": "87254c78dd50721cfd015b62277a8281c5589702"
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9fa7f7a21beb22a39a8f3f28618b29e50d7a55a7",
                 "reference": "9fa7f7a21beb22a39a8f3f28618b29e50d7a55a7",
                 "shasum": "",
@@ -3770,6 +3811,11 @@
                         "preferred": true
                     }
                 ]
+=======
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/87254c78dd50721cfd015b62277a8281c5589702",
+                "reference": "87254c78dd50721cfd015b62277a8281c5589702",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.2",
@@ -3819,7 +3865,7 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/event-dispatcher/tree/v7.1.1"
+                "source": "https://github.com/symfony/event-dispatcher/tree/v7.1.6"
             },
             "funding": [
                 {
@@ -3835,7 +3881,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-31T14:57:53+00:00"
+            "time": "2024-09-25T14:20:29+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -3921,6 +3967,7 @@
         },
         {
             "name": "symfony/finder",
+<<<<<<< HEAD
             "version": "v6.4.10",
             "source": {
                 "type": "git",
@@ -3938,6 +3985,19 @@
                         "preferred": true
                     }
                 ]
+=======
+            "version": "v6.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "daea9eca0b08d0ed1dc9ab702a46128fd1be4958"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/daea9eca0b08d0ed1dc9ab702a46128fd1be4958",
+                "reference": "daea9eca0b08d0ed1dc9ab702a46128fd1be4958",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1"
@@ -3971,7 +4031,11 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/finder/tree/v6.4.10"
+=======
+                "source": "https://github.com/symfony/finder/tree/v6.4.13"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -3987,6 +4051,7 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-07-24T07:06:38+00:00"
         },
         {
@@ -4008,6 +4073,23 @@
                         "preferred": true
                     }
                 ]
+=======
+            "time": "2024-10-01T08:30:56+00:00"
+        },
+        {
+            "name": "symfony/http-foundation",
+            "version": "v6.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-foundation.git",
+                "reference": "ba020a321a95519303a3f09ec2824d34d601c388"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/ba020a321a95519303a3f09ec2824d34d601c388",
+                "reference": "ba020a321a95519303a3f09ec2824d34d601c388",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1",
@@ -4054,7 +4136,11 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/http-foundation/tree/v6.4.10"
+=======
+                "source": "https://github.com/symfony/http-foundation/tree/v6.4.14"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -4070,6 +4156,7 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-07-26T12:36:27+00:00"
         },
         {
@@ -4091,6 +4178,23 @@
                         "preferred": true
                     }
                 ]
+=======
+            "time": "2024-11-05T16:39:55+00:00"
+        },
+        {
+            "name": "symfony/http-kernel",
+            "version": "v6.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-kernel.git",
+                "reference": "8278a947d0369754a47b758a9e17b72cab970951"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/8278a947d0369754a47b758a9e17b72cab970951",
+                "reference": "8278a947d0369754a47b758a9e17b72cab970951",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1",
@@ -4174,7 +4278,11 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/http-kernel/tree/v6.4.11"
+=======
+                "source": "https://github.com/symfony/http-kernel/tree/v6.4.14"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -4190,6 +4298,7 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-08-30T16:57:20+00:00"
         },
         {
@@ -4211,6 +4320,23 @@
                         "preferred": true
                     }
                 ]
+=======
+            "time": "2024-11-06T09:45:21+00:00"
+        },
+        {
+            "name": "symfony/mailer",
+            "version": "v6.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mailer.git",
+                "reference": "c2f7e0d8d7ac8fe25faccf5d8cac462805db2663"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/c2f7e0d8d7ac8fe25faccf5d8cac462805db2663",
+                "reference": "c2f7e0d8d7ac8fe25faccf5d8cac462805db2663",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "egulias/email-validator": "^2.1.10|^3|^4",
@@ -4260,7 +4386,11 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/mailer/tree/v6.4.8"
+=======
+                "source": "https://github.com/symfony/mailer/tree/v6.4.13"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -4276,6 +4406,7 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-05-31T14:49:08+00:00"
         },
         {
@@ -4297,6 +4428,23 @@
                         "preferred": true
                     }
                 ]
+=======
+            "time": "2024-09-25T14:18:03+00:00"
+        },
+        {
+            "name": "symfony/mime",
+            "version": "v6.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mime.git",
+                "reference": "1de1cf14d99b12c7ebbb850491ec6ae3ed468855"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/1de1cf14d99b12c7ebbb850491ec6ae3ed468855",
+                "reference": "1de1cf14d99b12c7ebbb850491ec6ae3ed468855",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1",
@@ -4351,7 +4499,11 @@
                 "mime-type"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/mime/tree/v6.4.8"
+=======
+                "source": "https://github.com/symfony/mime/tree/v6.4.13"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -4367,7 +4519,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-06-01T07:50:16+00:00"
+=======
+            "time": "2024-10-25T15:07:50+00:00"
+>>>>>>> add_product_dotiendai
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -5055,6 +5211,7 @@
         },
         {
             "name": "symfony/process",
+<<<<<<< HEAD
             "version": "v6.4.8",
             "source": {
                 "type": "git",
@@ -5072,6 +5229,19 @@
                         "preferred": true
                     }
                 ]
+=======
+            "version": "v6.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "25214adbb0996d18112548de20c281be9f27279f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/25214adbb0996d18112548de20c281be9f27279f",
+                "reference": "25214adbb0996d18112548de20c281be9f27279f",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1"
@@ -5102,7 +5272,11 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/process/tree/v6.4.8"
+=======
+                "source": "https://github.com/symfony/process/tree/v6.4.14"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -5118,6 +5292,7 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-05-31T14:49:08+00:00"
         },
         {
@@ -5139,6 +5314,23 @@
                         "preferred": true
                     }
                 ]
+=======
+            "time": "2024-11-06T09:25:01+00:00"
+        },
+        {
+            "name": "symfony/routing",
+            "version": "v6.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/routing.git",
+                "reference": "640a74250d13f9c30d5ca045b6aaaabcc8215278"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/640a74250d13f9c30d5ca045b6aaaabcc8215278",
+                "reference": "640a74250d13f9c30d5ca045b6aaaabcc8215278",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1",
@@ -5191,7 +5383,11 @@
                 "url"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/routing/tree/v6.4.11"
+=======
+                "source": "https://github.com/symfony/routing/tree/v6.4.13"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -5207,7 +5403,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-08-29T08:15:38+00:00"
+=======
+            "time": "2024-10-01T08:30:56+00:00"
+>>>>>>> add_product_dotiendai
         },
         {
             "name": "symfony/service-contracts",
@@ -5299,6 +5499,7 @@
         },
         {
             "name": "symfony/string",
+<<<<<<< HEAD
             "version": "v7.1.4",
             "source": {
                 "type": "git",
@@ -5316,6 +5517,19 @@
                         "preferred": true
                     }
                 ]
+=======
+            "version": "v7.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/string.git",
+                "reference": "61b72d66bf96c360a727ae6232df5ac83c71f626"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/string/zipball/61b72d66bf96c360a727ae6232df5ac83c71f626",
+                "reference": "61b72d66bf96c360a727ae6232df5ac83c71f626",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.2",
@@ -5372,7 +5586,11 @@
                 "utf8"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/string/tree/v7.1.4"
+=======
+                "source": "https://github.com/symfony/string/tree/v7.1.6"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -5388,6 +5606,7 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-08-12T09:59:40+00:00"
         },
         {
@@ -5409,6 +5628,23 @@
                         "preferred": true
                     }
                 ]
+=======
+            "time": "2024-09-25T14:20:29+00:00"
+        },
+        {
+            "name": "symfony/translation",
+            "version": "v6.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "bee9bfabfa8b4045a66bf82520e492cddbaffa66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/bee9bfabfa8b4045a66bf82520e492cddbaffa66",
+                "reference": "bee9bfabfa8b4045a66bf82520e492cddbaffa66",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1",
@@ -5473,7 +5709,11 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/translation/tree/v6.4.8"
+=======
+                "source": "https://github.com/symfony/translation/tree/v6.4.13"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -5489,7 +5729,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-05-31T14:49:08+00:00"
+=======
+            "time": "2024-09-27T18:14:25+00:00"
+>>>>>>> add_product_dotiendai
         },
         {
             "name": "symfony/translation-contracts",
@@ -5577,14 +5821,15 @@
         },
         {
             "name": "symfony/uid",
-            "version": "v6.4.12",
+            "version": "v6.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/uid.git",
-                "reference": "2f16054e0a9b194b8ca581d4a64eee3f7d4a9d4d"
+                "reference": "18eb207f0436a993fffbdd811b5b8fa35fa5e007"
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/symfony/uid/zipball/2f16054e0a9b194b8ca581d4a64eee3f7d4a9d4d",
                 "reference": "2f16054e0a9b194b8ca581d4a64eee3f7d4a9d4d",
                 "shasum": "",
@@ -5594,6 +5839,11 @@
                         "preferred": true
                     }
                 ]
+=======
+                "url": "https://api.github.com/repos/symfony/uid/zipball/18eb207f0436a993fffbdd811b5b8fa35fa5e007",
+                "reference": "18eb207f0436a993fffbdd811b5b8fa35fa5e007",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1",
@@ -5637,7 +5887,7 @@
                 "uuid"
             ],
             "support": {
-                "source": "https://github.com/symfony/uid/tree/v6.4.12"
+                "source": "https://github.com/symfony/uid/tree/v6.4.13"
             },
             "funding": [
                 {
@@ -5653,10 +5903,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-20T08:32:26+00:00"
+            "time": "2024-09-25T14:18:03+00:00"
         },
         {
             "name": "symfony/var-dumper",
+<<<<<<< HEAD
             "version": "v6.4.8",
             "source": {
                 "type": "git",
@@ -5674,6 +5925,19 @@
                         "preferred": true
                     }
                 ]
+=======
+            "version": "v6.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "93c09246038178717a9c14b809ea8151ffcf7091"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/93c09246038178717a9c14b809ea8151ffcf7091",
+                "reference": "93c09246038178717a9c14b809ea8151ffcf7091",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.1",
@@ -5728,7 +5992,11 @@
                 "dump"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/var-dumper/tree/v6.4.8"
+=======
+                "source": "https://github.com/symfony/var-dumper/tree/v6.4.14"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -5744,7 +6012,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-05-31T14:49:08+00:00"
+=======
+            "time": "2024-11-05T15:34:40+00:00"
+>>>>>>> add_product_dotiendai
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -6318,6 +6590,7 @@
         },
         {
             "name": "laravel/sail",
+<<<<<<< HEAD
             "version": "v1.33.0",
             "source": {
                 "type": "git",
@@ -6335,6 +6608,19 @@
                         "preferred": true
                     }
                 ]
+=======
+            "version": "v1.37.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "7efa151ea0d16f48233d6a6cd69f81270acc6e93"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/7efa151ea0d16f48233d6a6cd69f81270acc6e93",
+                "reference": "7efa151ea0d16f48233d6a6cd69f81270acc6e93",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "illuminate/console": "^9.52.16|^10.0|^11.0",
@@ -6383,7 +6669,11 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
+<<<<<<< HEAD
             "time": "2024-09-22T19:04:21+00:00"
+=======
+            "time": "2024-10-29T20:18:14+00:00"
+>>>>>>> add_product_dotiendai
         },
         {
             "name": "mockery/mockery",
@@ -7117,6 +7407,7 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
             "version": "10.5.20",
             "source": {
                 "type": "git",
@@ -7134,6 +7425,19 @@
                         "preferred": true
                     }
                 ]
+=======
+            "version": "10.5.38",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "a86773b9e887a67bc53efa9da9ad6e3f2498c132"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a86773b9e887a67bc53efa9da9ad6e3f2498c132",
+                "reference": "a86773b9e887a67bc53efa9da9ad6e3f2498c132",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "ext-dom": "*",
@@ -7146,6 +7450,7 @@
                 "phar-io/manifest": "^2.0.3",
                 "phar-io/version": "^3.0.2",
                 "php": ">=8.1",
+<<<<<<< HEAD
                 "phpunit/php-code-coverage": "^10.1.5",
                 "phpunit/php-file-iterator": "^4.0",
                 "phpunit/php-invoker": "^4.0",
@@ -7162,6 +7467,24 @@
                 "sebastian/recursion-context": "^5.0",
                 "sebastian/type": "^4.0",
                 "sebastian/version": "^4.0"
+=======
+                "phpunit/php-code-coverage": "^10.1.16",
+                "phpunit/php-file-iterator": "^4.1.0",
+                "phpunit/php-invoker": "^4.0.0",
+                "phpunit/php-text-template": "^3.0.1",
+                "phpunit/php-timer": "^6.0.0",
+                "sebastian/cli-parser": "^2.0.1",
+                "sebastian/code-unit": "^2.0.0",
+                "sebastian/comparator": "^5.0.3",
+                "sebastian/diff": "^5.1.1",
+                "sebastian/environment": "^6.1.0",
+                "sebastian/exporter": "^5.1.2",
+                "sebastian/global-state": "^6.0.2",
+                "sebastian/object-enumerator": "^5.0.0",
+                "sebastian/recursion-context": "^5.0.0",
+                "sebastian/type": "^4.0.0",
+                "sebastian/version": "^4.0.1"
+>>>>>>> add_product_dotiendai
             },
             "suggest": {
                 "ext-soap": "To be able to generate mocks based on WSDL files"
@@ -7204,7 +7527,11 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.20"
+=======
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.38"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -7220,7 +7547,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-04-24T06:32:35+00:00"
+=======
+            "time": "2024-10-28T13:06:21+00:00"
+>>>>>>> add_product_dotiendai
         },
         {
             "name": "sebastian/cli-parser",
@@ -7410,14 +7741,15 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "5.0.2",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "2d3e04c3b4c1e84a5e7382221ad8883c8fbc4f53"
+                "reference": "a18251eb0b7a2dcd2f7aa3d6078b18545ef0558e"
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/2d3e04c3b4c1e84a5e7382221ad8883c8fbc4f53",
                 "reference": "2d3e04c3b4c1e84a5e7382221ad8883c8fbc4f53",
                 "shasum": "",
@@ -7427,6 +7759,11 @@
                         "preferred": true
                     }
                 ]
+=======
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/a18251eb0b7a2dcd2f7aa3d6078b18545ef0558e",
+                "reference": "a18251eb0b7a2dcd2f7aa3d6078b18545ef0558e",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "ext-dom": "*",
@@ -7436,7 +7773,7 @@
                 "sebastian/exporter": "^5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^10.4"
+                "phpunit/phpunit": "^10.5"
             },
             "type": "library",
             "extra": {
@@ -7481,7 +7818,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/comparator/issues",
                 "security": "https://github.com/sebastianbergmann/comparator/security/policy",
-                "source": "https://github.com/sebastianbergmann/comparator/tree/5.0.2"
+                "source": "https://github.com/sebastianbergmann/comparator/tree/5.0.3"
             },
             "funding": [
                 {
@@ -7489,7 +7826,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-12T06:03:08+00:00"
+            "time": "2024-10-18T14:56:07+00:00"
         },
         {
             "name": "sebastian/complexity",
@@ -8560,6 +8897,7 @@
         },
         {
             "name": "symfony/yaml",
+<<<<<<< HEAD
             "version": "v7.1.0",
             "source": {
                 "type": "git",
@@ -8577,6 +8915,19 @@
                         "preferred": true
                     }
                 ]
+=======
+            "version": "v7.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "3ced3f29e4f0d6bce2170ff26719f1fe9aacc671"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/3ced3f29e4f0d6bce2170ff26719f1fe9aacc671",
+                "reference": "3ced3f29e4f0d6bce2170ff26719f1fe9aacc671",
+                "shasum": ""
+>>>>>>> add_product_dotiendai
             },
             "require": {
                 "php": ">=8.2",
@@ -8617,7 +8968,11 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/yaml/tree/v7.1.0"
+=======
+                "source": "https://github.com/symfony/yaml/tree/v7.1.6"
+>>>>>>> add_product_dotiendai
             },
             "funding": [
                 {
@@ -8633,7 +8988,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-04-28T18:29:00+00:00"
+=======
+            "time": "2024-09-25T14:20:29+00:00"
+>>>>>>> add_product_dotiendai
         },
         {
             "name": "theseer/tokenizer",

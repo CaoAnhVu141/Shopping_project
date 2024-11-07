@@ -41,7 +41,26 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <link rel="stylesheet" href="{{ asset('admin/bower_components/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{asset('backend/css/bootstrap.min.css')}}" >
+<!-- //bootstrap-css -->
+<!-- Custom CSS -->
+<!-- <link href="{{asset('backend/css/style.css')}}" rel='stylesheet' type='text/css' /> -->
+<link href="{{asset('backend/css/style-responsive.css')}}" rel="stylesheet"/>
+<!-- font CSS -->
+<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- font-awesome icons -->
+<link rel="stylesheet" href="{{asset('backend/css/font.css')}}" type="text/css"/>
+<link href="{{asset('backend/css/font-awesome.css')}}" rel="stylesheet"> 
+<link rel="stylesheet" href="{{asset('backend/css/morris.css')}}" type="text/css"/>
+<!-- calendar -->
+<link rel="stylesheet" href="{{asset('backend/css/monthly.css')}}">
+<!-- //calendar -->
 
+<!-- //font-awesome icons -->
+<script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
+<script src="{{asset('backend/js/raphael-min.js')}}"></script>
+<script src="{{asset('backend/js/morris.js')}}"></script>
+<link rel="stylesheet" href="{{asset('backend/css/darkmode.css')}}" media="(prefers-color: scheme-dark)" >
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -205,11 +224,12 @@
             </li>
 
              {{-- @comment --}}
-            <li class="{{ Request::is('admin-datn/menu*') ? 'active' : '' }}">
-              <a href="">
-                  <i class="fa fa-list"></i> <span>Danh mục</span>
-              </a>
-            </li>
+                     <li class="sub-menu">
+    <a href="{{ URL::to('all-category-product') }}">
+        <i class="fa fa-book"></i>
+        <span>Danh mục sản phẩm</span>
+    </a>
+</li> 
 
             <li class="{{ Request::is('admin-datn/type-product*') ? 'active' : '' }}">
                 <a href="">
@@ -221,19 +241,19 @@
                     <i class="glyphicon glyphicon-asterisk"></i> <span>Phân loại(tt)</span>
                 </a>
             </li>
-
-            <li class="{{ Request::is('admin-datn/product*') ? 'active' : '' }}">
-              <a href="">
-                    <i class="fa fa-fw fa-anchor"></i> <span>Sản phẩm</span>
-                </a>
-            </li>
+            <a href="{{ URL::to('all-product') }}">
+            <i class="fa fa-fw fa-anchor"></i> 
+            <span>Sản phẩm</span>
+        
+    </a>
+</li> 
     
-            <li class="sub-menu">
+            <!-- <li class="sub-menu">
     <a href="{{ URL::to('all-category-product') }}">
         <i class="fa fa-book"></i>
         <span>Danh mục sản phẩm</span>
     </a>
-</li>
+</li> -->
 
             <li class="{{ Request::is('admin-datn/transaction*') ? 'active' : '' }}">
                 <a href="">
@@ -299,6 +319,9 @@
       <div class="content-wrapper">
         @yield('content')
       </div>
+
+
+
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.4.0
@@ -306,6 +329,12 @@
         <strong>Copyright &copy; 2023 <a href="#">Cao Anh Vũ</a>.</strong> All rights
         reserved.
       </footer>
+
+
+
+      <!-- /.content-wrapper -->
+
+
       <!-- Control Sidebar -->
 
       <!-- /.control-sidebar -->
@@ -429,30 +458,7 @@
           {{-- @todo lai --}}
 
     <script>
-        $(document).ready(function(){
-            $('.js-delete-confirm').click(function(event){
-                event.preventDefault();
-                let URL=$(this).attr('href');
-                $.confirm({
-                    title: ' Bạn Muốn Xóa Chứ ?',
-                    content: 'Đã Xóa Thì Không Lấy Lại Được Đâu !',
-                    type: 'red',
-                    buttons: {
-                        ok: {
-                            text: "ok!",
-                            btnClass: 'btn-primary',
-                            keys: ['enter'],
-                            action: function(){
-                                 window.location.href=URL;
-                            }
-                        },
-                        cancel: function(){
-                            console.log('the user clicked cancel');
-                        }
-                    }
-                });
-            })
-        });
+      
 
         $(document).ready(function(){
             $(document).on('click','#js-notification',function(e){

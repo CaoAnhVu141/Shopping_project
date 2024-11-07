@@ -9,21 +9,24 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('product_image', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->text('description')->nullable();
-    
+            $table->integer('product_id');
+            $table->string('product_image');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('category');
+        Schema::table('product', function (Blueprint $table) {
+            $table->dropColumn('discounted_image');
+        });
     }
+    
 };

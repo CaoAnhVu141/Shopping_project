@@ -51,6 +51,8 @@
                     <span class="mtext-106 cl2" id="total-price">
                         {{ $product->price }}
                     </span>
+
+
                     <div class="p-t-33">
                         <div class="flex-w flex-r-m p-b-10">
                             <div class="size-203 flex-c-m respon6">
@@ -60,7 +62,11 @@
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="size">
                                         @foreach ($size as $items)
+
                                         <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
+
+                                            <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
+
                                         @endforeach
                                     </select>
                                     <div class="dropDownSelect2"></div>
@@ -75,7 +81,11 @@
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="color">
                                         @foreach ($color as $items)
+
                                         <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
+
+                                            <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
+
                                         @endforeach
                                     </select>
                                     <div class="dropDownSelect2"></div>
@@ -85,11 +95,20 @@
                         <div class="flex-w flex-r-m p-b-10">
                             <div class="size-204 flex-w flex-m respon6-next">
                                 <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+
                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" data-id="{{ $product->id_product }}">
                                         <i class="fs-16 zmdi zmdi-minus"></i>
                                     </div>
                                     <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product"
                                         id="product-quantity" value="1" min="1" readonly>
+
+                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
+                                        data-id="{{ $product->id_product }}">
+                                        <i class="fs-16 zmdi zmdi-minus"></i>
+                                    </div>
+                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product"
+                                        id="product-quantity" value="1" min="1">
+
                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
                                         data-id="{{ $product->id_product }}">
                                         <i class="fs-16 zmdi zmdi-plus"></i>
@@ -332,6 +351,32 @@
         </div>
     </div>
 </section>
+
 {{-- <script src="{{ asset("shopping/data_rest/shopping_cart.js")}}"></script> --}}
 {{-- <script src="{{ asset("shopping/data_rest/shopping_cart.js" --}}{{-- àm thêm giỏ hàng liên tục --}}
+=======
+<script src="{{ asset("shopping/data_rest/shopping_cart.js")}}"></script>
+{{--
+<script src="{{ asset(" shopping/data_rest/shopping_cart.js" --}}{{-- àm thêm giỏ hàng liên tục --}} <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Truyền `session ID` từ server vào biến JavaScript
+        const sessionIdFromServer = "{{ session()->getId() }}";
+
+        // Kiểm tra nếu không có session trong Local Storage thì lưu vào
+        if (!localStorage.getItem('id_session')) {
+            localStorage.setItem('id_session', sessionIdFromServer);
+            console.log("Local Storage: Đã lưu mới session ID từ server:", sessionIdFromServer);
+        } else {
+            const storedSessionId = localStorage.getItem('id_session');
+            console.log("Local Storage: Đã tồn tại session ID:", storedSessionId);
+
+            // Cập nhật cookie dựa trên Local Storage để đảm bảo tính nhất quán
+            document.cookie = "laravel_session=" + storedSessionId + "; path=/; SameSite=Lax";
+        }
+
+        // Kiểm tra giá trị trong Console
+        console.log("Session ID từ Local Storage:", localStorage.getItem('id_session'));
+        console.log("Session ID từ Cookie:", document.cookie);
+    });
+</script>
 @endsection

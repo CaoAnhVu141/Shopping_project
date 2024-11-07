@@ -20,6 +20,7 @@ class DetailProductViewController extends Controller
         // thực hiện tạo slug
         $expectedSlug = Str::slug($product->name);
         // dd($slug); die();
+
         // dd($expectedSlug);
         if($slug !== $expectedSlug)
         {

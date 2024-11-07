@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\Api\AtributeController;
 use App\Http\Controllers\Api\AttributeController;
 use App\Http\Controllers\Api\CategoryController;
@@ -14,7 +15,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FavoriteApiController;
 use App\Http\Controllers\Api\ShippingMethodController;
+
 use App\Http\Controllers\CategoryProductController;
+
+
+
+use App\Http\Controllers\Api\ProductController;
+
+//use App\Http\Controllers\Api\CategoryController;
+
+//use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\CategoryProductView;
+
 
 
 /*
@@ -33,7 +47,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });
 
-Route::get('categories', [CategoryProductController::class, 'api_all_category_product']);
+Route::get('category', [CategoryProductView::class, 'api_all_category_product']);
+Route::get('products', [ProductController::class, 'getAllProducts']);
+Route::post('toggle-product-status/{id}', [ProductController::class ,'toggleStatus']);
+Route::delete('delete-product/{id}', [ProductController::class, 'delete']);
+
+
+//Route::get('categories', [CategoryProductController::class, 'api_all_category_product']);
 // Route::apiResource('categories', CategoryProductController::class);
 // Route::patch('categories/{id}/activate', [CategoryProductController::class, 'activate']);
 // Route::patch('categories/{id}/deactivate', [CategoryProductController::class, 'deactivate']);
@@ -42,6 +62,10 @@ Route::get('categories', [CategoryProductController::class, 'api_all_category_pr
 
 
 Route::get('/category', [CategoryController::class, 'index']);
+
+
+
+
 
 // Thực thi với attribute
 Route::get('/attribute',[AttributeController::class,'getDataJson']);
@@ -68,6 +92,8 @@ Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class
 Route::delete('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'destroy']); // Xóa sản phẩm yêu thích
 
 
+
+
 Route::prefix('shipping-methods')->group(function() {
     Route::get('/', [ShippingMethodController::class, 'index']);
     Route::post('/', [ShippingMethodController::class, 'store']);
@@ -90,5 +116,6 @@ Route::get('/get-product/{id_product}',[ProductController::class, 'getItemsProdu
 
 // thực thị thanh toán
 // Route::get('/make-payment',[PayMonneyController::class, 'makePaymentAllItems'])->name('makepaymoney');
+
 
 
