@@ -9,16 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('category', function (Blueprint $table) {
-            $table->bigIncrements('id_category');
-            $table->string('name');
-            $table->string('describe');
+            $table->id();
+            $table->string('name')->unique();
+            $table->text('description')->nullable();
+    
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

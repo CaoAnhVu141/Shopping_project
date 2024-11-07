@@ -10,20 +10,17 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('product_discount', function (Blueprint $table) {
-            $table->bigIncrements('id_product_discount');
-            $table->unsignedBigInteger('id_product');
-            $table->unsignedBigInteger('id_discount');
-            $table->timestamps();
-        });
-    }
+{
+    Schema::table('product', function (Blueprint $table) {
+        $table->integer('discounted_price')->default(0)->after('product_price');
+    });
+}
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('product_discount');
-    }
+public function down(): void
+{
+    Schema::table('product', function (Blueprint $table) {
+        $table->dropColumn('discounted_price');
+    });
+}
+
 };
