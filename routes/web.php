@@ -1,28 +1,17 @@
 <?php
-
-
-use App\Http\Controllers\DetailProductViewController;
-
 use App\Http\Controllers\AdminDashboardViewController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\GetCartShoppingController;
 use App\Http\Controllers\AttributeViewController;
-
-
 use App\Http\Controllers\CategoryProductController;
-
 use App\Http\Controllers\CategoryProductView;
 use App\Http\Controllers\ProductView;
-
-
 use App\Http\Controllers\CategoryViewController;
 use App\Http\Controllers\Auth\RegistController;
 use App\Http\Controllers\Demo_OderController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
-
 use App\Http\Controllers\ReviewController;
-
 use App\Http\Controllers\Api\GetAllItemsShoppingCart;
 use App\Http\Controllers\Api\PayMonneyController;
 use App\Http\Controllers\Api\ShoppingCartController;
@@ -31,20 +20,12 @@ use App\Http\Controllers\GetCartShoppingViewController;
 use App\Http\Controllers\GetViewAllItemsShoppingCart;
 use App\Http\Controllers\PayMonneyViewController;
 use App\Http\Controllers\ShoppingCartViewController;
-
-
-use App\Http\Controllers\ReviewController;
-
-
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FavoriteController;
-
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
-use App\Http\Controllers\ShoppingCartViewController;
-
 use App\Http\Controllers\ShippingMethodController; // Đảm bảo bạn đã import đúng namespac
 use App\Http\Controllers\UserController;
 
@@ -70,7 +51,7 @@ Route::post('/filter/price', [HomeController::class, 'filterByPrice'])->name('fi
 Route::post('/filter/sort', [HomeController::class, 'filterSort'])->name('filter.sort');
 Route::post('/search/products', [HomeController::class, 'searchProducts']);
 Route::post('/load-more/products', [HomeController::class, 'loadMore']);
-=======
+
 
 
 //Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
@@ -83,7 +64,7 @@ Route::get('demo',[TestController::class,'testcai']);
 
 
 Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
->>>>>>> test_demo01
+
 
 
 // Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
@@ -96,7 +77,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('/testcai', [App\Http\Controllers\TestController::class, 'testcai']);
-=======
+
 
 //Route::get('demo',[TestController::class,'testcai']);
 
@@ -137,7 +118,7 @@ Route::get('delete-category-product/{category_product_id}', [CategoryProductView
 
 
 
->>>>>>> test_demo01
+
 
 
 Route::get('category', [CategoryViewController::class, 'index']);
@@ -189,7 +170,7 @@ Route::post('/load-more/products', [HomeController::class, 'loadMore']);
 
 //Route About
 
-Route::get('/about', [AboutController::class, 'about'])->name('about');
+// Route::get('/about', [AboutController::class, 'about'])->name('about');
 
 // hiển thị và thực thi với giỏ hàng
 Route::get('/shopping-cart',[GetViewAllItemsShoppingCart::class, 'showAllItemsShoppingCart'])->name('showShoppingCart'); //hiển thị trang giỏ hàng
