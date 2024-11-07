@@ -4,6 +4,12 @@ use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\GetCartShoppingController;
 use App\Http\Controllers\AttributeViewController;
 use App\Http\Controllers\CategoryProductController;
+
+
+
+use App\Http\Controllers\AboutController;
+
+
 use App\Http\Controllers\CategoryProductView;
 use App\Http\Controllers\ProductView;
 use App\Http\Controllers\CategoryViewController;
@@ -15,17 +21,26 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Api\GetAllItemsShoppingCart;
 use App\Http\Controllers\Api\PayMonneyController;
 use App\Http\Controllers\Api\ShoppingCartController;
-use App\Http\Controllers\DetailProductViewController;
+//use App\Http\Controllers\DetailProductViewController;
 use App\Http\Controllers\GetCartShoppingViewController;
 use App\Http\Controllers\GetViewAllItemsShoppingCart;
 use App\Http\Controllers\PayMonneyViewController;
 use App\Http\Controllers\ShoppingCartViewController;
+
+
+//use App\Http\Controllers\ReviewController;
+
+
+
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
+//use App\Http\Controllers\ShoppingCartViewController;
+
+
 use App\Http\Controllers\ShippingMethodController; // Đảm bảo bạn đã import đúng namespac
 use App\Http\Controllers\UserController;
 
@@ -87,7 +102,7 @@ Route::get('/testcai', [App\Http\Controllers\TestController::class, 'testcai']);
 //Route::post('/category/store',[CategoryProductView::class, 'store'])->name('category.store');
 
 
-//Sanpham
+//SanphamE
 Route::get('all-product', [ProductView::class, 'all_product'])->name('all_product');
 Route::get('add-product', [ProductView::class, 'add_product'])->name('add_product');
 Route::post('save-product', [ProductView::class, 'save_product'])->name('save_product');

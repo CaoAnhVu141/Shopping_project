@@ -96,7 +96,7 @@
 								<a href="">Blog</a>
 							</li>
 							<li>
-								<a href="">About</a>
+								<a href="{{ URL::to('about') }}">About</a>
 							</li>
 							<li>
 								<a href="">Contact</a>

@@ -51,7 +51,7 @@
                   <th>Số lượng</th>
                   <th>Hot</th>
                   <th>Giảm giá (%)</th>
-
+                  <th>Giá sau khi giảm</th>
                   <th>Hình sản phẩm</th>               
                   <th>Danh mục</th>
                   <th>Hiển thị</th>
@@ -67,7 +67,8 @@
               <td>{{ $pro->product_quantity }}</td>
               <td>{{ $pro->hot ? 'Có' : 'Không' }}</td>
               <td>{{ $pro->sale }}%</td>
-              <!-- <td>{{ number_format($pro->discounted_price, 0, ',', '.') }}đ</td> -->
+
+              <td>{{ number_format($pro->discounted_price, 0, ',', '.') }}đ</td>
               <td><img src="uploads/product/{{ $pro->product_image }}" height="100" width="100"></td>
               <td>{{ $pro->category_name }}</td>
               <td>
