@@ -23,6 +23,16 @@ class CustomersTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'name' => 'Thanh Phong',
+                'email' => 'banphong1101@gmail.com',
+                'password' => Hash::make('123456789@Phong'),
+                'phone' => '1234567890',
+                'address' => '123 Street, City',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            
+            [
                 'name' => 'Jane Smith',
                 'email' => 'jane.smith@example.com',
                 'password' => Hash::make('password123'),
