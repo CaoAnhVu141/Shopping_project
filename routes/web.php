@@ -11,8 +11,11 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FavoriteController;
+
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
+use App\Http\Controllers\ShippingMethodController; // Đảm bảo bạn đã import đúng namespac
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,9 +32,11 @@ Route::get('/', function () {
 });
 
 
+
 Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
 // Route::get('demo',[Demo_OderController::class,'showData']);
 // Route::get('view',[Demo_OderController::class,'showView'])->name("view");
+
 
 // Route::get('/demo',TestController::class,'testcai');
 // Route::get('demo',[TestController::class,'testcai']);
@@ -44,11 +49,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('category', [CategoryViewController::class, 'index']);
 Route::get('/attribute', [AttributeViewController::class, 'showThemmeAttributeIndex']);
-
 // thực thi với theme dashboard
-Route::get('/dashboard', [AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
-Route::get('/get-orders', [AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
-Route::get('view-detail/{id}', [AdminDashboardViewController::class, 'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
+Route::get('/dashboard',[AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
+Route::get('/get-orders',[AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
+Route::get('view-detail/{id}',[AdminDashboardViewController::class,'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
 
 
 // đăng ký
@@ -62,7 +66,10 @@ Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeInde
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index'); // Trang hiển thị danh sách
 Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteController::class, 'show'])->name('favorites.show'); // Trang xem chi tiết
 
+
 Route::get('/register', [RegistController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegistController::class, 'register'])->name('index.register');
 Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify');
 
+//Method
+Route::get('/shipping-methods', [ShippingMethodController::class, 'indexView'])->name('shipping-methods.index');
