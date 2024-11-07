@@ -11,6 +11,8 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
+use App\Http\Controllers\ShoppingCartViewController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +48,4 @@ Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify
 
 //chi tiết sản phẩm
 Route::get('product/{id_slug}', [DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail");
-Route::get('/product',[ShoppingCartViewController::class, 'showDemoNha'])->name('showItems');
+Route::get('/product',[ShoppingCartViewController::class, 'showProduct'])->name('showItems');
