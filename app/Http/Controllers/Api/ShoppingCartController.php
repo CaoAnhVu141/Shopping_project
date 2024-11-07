@@ -37,6 +37,7 @@ class ShoppingCartController extends Controller
                     $query->orWhere('id_customer', $id_customer);
                 }
             })->first();
+            Log::info("Testing logging system");
         // Cập nhật hoặc thêm mới sản phẩm vào giỏ hàng
         if ($itemsValues) {
             $itemsValues->quantity += $quantity;

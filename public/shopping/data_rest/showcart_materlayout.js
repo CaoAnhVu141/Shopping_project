@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.error('Không tìm thấy phần tử có ID "cart-total"');
         }
-
     }
     // Gọi `showFetchItems` khi trang tải xong
     showFetchItems();
