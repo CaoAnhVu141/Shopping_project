@@ -6,70 +6,70 @@ let currentLoadMoreType = 'category';
 let currentSearchQuery = '';
 
 // Function to initialize event listeners for wishlist and cart
-function initializeWishlistEvents() {
-    const addWishButtons = document.querySelectorAll('.js-addwish-b2, .js-addwish-detail');
+// function initializeWishlistEvents() {
+//     const addWishButtons = document.querySelectorAll('.js-addwish-b2, .js-addwish-detail');
 
-    addWishButtons.forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
-        });
-    });
+//     addWishButtons.forEach(button => {
+//         button.addEventListener('click', function (e) {
+//             e.preventDefault();
+//         });
+//     });
 
-    const addWishButtonsB2 = document.querySelectorAll('.js-addwish-b2');
-    addWishButtonsB2.forEach(button => {
-        const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-b2');
+//     const addWishButtonsB2 = document.querySelectorAll('.js-addwish-b2');
+//     addWishButtonsB2.forEach(button => {
+//         const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-b2');
 
-        if (productNameElement) {
-            const nameProduct = productNameElement.innerHTML;
+//         if (productNameElement) {
+//             const nameProduct = productNameElement.innerHTML;
 
-            button.addEventListener('click', function () {
-                swal(nameProduct, "is added to wishlist!", "success");
+//             button.addEventListener('click', function () {
+//                 swal(nameProduct, "is added to wishlist!", "success");
 
-                this.classList.add('js-addedwish-b2');
-                this.removeEventListener('click', arguments.callee); // Remove event listener after adding
-            });
-        } else {
-            console.warn('Product name element not found for button:', button);
-        }
-    });
+//                 this.classList.add('js-addedwish-b2');
+//                 this.removeEventListener('click', arguments.callee); // Remove event listener after adding
+//             });
+//         } else {
+//             console.warn('Product name element not found for button:', button);
+//         }
+//     });
 
-    const addWishButtonsDetail = document.querySelectorAll('.js-addwish-detail');
-    addWishButtonsDetail.forEach(button => {
-        const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-detail');
+//     const addWishButtonsDetail = document.querySelectorAll('.js-addwish-detail');
+//     addWishButtonsDetail.forEach(button => {
+//         const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-detail');
 
-        if (productNameElement) {
-            const nameProduct = productNameElement.innerHTML;
+//         if (productNameElement) {
+//             const nameProduct = productNameElement.innerHTML;
 
-            button.addEventListener('click', function () {
-                swal(nameProduct, "is added to wishlist!", "success");
+//             button.addEventListener('click', function () {
+//                 swal(nameProduct, "is added to wishlist!", "success");
 
-                this.classList.add('js-addedwish-detail');
-                this.removeEventListener('click', arguments.callee); // Remove event listener after adding
-            });
-        } else {
-            console.warn('Product name element not found for button:', button);
-        }
-    });
+//                 this.classList.add('js-addedwish-detail');
+//                 this.removeEventListener('click', arguments.callee); // Remove event listener after adding
+//             });
+//         } else {
+//             console.warn('Product name element not found for button:', button);
+//         }
+//     });
 
-    const addCartDetailButtons = document.querySelectorAll('.js-addcart-detail');
-    addCartDetailButtons.forEach(button => {
-        const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-detail');
+//     const addCartDetailButtons = document.querySelectorAll('.js-addcart-detail');
+//     addCartDetailButtons.forEach(button => {
+//         const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-detail');
 
-        if (productNameElement) {
-            const nameProduct = productNameElement.innerHTML;
+//         if (productNameElement) {
+//             const nameProduct = productNameElement.innerHTML;
 
-            button.addEventListener('click', function () {
-                swal(nameProduct, "is added to cart!", "success");
-            });
-        } else {
-            console.warn('Product name element not found for button:', button);
-        }
-    });
-}
+//             button.addEventListener('click', function () {
+//                 swal(nameProduct, "is added to cart!", "success");
+//             });
+//         } else {
+//             console.warn('Product name element not found for button:', button);
+//         }
+//     });
+// }
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    initializeWishlistEvents();
+    // initializeWishlistEvents();
     console.log('Home js');
 
     const filterCategories = document.querySelectorAll('.filter-tope-group button');
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.querySelector('#search-product');
     const loadMoreBtn = document.querySelector('#load-more-button');
     const productContainer = document.querySelector('.product-grid');
-    document.querySelector('.header-favorites-icon').addEventListener('click', showFavorites);
+    // document.querySelector('.header-favorites-icon').addEventListener('click', showFavorites);
     const hideFavorite = document.querySelector('.js-hide-favorites');
 
     if (hideFavorite) {
