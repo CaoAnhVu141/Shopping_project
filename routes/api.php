@@ -80,8 +80,8 @@ Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class
 Route::delete('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'destroy']); // Xóa sản phẩm yêu thích
 
 
-<<<<<<< HEAD
-=======
+
+
 Route::prefix('shipping-methods')->group(function() {
     Route::get('/', [ShippingMethodController::class, 'index']);
     Route::post('/', [ShippingMethodController::class, 'store']);
@@ -90,4 +90,4 @@ Route::prefix('shipping-methods')->group(function() {
     Route::delete('{id}', [ShippingMethodController::class, 'destroy']);
 });
 
->>>>>>> origin/test_demo01
+
