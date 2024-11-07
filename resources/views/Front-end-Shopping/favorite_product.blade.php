@@ -56,7 +56,6 @@
                                 <span class="text-muted">| 297 đánh giá | 1.1k đã bán</span>
                             </div>
                             <p>
-                                <span class="product-old-price">${favorite.product.old_price}đ</span>
                                 <span class="product-price">${favorite.product.price}đ</span>
                             </p>
                         </div>
