@@ -17,6 +17,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
 use App\Http\Controllers\ShippingMethodController; // Đảm bảo bạn đã import đúng namespac
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
