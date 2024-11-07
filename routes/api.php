@@ -1,6 +1,6 @@
 <?php
 
-<<<<<<< HEAD
+
 use App\Http\Controllers\Api\AtributeController;
 use App\Http\Controllers\Api\AttributeController;
 use App\Http\Controllers\Api\CategoryController;
@@ -9,17 +9,17 @@ use App\Models\Attribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FavoriteApiController;
-=======
+
 
 use App\Http\Controllers\Api\ProductController;
 
-use App\Http\Controllers\Api\CategoryController;
+//use App\Http\Controllers\Api\CategoryController;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+//use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\CategoryProductView;
->>>>>>> add_product_dotiendai
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ Route::delete('delete-product/{id}', [ProductController::class, 'delete']);
 
 Route::get('/category', [CategoryController::class, 'index']);
 
-<<<<<<< HEAD
+
 // Thực thi với attribute
 Route::get('/attribute',[AttributeController::class,'getDataJson']);
 Route::delete('/attribute/{id}',[AttributeController::class, 'deteleDataAttribute']);
@@ -75,6 +75,5 @@ Route::get('/dashboard/search',[DashboardController::class, 'findValueDashBoard'
 Route::get('/favorites/{customerId}', [FavoriteApiController::class, 'index']); // Lấy danh sách yêu thíchRoute::post('/favorites', [FavoriteApiController::class, 'store']); // Thêm sản phẩm yêu thích
 Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'show']); // Xem sản phẩm yêu thích
 Route::delete('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'destroy']); // Xóa sản phẩm yêu thích
-=======
->>>>>>> add_product_dotiendai
+
 
