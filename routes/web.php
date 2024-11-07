@@ -34,16 +34,12 @@ Route::get('/', function () {
 
 
 Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
-// Route::get('demo',[Demo_OderController::class,'showData']);
-// Route::get('view',[Demo_OderController::class,'showView'])->name("view");
 
-
-// Route::get('/demo',TestController::class,'testcai');
-// Route::get('demo',[TestController::class,'testcai']);
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 
 
@@ -60,6 +56,11 @@ Route::get('view-detail/{id}',[AdminDashboardViewController::class,'showViewDash
 
 Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
 
+// Route Event
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/events/create', [EventController::class, 'create'])->name('create');
+Route::post('/events/store', [EventController::class, 'store'])->name('events.store');
+Route::delete('/events/{id}/delete', [EventController::class, 'destroy'])->name('deleteEvent');
 
 
 
@@ -71,5 +72,11 @@ Route::get('/register', [RegistController::class, 'showRegistrationForm'])->name
 Route::post('/register', [RegistController::class, 'register'])->name('index.register');
 Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify');
 
-//Method
+
 Route::get('/shipping-methods', [ShippingMethodController::class, 'indexView'])->name('shipping-methods.index');
+
+// Route User
+Route::get('/auth/forgot_password', [UserController::class, 'showForgotPassword'])->name('auth.password');
+Route::post('/auth/forgot_password', [UserController::class, 'submitFormForgetPassword'])->name('auth.sumitReset');
+Route::get('/auth/get_password/{customer}/{token}', [UserController::class, 'showGetPassword'])->name('auth.getPassword');
+Route::post('/auth/get_password/{customer}/{token}', [UserController::class, 'submitGetPassword'])->name('auth.submitPassword');
