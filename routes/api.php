@@ -49,7 +49,6 @@ Route::get('/dashboard/search',[DashboardController::class, 'findValueDashBoard'
 
 // thực thi với giỏ hàng và trang giỏ hàng
 Route::post('/cart/add/{Idproduct}', [ShoppingCartController::class, 'addToCartShopping']); // thêm sản phẩm vào giỏ hàng
-Route::get('/get/cart',[GetCartShoppingController::class, 'getItemsCartShopping']); //thực thi trang giỏ hàng và matter layout lấy dạng json
 // Route::post('/cart/update/{Idproduct}', [ShoppingCartController::class, 'updateItemsShoppingCart']);  // cập nhập số lượng giỏ hàng
 // Route::get('/cart/update/{Idproduct}', [ShoppingCartController::class, 'updateItemsShoppingCart']); @todo đang gặp lõi
 //
