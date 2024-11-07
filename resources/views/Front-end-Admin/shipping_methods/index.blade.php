@@ -18,12 +18,14 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><a href="javascript:void(0)" class="btn btn-primary" id="create-shipping-method">Add New</a></h3>
+                        <h3 class="box-title"><a href="javascript:void(0)" class="btn btn-primary"
+                                id="create-shipping-method">Add New</a></h3>
                         <div class="box-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
                                 <input type="text" id="search-key" class="form-control pull-right" placeholder="Search">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-default" id="btn-search"><i class="fa fa-search"></i></button>
+                                    <button type="button" class="btn btn-default" id="btn-search"><i
+                                            class="fa fa-search"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +116,7 @@
         // Edit Shipping Method
         $(document).on('click', '.edit-btn', function() {
             let id = $(this).data('id');
-            window.location.href = '/shipping-methods/' + id + '/edit';  // Redirect to edit page
+            window.location.href = '/shipping-methods/' + id + '/edit'; // Redirect to edit page
         });
 
         // Delete Shipping Method
@@ -130,9 +132,18 @@
                     success: function(response) {
                         if (response.status === 'success') {
                             alert('Shipping method deleted');
-                            loadShippingMethods();  // Reload the list after deletion
+                            loadShippingMethods(); // Reload the list after deletion
                         } else {
                             alert('Failed to delete shipping method');
+                        }
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 404) {
+                            alert('Shipping method not found');
+                        } else if (xhr.status === 500) {
+                            alert('Server error occurred while deleting');
+                        } else {
+                            alert('An error occurred: ' + xhr.statusText);
                         }
                     }
                 });
