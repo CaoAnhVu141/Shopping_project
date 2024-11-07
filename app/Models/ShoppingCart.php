@@ -19,6 +19,8 @@ class ShoppingCart extends Model
         'quantity',
         'price',
         'total_price',
+        'color',
+        'size'
     ];
 
     // thực thi cấu hình quan hệ giữa product và shopping_cart (1-n)
@@ -34,4 +36,7 @@ class ShoppingCart extends Model
     // thực thi cấu hình quan hệ customer và shopping_cart (1-n)
         return $this->belongsTo(Customer::class,'id_customer');
     }
+
+    //
+
 }

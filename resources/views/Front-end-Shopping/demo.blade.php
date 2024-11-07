@@ -256,12 +256,6 @@
                 <div class="block2">
                     <div class="block2-pic hov-img0">
                         <img src="{{ asset('shopping/images/product-01.jpg') }}" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                            data-id="{{ $items->id_product }}">
-                            Quick View
-                        </a>
                     </div>
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l ">
@@ -302,10 +296,6 @@
         <i class="zmdi zmdi-chevron-up"></i>
     </span>
 </div>
-<!-- Modal1 -->
-@include("Front-end-Shopping.model_shopping_cart")
-<script src="{{ asset(" shopping/data_rest/product.js") }}"></script>
-<script src="{{ asset(" shopping/data_rest/shopping_cart.js") }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Kiểm tra nếu id_session đã tồn tại trong Local Storage

@@ -11,15 +11,7 @@ use Illuminate\Support\Facades\Redis;
 
 class DashboardController extends Controller
 {
-    // lấy giá trị đơn hàng dưới dạng json
-    // public function getItemDashBoard()
-    // {
-    //     $items = OrderItem::with('product', 'order.customer', 'order.payment')->get();
-    //     return response()->json([
-    //         'message' => 'Thành công',
-    //         'data' => $items
-    //     ]);
-    // }
+    // lấy danh sách giá trị đơn hàng dưới dạng json
     public function getItemDashBoard()
     {
         $items = OrderItem::LatestGetItems()->get();

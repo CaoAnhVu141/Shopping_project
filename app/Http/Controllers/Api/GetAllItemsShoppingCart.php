@@ -42,4 +42,5 @@ class GetAllItemsShoppingCart extends Controller
         return response()->json($cartItems);
     }
 
+
 }

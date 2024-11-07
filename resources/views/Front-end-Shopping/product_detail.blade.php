@@ -13,25 +13,21 @@
                             <div class="item-slick3" data-thumb="{{ asset(" shopping/images/product-detail-01.jpg") }}">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="" alt="IMG-PRODUCT">
-
                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
                                         href="images/product-detail-01.jpg">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
                             </div>
-
                             <div class="item-slick3" data-thumb="">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="" alt="IMG-PRODUCT">
-
                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
                                         href="images/product-detail-02.jpg">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
                             </div>
-
                             <div class="item-slick3" data-thumb="">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="" alt="IMG-PRODUCT">
@@ -55,10 +51,6 @@
                     <span class="mtext-106 cl2" id="total-price">
                         {{ $product->price }}
                     </span>
-                    <p class="stext-102 cl3 p-t-23">
-                        {{ $product->describe }}
-                    </p>
-
                     <div class="p-t-33">
                         <div class="flex-w flex-r-m p-b-10">
                             <div class="size-203 flex-c-m respon6">
@@ -66,12 +58,10 @@
                             </div>
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time">
-                                        <option>Choose an option</option>
-                                        <option>Size S</option>
-                                        <option>Size M</option>
-                                        <option>Size L</option>
-                                        <option>Size XL</option>
+                                    <select class="js-select2" name="size">
+                                        @foreach ($size as $items)
+                                        <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
+                                        @endforeach
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>
@@ -83,12 +73,10 @@
                             </div>
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time">
-                                        <option>Choose an option</option>
-                                        <option>Red</option>
-                                        <option>Blue</option>
-                                        <option>White</option>
-                                        <option>Grey</option>
+                                    <select class="js-select2" name="color">
+                                        @foreach ($color as $items)
+                                        <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
+                                        @endforeach
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>
@@ -101,7 +89,7 @@
                                         <i class="fs-16 zmdi zmdi-minus"></i>
                                     </div>
                                     <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product"
-                                        id="product-quantity" value="1" min="1">
+                                        id="product-quantity" value="1" min="1" readonly>
                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
                                         data-id="{{ $product->id_product }}">
                                         <i class="fs-16 zmdi zmdi-plus"></i>
@@ -139,7 +127,6 @@
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="bor10 m-t-50 p-t-43 p-b-40">
@@ -164,71 +151,10 @@
                     <div class="tab-pane fade show active" id="description" role="tabpanel">
                         <div class="how-pos2 p-lr-15-md">
                             <p class="stext-102 cl6">
-                                Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit
-                                amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus
-                                interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et
-                                elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu
-                                velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec
-                                iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat,
-                                purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus
-                                rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
+                                {{ $product->describe }}
                             </p>
                         </div>
                     </div>
-                    <!-- - -->
-                    <div class="tab-pane fade" id="information" role="tabpanel">
-                        <div class="row">
-                            <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                <ul class="p-lr-28 p-lr-15-sm">
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Weight
-                                        </span>
-                                        <span class="stext-102 cl6 size-206">
-                                            0.79 kg
-                                        </span>
-                                    </li>
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Dimensions
-                                        </span>
-                                        <span class="stext-102 cl6 size-206">
-                                            110 x 33 x 100 cm
-                                        </span>
-                                    </li>
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Materials
-                                        </span>
-                                        <span class="stext-102 cl6 size-206">
-                                            60% cotton
-                                        </span>
-                                    </li>
-
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Color
-                                        </span>
-
-                                        <span class="stext-102 cl6 size-206">
-                                            Black, Blue, Grey, Green, Red, White
-                                        </span>
-                                    </li>
-
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Size
-                                        </span>
-
-                                        <span class="stext-102 cl6 size-206">
-                                            XL, L, M, S
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- - -->
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="row">
@@ -381,8 +307,8 @@
         </div>
     </div>
 </section>
-<script src="{{ asset("shopping/data_rest/product.js") }}"></script>
-{{-- <script src="{{ asset("shopping/data_rest/shopping_cart.js") }}"></script> chính cái này làm thêm giỏ hàng liên tục --}}
+<script src="{{ asset("shopping/data_rest/shopping_cart.js")}}"></script>
+{{-- <script src="{{ asset("shopping/data_rest/shopping_cart.js" --}}{{-- àm thêm giỏ hàng liên tục --}}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Truyền `session ID` từ server vào biến JavaScript

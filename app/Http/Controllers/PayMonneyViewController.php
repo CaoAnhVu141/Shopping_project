@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class PayMonneyViewController extends Controller
 {
     //
-    public function testcai()
+    public function showViewPayMoney()
     {
         return view('Front-end-Shopping.paymoney');
     }

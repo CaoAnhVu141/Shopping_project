@@ -85,13 +85,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // gọi sự kiện khi bấm thêm và giảm
         document.querySelectorAll('.btn-num-product-down').forEach(button => {
             button.addEventListener('click', function () {
-                console.log("Đóng gạch cho anh đi em");
                 updateQuantityItemsShopping(button, -1);
             })
         });
         document.querySelectorAll('.btn-num-product-up').forEach(button => {
             button.addEventListener('click', function () {
-                console.log("Bê quá anh ơi");
                 updateQuantityItemsShopping(button, 1);
             })
         })
