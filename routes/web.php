@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\DetailProductViewController;
 use App\Http\Controllers\AdminDashboardViewController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\AttributeViewController;
@@ -11,6 +11,8 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
+use App\Http\Controllers\ShoppingCartViewController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +45,7 @@ Route::get('view-detail/{id}', [AdminDashboardViewController::class, 'showViewDa
 Route::get('/register', [RegistController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegistController::class, 'register'])->name('index.register');
 Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify');
+
+//chi tiết sản phẩm
+Route::get('product/{id_slug}', [DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail");
+Route::get('/product',[ShoppingCartViewController::class, 'showProduct'])->name('showItems');
