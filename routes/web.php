@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\DetailProductViewController;
 use App\Http\Controllers\AdminDashboardViewController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\AttributeViewController;
