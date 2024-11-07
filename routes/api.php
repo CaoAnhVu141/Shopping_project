@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\DashboardController;
 use App\Models\Attribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\FavoriteApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,9 @@ Route::get('/get-orders',[DashboardController::class, 'getAllItemDashboard']); /
 Route::put('/update/dashboard-status/{id}',[DashboardController::class, 'updateStatusOrderDashBoard']);   //@todo     // cập nhật trang thái status
 // Route::get('view-detail_items/{id}',[DashboardController::class, 'getViewItemDashboard']); @todo
 Route::get('/dashboard/search',[DashboardController::class, 'findValueDashBoard']); // tìm kiếm dữ liệu dashboard
+
+
+Route::get('/favorites/{customerId}', [FavoriteApiController::class, 'index']); // Lấy danh sách yêu thíchRoute::post('/favorites', [FavoriteApiController::class, 'store']); // Thêm sản phẩm yêu thích
+Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'show']); // Xem sản phẩm yêu thích
+Route::delete('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'destroy']); // Xóa sản phẩm yêu thích
+
