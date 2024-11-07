@@ -45,4 +45,5 @@ Route::post('/register', [RegistController::class, 'register'])->name('index.reg
 Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify');
 
 //chi tiết sản phẩm
-Route::get('product/{id_slug}', [DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail"); // hiển thị sản phẩm chi tiết
+Route::get('product/{id_slug}', [DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail");
+Route::get('/product',[ShoppingCartViewController::class, 'showDemoNha'])->name('showItems');
