@@ -27,6 +27,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
 use App\Http\Controllers\ShippingMethodController; // Đảm bảo bạn đã import đúng namespac
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,17 +55,11 @@ Route::post('/load-more/products', [HomeController::class, 'loadMore']);
 
 
 
-Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
-
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
-
-
-Route::get('/testcai', [App\Http\Controllers\TestController::class, 'testcai']);
 
 
 Route::get('category', [CategoryViewController::class, 'index']);
@@ -86,7 +81,7 @@ Route::get('product/{id_slug}', [DetailProductViewController::class, 'showViewPr
 
 
 // hiển thị và thực thi với giỏ hàng
-Route::get('/shopping-cart',[GetViewAllItemsShoppingCart::class, 'showAllItemsShoppingCart'])->name('showShoppingCart'); //hiển thị trang giỏ hàng
+Route::get('/shoppaing-cart',[GetViewAllItemsShoppingCart::class, 'showAllItemsShoppingCart'])->name('showShoppingCart'); //hiển thị trang giỏ hàng
 // Route::get('/shopping-cart',[GetAllItemsShoppingCart::class, 'getAllItemsShoppingCart']); // lấy dữ liệu toàn bộ giỏ hàng @todo
 Route::get('/get/cart',[GetCartShoppingController::class, 'getItemsCartShopping']); //thực thi trang giỏ hàng matter layout lấy dạng json
 Route::put('/update-shopping-cart', [ShoppingCartController::class, 'updateQuantityAllItems'])->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
