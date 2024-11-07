@@ -12,9 +12,9 @@ class ProductTableSeeder extends Seeder
         // Thêm 30 sản phẩm vào bảng product
         $products = [];
 
-        for ($i = 1; $i <= 30; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $products[] = [
-                'id_category' => rand(1, 4), // Giả sử có 4 danh mục sản phẩm
+                'id_category' => rand(1, 5), // Giả sử có 4 danh mục sản phẩm
                 'name' => 'Sản phẩm ' . $i,
                 'describe' => 'Mô tả cho sản phẩm ' . $i,
                 'price' => rand(100000, 1000000), // Giá sản phẩm ngẫu nhiên từ 100.000 đến 1.000.000
