@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\GetCartShoppingController;
 use App\Http\Controllers\AttributeViewController;
 
 
-use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\AboutController;
 
 use App\Http\Controllers\CategoryProductView;
 use App\Http\Controllers\ProductView;
@@ -26,14 +26,14 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Api\GetAllItemsShoppingCart;
 use App\Http\Controllers\Api\PayMonneyController;
 use App\Http\Controllers\Api\ShoppingCartController;
-use App\Http\Controllers\DetailProductViewController;
+//use App\Http\Controllers\DetailProductViewController;
 use App\Http\Controllers\GetCartShoppingViewController;
 use App\Http\Controllers\GetViewAllItemsShoppingCart;
 use App\Http\Controllers\PayMonneyViewController;
 use App\Http\Controllers\ShoppingCartViewController;
 
 
-use App\Http\Controllers\ReviewController;
+//use App\Http\Controllers\ReviewController;
 
 
 use App\Http\Controllers\TestController;
@@ -43,7 +43,7 @@ use App\Http\Controllers\FavoriteController;
 
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
-use App\Http\Controllers\ShoppingCartViewController;
+//use App\Http\Controllers\ShoppingCartViewController;
 
 use App\Http\Controllers\ShippingMethodController; // Đảm bảo bạn đã import đúng namespac
 use App\Http\Controllers\UserController;
@@ -70,7 +70,7 @@ Route::post('/filter/price', [HomeController::class, 'filterByPrice'])->name('fi
 Route::post('/filter/sort', [HomeController::class, 'filterSort'])->name('filter.sort');
 Route::post('/search/products', [HomeController::class, 'searchProducts']);
 Route::post('/load-more/products', [HomeController::class, 'loadMore']);
-=======
+
 
 
 //Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
@@ -83,7 +83,7 @@ Route::get('demo',[TestController::class,'testcai']);
 
 
 Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
->>>>>>> test_demo01
+
 
 
 // Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
@@ -96,7 +96,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('/testcai', [App\Http\Controllers\TestController::class, 'testcai']);
-=======
+
 
 //Route::get('demo',[TestController::class,'testcai']);
 
@@ -106,7 +106,7 @@ Route::get('/testcai', [App\Http\Controllers\TestController::class, 'testcai']);
 //Route::post('/category/store',[CategoryProductView::class, 'store'])->name('category.store');
 
 
-//Sanpham
+//SanphamE
 Route::get('all-product', [ProductView::class, 'all_product'])->name('all_product');
 Route::get('add-product', [ProductView::class, 'add_product'])->name('add_product');
 Route::post('save-product', [ProductView::class, 'save_product'])->name('save_product');
@@ -137,7 +137,7 @@ Route::get('delete-category-product/{category_product_id}', [CategoryProductView
 
 
 
->>>>>>> test_demo01
+
 
 
 Route::get('category', [CategoryViewController::class, 'index']);
