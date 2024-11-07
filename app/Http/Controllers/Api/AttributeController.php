@@ -63,7 +63,6 @@ class AttributeController extends Controller
         ], 200);
     }
 
-
     // thực thi cập nhật dữ liệu
     public function updateDataAttribute(Request $request, $id)
     {

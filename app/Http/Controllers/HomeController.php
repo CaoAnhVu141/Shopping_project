@@ -18,7 +18,7 @@ class HomeController extends Controller
 
         return view('Front-end-Shopping.shopping-index.shopping_index', compact('products', 'categories'));
     }
-
+  
     public function filter(Request $request)
     {
         $categoryId = $request->input('category_id');

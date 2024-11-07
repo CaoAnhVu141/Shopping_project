@@ -128,7 +128,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session'
     ),
 
     /*
@@ -210,5 +210,10 @@ return [
     */
 
     'partitioned' => false,
+
+    // config/session.php
+    'lifetime' => 43200, // Thời gian session tồn tại trong 30 ngày (43200 phút)
+    'expire_on_close' => false, // Không xóa session khi đóng trình duyệt
+
 
 ];

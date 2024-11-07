@@ -227,6 +227,13 @@
                     <i class="fa fa-fw fa-anchor"></i> <span>Sản phẩm</span>
                 </a>
             </li>
+    
+            <li class="sub-menu">
+    <a href="{{ URL::to('all-category-product') }}">
+        <i class="fa fa-book"></i>
+        <span>Danh mục sản phẩm</span>
+    </a>
+</li>
 
             <li class="{{ Request::is('admin-datn/transaction*') ? 'active' : '' }}">
                 <a href="">
@@ -312,6 +319,15 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('admin/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <section><script src="{{asset('backend/js/bootstrap.js')}}"></script>
+<script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
+<script src="{{asset('backend/js/scripts.js')}}"></script>
+<script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
+<script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
+<script src="{{asset('backend/js/darkmode.js')}}"></script>
+
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script></section>
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>

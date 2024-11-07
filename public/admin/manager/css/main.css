@@ -246,31 +246,8 @@ iframe {
   outline: var(--none);
   box-shadow:var(--none)!important;
 }
-.swal-modal {
-  opacity: 0;
-  pointer-events: var(--none);
-  background-color: #fff;
-  text-align:var(--center);
-  border-radius: var(--radius_5px);
-  position: static;
-  margin: 20px var(--auto);
-  width: 25%;
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  -webkit-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
-  z-index: 10001;
-  transition: opacity .2s,-webkit-transform .3s;
-  transition: transform .3s,opacity .2s;
-  transition: transform .3s,opacity .2s,-webkit-transform .3s;
-}
-@media (max-width: 790px){
-  .swal-modal{
-    width: 70%;
-  }
-} 
+
+
 /*------------------------------------------------------------------
 [ Button ]*/
 .container-login100-form-btn {
