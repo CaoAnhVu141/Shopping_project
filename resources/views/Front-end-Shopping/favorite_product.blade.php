@@ -81,12 +81,14 @@
             $(document).on('click', '.btn-page', function() {
                 const page = $(this).data('page');
                 loadFavorites(page);
+
             });
 
             // Sự kiện click cho nút xóa
             $(document).on('click', '.btn-remove', function() {
                 const favoriteId = $(this).data('id'); // Lấy ID sản phẩm yêu thích từ thuộc tính data-id
                 const customerId = 2; // Thay thế với ID khách hàng thực tế
+                const self = $(this); // Lưu đối tượng nút bấm
 
                 // Kiểm tra nếu favoriteId không được định nghĩa
                 if (favoriteId === undefined) {
