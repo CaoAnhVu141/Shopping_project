@@ -1,10 +1,10 @@
 <?php
-<<<<<<< HEAD
 
 
-=======
+
+
 use App\Http\Controllers\DetailProductViewController;
->>>>>>> origin/test_demo01
+
 use App\Http\Controllers\AdminDashboardViewController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\AttributeViewController;
@@ -20,12 +20,9 @@ use App\Http\Controllers\Demo_OderController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
-<<<<<<< HEAD
 
-
-=======
 use App\Http\Controllers\ReviewController;
->>>>>>> origin/test_demo01
+
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -53,7 +50,7 @@ Route::get('/', function () {
 });
 
 
-<<<<<<< HEAD
+
 //Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
 // Route::get('demo',[Demo_OderController::class,'showData']);
 // Route::get('view',[Demo_OderController::class,'showView'])->name("view");
@@ -61,17 +58,17 @@ Route::get('/', function () {
 // Route::get('/demo',TestController::class,'testcai');
 
 Route::get('demo',[TestController::class,'testcai']);
-=======
+
 
 Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
->>>>>>> origin/test_demo01
+
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-<<<<<<< HEAD
+
 
 
 //Route::get('demo',[TestController::class,'testcai']);
@@ -114,12 +111,11 @@ Route::get('delete-category-product/{category_product_id}', [CategoryProductView
 
 
 
-=======
->>>>>>> origin/test_demo01
+
 Route::get('category', [CategoryViewController::class, 'index']);
 Route::get('/attribute', [AttributeViewController::class, 'showThemmeAttributeIndex']);
 // thực thi với theme dashboard
-<<<<<<< HEAD
+
 Route::get('/dashboard', [AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
 Route::get('/get-orders', [AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
 Route::get('view-detail/{id}', [AdminDashboardViewController::class, 'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
@@ -138,7 +134,7 @@ Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify
 
 
 
-=======
+
 Route::get('/dashboard',[AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
 Route::get('/get-orders',[AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
 Route::get('view-detail/{id}',[AdminDashboardViewController::class,'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
@@ -149,7 +145,7 @@ Route::get('view-detail/{id}',[AdminDashboardViewController::class,'showViewDash
 
 Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
 
->>>>>>> origin/test_demo01
+
 // Route home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/filter/products', [HomeController::class, 'filter'])->name('filter.products');
@@ -171,8 +167,7 @@ Route::delete('/events/{id}/delete', [EventController::class, 'destroy'])->name(
 
 
 
-<<<<<<< HEAD
-=======
+
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index'); // Trang hiển thị danh sách
 Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteController::class, 'show'])->name('favorites.show'); // Trang xem chi tiết
 
@@ -206,4 +201,4 @@ Route::post('/submit-review', [ReviewController::class, 'saveReview']);
 Route::delete('/reviews/{id}', [ReviewController::class, 'removeReview']);
 Route::put('/reviews/{id}', [ReviewController::class, 'updateReview']);
 
->>>>>>> origin/test_demo01
+
