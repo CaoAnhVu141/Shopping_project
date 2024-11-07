@@ -143,28 +143,31 @@ document.addEventListener('DOMContentLoaded', function () {
             timeout = setTimeout(() => func.apply(this, args), delay);
         };
     }
-
-    searchInput.addEventListener('input', debounce(function () {
-        currentSearchQuery = searchInput.value.trim();
-        currentPage = 1;
-        currentLoadMoreType = 'search';
-        searchProducts(currentSearchQuery, currentPage);
-    }, 300));
+    if (searchInput) {
+        searchInput.addEventListener('input', debounce(function () {
+            currentSearchQuery = searchInput.value.trim();
+            currentPage = 1;
+            currentLoadMoreType = 'search';
+            searchProducts(currentSearchQuery, currentPage);
+        }, 300));
+    }
 
 
     // Load thêm sản phẩm khi nhấn nút "Load More"
-    loadMoreBtn.addEventListener('click', function () {
-        currentPage++;
-        if (currentLoadMoreType === 'category') {
-            loadProducts(currentCategoryId, currentPage);
-        } else if (currentLoadMoreType === 'price') {
-            loadProductsByPrice(currentMinPrice, currentMaxPrice, currentPage);
-        } else if (currentLoadMoreType === 'search') {
-            searchProducts(currentSearchQuery, currentPage);
-        } else if (currentLoadMoreType === 'sort') {
-            loadProductsBySort(currentSortType, currentPage);
-        }
-    });
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function () {
+            currentPage++;
+            if (currentLoadMoreType === 'category') {
+                loadProducts(currentCategoryId, currentPage);
+            } else if (currentLoadMoreType === 'price') {
+                loadProductsByPrice(currentMinPrice, currentMaxPrice, currentPage);
+            } else if (currentLoadMoreType === 'search') {
+                searchProducts(currentSearchQuery, currentPage);
+            } else if (currentLoadMoreType === 'sort') {
+                loadProductsBySort(currentSortType, currentPage);
+            }
+        });
+    }
 
     // Loc san pham theo dang sap xep gia
     function loadProductsBySort(sortType, page) {
