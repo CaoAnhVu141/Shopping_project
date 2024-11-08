@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 class GetCartShoppingController extends Controller
 {
@@ -80,23 +82,30 @@ class GetCartShoppingController extends Controller
 
     public function getItemsCartShopping(Request $request)
     {
-        $id_session = $request->input('session_id') ?? session()->getId();
+        $id_session = session()->getId(); // Lấy id_session hiện tại
         $id_customer = auth()->check() ? auth()->id() : null;
+        dd($id_session);
+        // Log để kiểm tra xem `id_session` và `id_customer` có đúng không
+        Log::info("Session ID in getItemsCartShopping: " . $id_session);
+        Log::info("Customer ID in getItemsCartShopping: " . ($id_customer ?? 'Guest'));
 
+        // Lấy giỏ hàng dựa trên `id_session` hoặc `id_customer`
         $cartItems = ShoppingCart::where(function ($query) use ($id_session, $id_customer) {
             $query->where('id_session', $id_session);
             if ($id_customer) {
                 $query->orWhere('id_customer', $id_customer);
             }
         })
-            ->with('product')
+            ->with('product') // Gắn `product` vào để lấy thêm thông tin sản phẩm
             ->get();
 
+        // Kiểm tra nếu giỏ hàng trống
         if ($cartItems->isEmpty()) {
             return response()->json(['message' => 'Giỏ hàng của bạn trống'], 200);
         }
 
-        $cartItems = $cartItems->map(function ($item) {
+        // Định dạng lại dữ liệu giỏ hàng để dễ hiển thị ở phía client
+        $formattedCartItems = $cartItems->map(function ($item) {
             return [
                 'id_product' => $item->id_product,
                 'product_name' => $item->product->name,
@@ -108,6 +117,6 @@ class GetCartShoppingController extends Controller
             ];
         });
 
-        return response()->json($cartItems, 200);
+        return response()->json($formattedCartItems, 200);
     }
 }
