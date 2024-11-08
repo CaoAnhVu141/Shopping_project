@@ -18,7 +18,7 @@ class HomeController extends Controller
 
         return view('Front-end-Shopping.shopping-index.shopping_index', compact('products', 'categories'));
     }
-  
+
     public function filter(Request $request)
     {
         $categoryId = $request->input('category_id');
@@ -55,7 +55,7 @@ class HomeController extends Controller
 
     public function filterByPrice(Request $request)
     {
-        $minPrice = $request->input('min_price', 0);
+        $minPrice = $request->input('min_price', 500000);
         $maxPrice = $request->input('max_price', INF);
         $page = $request->input('page', 1);
 
@@ -115,5 +115,4 @@ class HomeController extends Controller
         // Return the product details as a JSON response
         return response()->json($product);
     }
-
 }

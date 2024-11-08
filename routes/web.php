@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AdminDashboardViewController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\GetCartShoppingController;
@@ -35,6 +36,7 @@ use App\Http\Controllers\ShoppingCartViewController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DetailProductViewController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
@@ -59,14 +61,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route home
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/filter/products', [HomeController::class, 'filter'])->name('filter.products');
-Route::post('/filter/price', [HomeController::class, 'filterByPrice'])->name('filter.price');
-Route::post('/filter/sort', [HomeController::class, 'filterSort'])->name('filter.sort');
-Route::post('/search/products', [HomeController::class, 'searchProducts']);
-Route::post('/load-more/products', [HomeController::class, 'loadMore']);
-
 
 
 //Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
@@ -75,7 +69,7 @@ Route::post('/load-more/products', [HomeController::class, 'loadMore']);
 
 // Route::get('/demo',TestController::class,'testcai');
 
-Route::get('demo',[TestController::class,'testcai']);
+Route::get('demo', [TestController::class, 'testcai']);
 
 
 Route::get('/transaction', [App\Http\Controllers\TestController::class, 'testcai']);
@@ -143,9 +137,9 @@ Route::get('/attribute', [AttributeViewController::class, 'showThemmeAttributeIn
 Route::get('/dashboard', [AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
 Route::get('/get-orders', [AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
 Route::get('view-detail/{id}', [AdminDashboardViewController::class, 'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
- 
 
-Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
+
+Route::get('/attibute', [AttributeViewController::class, 'showThemmeAttributeIndex']);
 
 
 
@@ -159,28 +153,20 @@ Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify
 
 
 
-Route::get('/dashboard',[AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
-Route::get('/get-orders',[AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
-Route::get('view-detail/{id}',[AdminDashboardViewController::class,'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
+Route::get('/dashboard', [AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
+Route::get('/get-orders', [AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
+Route::get('view-detail/{id}', [AdminDashboardViewController::class, 'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
 
 
 // đăng ký
 
 
-Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
+Route::get('/attibute', [AttributeViewController::class, 'showThemmeAttributeIndex']);
 
 
 // thực thi với chi tiết sản phẩm ở trang home
 // Route::get('product_detail/{id_product}',[DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail");
 Route::get('product/{id_slug}', [DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail"); // hiển thị sản phẩm chi tiết
-
-// Route home
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/filter/products', [HomeController::class, 'filter'])->name('filter.products');
-Route::post('/filter/price', [HomeController::class, 'filterByPrice'])->name('filter.price');
-Route::post('/filter/sort', [HomeController::class, 'filterSort'])->name('filter.sort');
-Route::post('/search/products', [HomeController::class, 'searchProducts']);
-Route::post('/load-more/products', [HomeController::class, 'loadMore']);
 
 
 //Route About
@@ -188,14 +174,14 @@ Route::post('/load-more/products', [HomeController::class, 'loadMore']);
 // Route::get('/about', [AboutController::class, 'about'])->name('about');
 
 // hiển thị và thực thi với giỏ hàng
-Route::get('/shopping-cart',[GetViewAllItemsShoppingCart::class, 'showAllItemsShoppingCart'])->name('showShoppingCart'); //hiển thị trang giỏ hàng
+Route::get('/shopping-cart', [GetViewAllItemsShoppingCart::class, 'showAllItemsShoppingCart'])->name('showShoppingCart'); //hiển thị trang giỏ hàng
 // Route::get('/shopping-cart',[GetAllItemsShoppingCart::class, 'getAllItemsShoppingCart']); // lấy dữ liệu toàn bộ giỏ hàng @todo
-Route::get('/get/cart',[GetCartShoppingController::class, 'getItemsCartShopping']); //thực thi trang giỏ hàng matter layout lấy dạng json
+Route::get('/get/cart', [GetCartShoppingController::class, 'getItemsCartShopping']); //thực thi trang giỏ hàng matter layout lấy dạng json
 Route::put('/update-shopping-cart', [ShoppingCartController::class, 'updateQuantityAllItems'])->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
-Route::delete('delete/shopping-cart/{id_product}',[ShoppingCartController::class, 'deleteItemsShoppingCart']);
+Route::delete('delete/shopping-cart/{id_product}', [ShoppingCartController::class, 'deleteItemsShoppingCart']);
 
 // test cái nha @phần này test chưa có sửa lại
-Route::get('/product',[ShoppingCartViewController::class, 'showDemoNha'])->name('showItems'); // chỉ là demo thôi nè
+Route::get('/product', [ShoppingCartViewController::class, 'showDemoNha'])->name('showItems'); // chỉ là demo thôi nè
 
 // Route Event
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
@@ -217,7 +203,7 @@ Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify
 
 //chi tiết sản phẩm
 Route::get('product/{id_slug}', [DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail");
-Route::get('/product',[ShoppingCartViewController::class, 'showProduct'])->name('showItems');
+Route::get('/product', [ShoppingCartViewController::class, 'showProduct'])->name('showItems');
 
 Route::get('/shipping-methods', [ShippingMethodController::class, 'indexView'])->name('shipping-methods.index');
 
@@ -229,7 +215,7 @@ Route::post('/auth/get_password/{customer}/{token}', [UserController::class, 'su
 
 // Route Review
 // Hàm này mục đích chỉ để hiển thị trang chi tiết sản phẩm sẽ bị thay thế
-Route::get('/product-detail', [ReviewController::class, 'index'])->name('product_detail');
+Route::get('/product_detail', [ReviewController::class, 'index'])->name('product_detail');
 
 
 // Route Product
@@ -242,6 +228,6 @@ Route::put('/reviews/{id}', [ReviewController::class, 'updateReview']);
 
 //
 // hiển thị thanh toán
-Route::get('/pay-money',[PayMonneyViewController::class, 'showViewPayMoney'])->name('payMoney');
+Route::get('/pay-money', [PayMonneyViewController::class, 'showViewPayMoney'])->name('payMoney');
 // thực thị thanh toán
-Route::get('/make-payment',[PayMonneyController::class, 'makePaymentAllItems']);
+Route::get('/make-payment', [PayMonneyController::class, 'makePaymentAllItems']);

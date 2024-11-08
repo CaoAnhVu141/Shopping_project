@@ -1,7 +1,6 @@
 @extends('LayOut.shopping.master_shopping')
 @section('content')
 <section class="sec-product-detail bg0 p-t-65 p-b-60">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-7 p-b-30">
@@ -351,32 +350,3 @@
         </div>
     </div>
 </section>
-
-{{-- <script src="{{ asset("shopping/data_rest/shopping_cart.js")}}"></script> --}}
-{{-- <script src="{{ asset("shopping/data_rest/shopping_cart.js" --}}{{-- àm thêm giỏ hàng liên tục --}}
-=======
-<script src="{{ asset("shopping/data_rest/shopping_cart.js")}}"></script>
-{{--
-<script src="{{ asset(" shopping/data_rest/shopping_cart.js" --}}{{-- àm thêm giỏ hàng liên tục --}} <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Truyền `session ID` từ server vào biến JavaScript
-        const sessionIdFromServer = "{{ session()->getId() }}";
-
-        // Kiểm tra nếu không có session trong Local Storage thì lưu vào
-        if (!localStorage.getItem('id_session')) {
-            localStorage.setItem('id_session', sessionIdFromServer);
-            console.log("Local Storage: Đã lưu mới session ID từ server:", sessionIdFromServer);
-        } else {
-            const storedSessionId = localStorage.getItem('id_session');
-            console.log("Local Storage: Đã tồn tại session ID:", storedSessionId);
-
-            // Cập nhật cookie dựa trên Local Storage để đảm bảo tính nhất quán
-            document.cookie = "laravel_session=" + storedSessionId + "; path=/; SameSite=Lax";
-        }
-
-        // Kiểm tra giá trị trong Console
-        console.log("Session ID từ Local Storage:", localStorage.getItem('id_session'));
-        console.log("Session ID từ Cookie:", document.cookie);
-    });
-</script>
-@endsection

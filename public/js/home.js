@@ -5,71 +5,8 @@ let currentMaxPrice = Infinity;
 let currentLoadMoreType = 'category';
 let currentSearchQuery = '';
 
-// Function to initialize event listeners for wishlist and cart
-// function initializeWishlistEvents() {
-//     const addWishButtons = document.querySelectorAll('.js-addwish-b2, .js-addwish-detail');
-
-//     addWishButtons.forEach(button => {
-//         button.addEventListener('click', function (e) {
-//             e.preventDefault();
-//         });
-//     });
-
-//     const addWishButtonsB2 = document.querySelectorAll('.js-addwish-b2');
-//     addWishButtonsB2.forEach(button => {
-//         const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-b2');
-
-//         if (productNameElement) {
-//             const nameProduct = productNameElement.innerHTML;
-
-//             button.addEventListener('click', function () {
-//                 swal(nameProduct, "is added to wishlist!", "success");
-
-//                 this.classList.add('js-addedwish-b2');
-//                 this.removeEventListener('click', arguments.callee); // Remove event listener after adding
-//             });
-//         } else {
-//             console.warn('Product name element not found for button:', button);
-//         }
-//     });
-
-//     const addWishButtonsDetail = document.querySelectorAll('.js-addwish-detail');
-//     addWishButtonsDetail.forEach(button => {
-//         const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-detail');
-
-//         if (productNameElement) {
-//             const nameProduct = productNameElement.innerHTML;
-
-//             button.addEventListener('click', function () {
-//                 swal(nameProduct, "is added to wishlist!", "success");
-
-//                 this.classList.add('js-addedwish-detail');
-//                 this.removeEventListener('click', arguments.callee); // Remove event listener after adding
-//             });
-//         } else {
-//             console.warn('Product name element not found for button:', button);
-//         }
-//     });
-
-//     const addCartDetailButtons = document.querySelectorAll('.js-addcart-detail');
-//     addCartDetailButtons.forEach(button => {
-//         const productNameElement = button.closest('.block2-txt')?.querySelector('.js-name-detail');
-
-//         if (productNameElement) {
-//             const nameProduct = productNameElement.innerHTML;
-
-//             button.addEventListener('click', function () {
-//                 swal(nameProduct, "is added to cart!", "success");
-//             });
-//         } else {
-//             console.warn('Product name element not found for button:', button);
-//         }
-//     });
-// }
-
 document.addEventListener('DOMContentLoaded', function () {
 
-    // initializeWishlistEvents();
     console.log('Home js');
 
     const filterCategories = document.querySelectorAll('.filter-tope-group button');
@@ -78,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.querySelector('#search-product');
     const loadMoreBtn = document.querySelector('#load-more-button');
     const productContainer = document.querySelector('.product-grid');
-    // document.querySelector('.header-favorites-icon').addEventListener('click', showFavorites);
     const hideFavorite = document.querySelector('.js-hide-favorites');
 
     if (hideFavorite) {
@@ -293,7 +229,6 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
             productContainer.innerHTML += productCard;
-            initializeWishlistEvents();
             updateHeartIcons();
         });
 
@@ -395,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const favoriteItem = `
             <li class="header-favorites-item flex-w flex-t p-b-10">
                 <div class="header-favorites-pic size-w-65 flex-c-m">
-                    <img src="${product.images}" alt="${product.name}">
+                    <img src="../shopping/images/${product.images}" alt="${product.name}">
                 </div>
                 <div class="header-favorites-txt flex-col-l">
                     <a href="product-detail.html" class="header-favorites-name stext-104 cl4 hov-cl1 trans-04 js-name-b2">

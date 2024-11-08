@@ -11,10 +11,11 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $reviews = Review::where('id_product', 1)
+        $reviews = Review::where('id_product', 46)
             ->with('customer')
             ->get();
-        return view('Front-end-Shopping.product_detail', compact('reviews'));
+
+        return view('Front-end-Shopping.product.product_detail', compact('reviews'));
     }
 
     public function saveReview(Request $request)

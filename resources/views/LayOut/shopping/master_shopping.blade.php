@@ -483,9 +483,32 @@
     });
 	</script>
 	<!--===============================================================================================-->
-	<script src="{{ asset('shopping/js/main.js') }}"></script>
+	<script src="{{ asset('shopping/js/main.js') }}" defer></script>
 	<script src="{{ asset('js/home.js') }}" defer></script>
 	<script src="{{ asset('js/product_detail.js')}}" defer></script>
+	<script src="{{ asset("shopping/data_rest/shopping_cart.js")}}" defer></script>
+	<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Truyền `session ID` từ server vào biến JavaScript
+        const sessionIdFromServer = "{{ session()->getId() }}";
+
+        // Kiểm tra nếu không có session trong Local Storage thì lưu vào
+        if (!localStorage.getItem('id_session')) {
+            localStorage.setItem('id_session', sessionIdFromServer);
+            console.log("Local Storage: Đã lưu mới session ID từ server:", sessionIdFromServer);
+        } else {
+            const storedSessionId = localStorage.getItem('id_session');
+            console.log("Local Storage: Đã tồn tại session ID:", storedSessionId);
+
+            // Cập nhật cookie dựa trên Local Storage để đảm bảo tính nhất quán
+            document.cookie = "laravel_session=" + storedSessionId + "; path=/; SameSite=Lax";
+        }
+
+        // Kiểm tra giá trị trong Console
+        console.log("Session ID từ Local Storage:", localStorage.getItem('id_session'));
+        console.log("Session ID từ Cookie:", document.cookie);
+    });
+	</script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
