@@ -42,7 +42,7 @@ public function all_category_product() {
      $messages = [
          'category_product_name.required' => 'Không được để trống tên danh mục',
          'category_product_name.max' => 'Tên danh mục không được dài quá 50 ký tự',
-         'category_product_name.unique' => 'Tên danh muc đã tồn tại. Vui lòng chọn tên khác.',
+         'category_product_name.unique' => 'Tên danh mục đã tồn tại. Vui lòng chọn tên khác',
          'category_product_name.regex' => 'Tên chỉ chứa chữ, không có khoảng trắng trước và sau, không có hai khoảng trắng liền nhau',
          'category_product_desc.required' => 'Không được để trống mô tả danh mục',
          'category_product_desc.max' => 'Mô tả danh mục không được dài quá 1000 ký tự',
@@ -52,7 +52,7 @@ public function all_category_product() {
      // Validation rules
      $rules = [
          'category_product_name' => [
-             'required',
+             'required',     
              'max:50',
              'regex:/^\S(.*\S)?$/u', // Không có khoảng trắng trước và sau
              'regex:/^(?!.*\s{2}).*$/u', // Không có hai khoảng trắng liên tiếp
@@ -67,8 +67,8 @@ public function all_category_product() {
      ];
  
      // Validate the request with custom messages
-    // $request->validate($rules, $messages);
-    $validator = Validator::make($request->all(), $rules, $messages);
+    $request->validate($rules, $messages);
+    // $validator = Validator::make($request->all(), $rules, $messages);
      // Insert the valid data into the database
  
      $data = [
