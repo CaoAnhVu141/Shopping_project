@@ -1,6 +1,7 @@
 @extends('LayOut.shopping.master_shopping')
 @section('content')
 <section class="sec-product-detail bg0 p-t-65 p-b-60">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-7 p-b-30">
@@ -350,3 +351,4 @@
         </div>
     </div>
 </section>
+@endsection
