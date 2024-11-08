@@ -29,7 +29,6 @@
                                 <th class="column-4">Quantity</th>
                                 <th class="column-5">Total</th>
                                 <th class="column-6">Xoá</th>
-
                             </tr>
                             <tbody id="items-shoppingcart">
                                 {{-- các giá trị của toàn bộ giỏ hàng sẽ được hiện thị ở đây --}}

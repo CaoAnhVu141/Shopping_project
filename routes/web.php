@@ -238,4 +238,11 @@ Route::put('/reviews/{id}', [ReviewController::class, 'updateReview']);
 // hiển thị thanh toán
 Route::get('/pay-money', [PayMonneyViewController::class, 'showViewPayMoney'])->name('payMoney');
 // thực thị thanh toán
+
 Route::get('/make-payment', [PayMonneyController::class, 'makePaymentAllItems']);
+
+Route::get('/make-payment',[PayMonneyController::class, 'makePaymentAllItems']);
+
+// cho test cái
+Route::get('/donghom',[TestController::class,'testLayId_session']);
+
