@@ -354,7 +354,7 @@
 
 {{-- <script src="{{ asset("shopping/data_rest/shopping_cart.js")}}"></script> --}}
 {{-- <script src="{{ asset("shopping/data_rest/shopping_cart.js" --}}{{-- àm thêm giỏ hàng liên tục --}}
-=======
+
 <script src="{{ asset("shopping/data_rest/shopping_cart.js")}}"></script>
 {{--
 <script src="{{ asset(" shopping/data_rest/shopping_cart.js" --}}{{-- àm thêm giỏ hàng liên tục --}} <script>
