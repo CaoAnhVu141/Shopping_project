@@ -35,6 +35,7 @@ use App\Http\Controllers\ShoppingCartViewController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DetailProductViewController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerifyEmail;
@@ -134,8 +135,6 @@ Route::get('delete-category-product/{category_product_id}', [CategoryProductView
 
 
 
-
-
 Route::get('category', [CategoryViewController::class, 'index']);
 Route::get('/attribute', [AttributeViewController::class, 'showThemmeAttributeIndex']);
 // thực thi với theme dashboard
@@ -143,8 +142,6 @@ Route::get('/attribute', [AttributeViewController::class, 'showThemmeAttributeIn
 Route::get('/dashboard', [AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
 Route::get('/get-orders', [AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
 Route::get('view-detail/{id}', [AdminDashboardViewController::class, 'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
-
-
 Route::get('/attibute', [AttributeViewController::class, 'showThemmeAttributeIndex']);
 
 
@@ -168,12 +165,9 @@ Route::get('view-detail/{id}', [AdminDashboardViewController::class, 'showViewDa
 
 
 Route::get('/attibute', [AttributeViewController::class, 'showThemmeAttributeIndex']);
-
-
 // thực thi với chi tiết sản phẩm ở trang home
 // Route::get('product_detail/{id_product}',[DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail");
 Route::get('product/{id_slug}', [DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail"); // hiển thị sản phẩm chi tiết
-
 // Route home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/filter/products', [HomeController::class, 'filter'])->name('filter.products');

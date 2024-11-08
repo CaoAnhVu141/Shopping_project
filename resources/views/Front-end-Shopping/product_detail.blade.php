@@ -51,8 +51,6 @@
                     <span class="mtext-106 cl2" id="total-price">
                         {{ $product->price }}
                     </span>
-
-
                     <div class="p-t-33">
                         <div class="flex-w flex-r-m p-b-10">
                             <div class="size-203 flex-c-m respon6">
@@ -62,11 +60,8 @@
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="size">
                                         @foreach ($size as $items)
-
                                         <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
-
                                             <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
-
                                         @endforeach
                                     </select>
                                     <div class="dropDownSelect2"></div>
@@ -81,11 +76,8 @@
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="color">
                                         @foreach ($color as $items)
-
                                         <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
-
                                             <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
-
                                         @endforeach
                                     </select>
                                     <div class="dropDownSelect2"></div>
@@ -178,31 +170,27 @@
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="row">
                             <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                <div class="p-b-30 m-lr-15-sm" id="review-info">
-                                    @foreach($reviews as $review) 
+                                {{-- <div class="p-b-30 m-lr-15-sm" id="review-info">
+                                    @foreach($reviews as $review)
                                         <!-- Review -->
                                         <div class="flex-w flex-t p-b-68" data-review-id="{{$review->id_review}}">
                                             <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
                                                 <img src="images/avatar-01.jpg" alt="AVATAR">
                                             </div>
-    
                                             <div class="size-207">
                                                 <div class="flex-w flex-sb-m p-b-17">
                                                     <span class="mtext-107 cl2 p-r-20">
                                                        {{ $review->customer->name }}
                                                     </span>
-    
                                                     <span class="fs-18 cl11">
                                                         @for ($i = 1; $i <= 5; $i++)
                                                             <i class="zmdi {{ $i <= $review->rating ? 'zmdi-star' : 'zmdi-star-outline' }}"></i>
                                                         @endfor
                                                     </span>
                                                 </div>
-    
                                                 <p class="stext-102 cl6">
                                                       {{ $review->comment }}
                                                 </p>
-
                                 <div class="p-b-30 m-lr-15-sm">
                                     <!-- Review -->
                                     <div class="flex-w flex-t p-b-68">
@@ -285,7 +273,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
