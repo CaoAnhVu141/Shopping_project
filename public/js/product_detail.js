@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Update or add review in DOM
                     if (editMode) {
                         const reviewElement = document.querySelector(`[data-review-id="${currentReviewId}"]`);
                         reviewElement.querySelector('.stext-102.cl6').innerText = data.review.comment;
@@ -122,6 +121,29 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => console.log('Error: ', error));
     });
+
+    // Define the deleteReview function
+    function deleteReview(reviewId) {
+        fetch(`/reviews/${reviewId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const reviewElement = document.querySelector(`[data-review-id="${reviewId}"]`);
+                    if (reviewElement) {
+                        reviewElement.remove();
+                    }
+                } else {
+                    console.log('Failed to delete review:', data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
 
     function assignEvents() {
         document.querySelectorAll('.delete-icon').forEach(icon => {
