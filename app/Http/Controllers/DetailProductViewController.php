@@ -26,7 +26,7 @@ class DetailProductViewController extends Controller
             abort(404);
         }
         // thực thi lấy các thuộc tính attribute_value
-        $sizeAttribute = Attribute::where('name', 'Kích cỡ')->first();
+        $sizeAttribute = Attribute::where('name', 'Kích thước')->first();
         $size = $sizeAttribute ? AttributeValue::where('id_attribute',$sizeAttribute->id_attribute)->get() : collect();
         $colorAttribute = Attribute::where('name','Màu sắc')->first();
         $color = $colorAttribute ? AttributeValue::where('id_attribute',$colorAttribute->id_attribute)->get() : collect();
