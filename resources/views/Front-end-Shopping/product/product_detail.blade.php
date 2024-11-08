@@ -279,14 +279,14 @@
                                             Your Rating
                                         </span>
 
-                                        <span class="wrap-rating fs-18 cl11 pointer">
-                                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                            <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                            <input class="dis-none" type="number" name="rating">
-                                        </span>
+                                        <div class="custom-rating">
+                                            <span class="star" data-value="1">★</span>
+                                            <span class="star" data-value="2">★</span>
+                                            <span class="star" data-value="3">★</span>
+                                            <span class="star" data-value="4">★</span>
+                                            <span class="star" data-value="5">★</span>
+                                        </div>
+                                        <input type="hidden" name="rating" id="ratingInput">
                                          <div class="error-message" id="rating-error" style="margin-left: 12px; color: red;"></div>
                                     </div>
 

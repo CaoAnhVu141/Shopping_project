@@ -23,7 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/css/util.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/css/main.css') }}">
-	{{-- --}}
+	<link rel="stylesheet" type="text/css" href="{{asset('shopping/css/product_detail.css') }}">
 </head>
 
 <body>
@@ -482,6 +482,8 @@
         });
     });
 	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="{{ asset('shopping/js/main.js') }}" defer></script>
 	<script src="{{ asset('js/home.js') }}" defer></script>
@@ -509,7 +511,5 @@
         console.log("Session ID từ Cookie:", document.cookie);
     });
 	</script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 </html>

@@ -2,25 +2,64 @@ document.addEventListener('DOMContentLoaded', function () {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     const formElement = document.querySelector('#form-review');
     const reviewContainer = document.querySelector('#review-info');
-    let editMode = false;  // Biến xác định chế độ chỉnh sửa
-    let currentReviewId = null;  // ID đánh giá đang chỉnh sửa
+    const ratingError = document.getElementById('rating-error');
+    const commentError = document.getElementById('comment-error');
+    const stars = document.querySelectorAll('.custom-rating .star');
+    let editMode = false;
+    let currentReviewId = null;
 
     if (!formElement) return;
 
-    // Xử lý submit form cho cả thêm mới và chỉnh sửa
+    // Star rating selection logic
+    stars.forEach(star => {
+        star.addEventListener('click', handleStarClick);
+        star.addEventListener('mouseover', handleStarHover);
+    });
+
+    document.querySelector('.custom-rating').addEventListener('mouseleave', handleStarLeave);
+
+    function handleStarClick(event) {
+        const value = event.target.getAttribute('data-value');
+        setRating(value);
+        document.getElementById('ratingInput').value = value;
+    }
+
+    function handleStarHover(event) {
+        const value = event.target.getAttribute('data-value');
+        setRating(value);
+    }
+
+    function handleStarLeave() {
+        const ratingValue = document.getElementById('ratingInput').value;
+        setRating(ratingValue);
+    }
+
+    function setRating(value) {
+        stars.forEach(star => {
+            const starValue = star.getAttribute('data-value');
+            star.classList.toggle('filled', starValue <= value);
+        });
+    }
+
     formElement.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const rating = document.querySelector('input[name="rating"]');
-        const comment = document.querySelector('textarea[name="review"]');
-        const ratingError = document.getElementById('rating-error');
-        const commentError = document.getElementById('comment-error');
+        const ratingValue = document.getElementById('ratingInput').value;
+        const commentValue = document.querySelector('textarea[name="review"]').value;
 
-        if (!rating || !comment) return;
-        if (!ratingError || !commentError) return;
+        if (!ratingValue) {
+            ratingError.innerText = 'Please select a rating.';
+            return;
+        } else {
+            ratingError.innerText = '';
+        }
 
-        const ratingValue = rating.value;
-        const commentValue = comment.value;
+        if (!commentValue) {
+            commentError.innerText = 'Please enter a comment.';
+            return;
+        } else {
+            commentError.innerText = '';
+        }
 
         const reviewData = {
             id_product: 1,
@@ -42,15 +81,14 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
+                    // Update or add review in DOM
                     if (editMode) {
-                        // Cập nhật đánh giá hiện có trong DOM
                         const reviewElement = document.querySelector(`[data-review-id="${currentReviewId}"]`);
                         reviewElement.querySelector('.stext-102.cl6').innerText = data.review.comment;
                         reviewElement.querySelector('.fs-18.cl11').innerHTML =
                             '<i class="zmdi zmdi-star"></i>'.repeat(data.review.rating) +
                             '<i class="zmdi zmdi-star-outline"></i>'.repeat(5 - data.review.rating);
                     } else {
-                        // Thêm review mới vào DOM
                         const newReviewHtml = `
                         <div class="flex-w flex-t p-b-68" data-review-id="${data.review.id_review}">
                             <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
@@ -73,49 +111,18 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         </div>`;
                         reviewContainer.innerHTML += newReviewHtml;
-                        assignEvents(); // Gán sự kiện cho các biểu tượng xóa và sửa
+                        assignEvents();
                     }
 
-                    // Reset form và biến edit mode
                     editMode = false;
                     currentReviewId = null;
-                    ratingError.innerText = '';
-                    commentError.innerText = '';
                     formElement.reset();
-                } else if (data.errors) {
-                    if (data.errors.rating) {
-                        ratingError.innerText = data.errors.rating[0];
-                    }
-                    if (data.errors.comment) {
-                        commentError.innerText = data.errors.comment[0];
-                    }
+                    setRating(0);
                 }
             })
             .catch(error => console.log('Error: ', error));
     });
 
-    // Hàm xử lý xóa review
-    function deleteReview(reviewId) {
-        fetch(`/reviews/${reviewId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrfToken
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    const reviewElement = document.querySelector(`[data-review-id="${reviewId}"]`);
-                    if (reviewElement) {
-                        reviewElement.remove();
-                    }
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    }
-
-    // Hàm gán sự kiện xóa và chỉnh sửa cho các biểu tượng
     function assignEvents() {
         document.querySelectorAll('.delete-icon').forEach(icon => {
             icon.removeEventListener('click', handleDeleteClick);
@@ -128,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Hàm xử lý sự kiện xóa khi nhấp vào biểu tượng
     function handleDeleteClick(event) {
         const reviewId = event.target.getAttribute('data-id');
         if (confirm("Bạn muốn xóa đánh giá này?")) {
@@ -136,20 +142,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Hàm xử lý sự kiện chỉnh sửa khi nhấp vào biểu tượng
     function handleEditClick(event) {
         const reviewId = event.target.getAttribute('data-id');
         const reviewElement = document.querySelector(`[data-review-id="${reviewId}"]`);
         const rating = reviewElement.querySelectorAll('.zmdi-star').length;
         const comment = reviewElement.querySelector('.stext-102.cl6').innerText;
 
-        document.querySelector('input[name="rating"]').value = rating;
         document.querySelector('textarea[name="review"]').value = comment;
+        document.getElementById('ratingInput').value = rating;
+        setRating(rating);
 
         editMode = true;
         currentReviewId = reviewId;
     }
 
-    // Gán sự kiện xóa và chỉnh sửa khi tải trang
     assignEvents();
 });

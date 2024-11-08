@@ -11,7 +11,7 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $reviews = Review::where('id_product', 46)
+        $reviews = Review::where('id_product', 1)
             ->with('customer')
             ->get();
 

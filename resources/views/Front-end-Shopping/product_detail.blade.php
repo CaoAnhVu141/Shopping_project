@@ -246,7 +246,7 @@
                                             <span class="stext-102 cl3 m-r-16">
                                                 Your Rating
                                             </span>
-
+                                        
                                             <span class="wrap-rating fs-18 cl11 pointer">
                                                 <i class="item-rating pointer zmdi zmdi-star-outline"></i>
                                                 <i class="item-rating pointer zmdi zmdi-star-outline"></i>
