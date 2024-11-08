@@ -5,7 +5,9 @@ use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\GetCartShoppingController;
 use App\Http\Controllers\AttributeViewController;
 use App\Http\Controllers\CategoryViewController;
+use App\Http\Controllers\Auth\RegistController;
 use App\Http\Controllers\Demo_OderController;
+
 use App\Http\Controllers\Api\GetAllItemsShoppingCart;
 use App\Http\Controllers\Api\PayMonneyController;
 use App\Http\Controllers\Api\ShoppingCartController;
@@ -14,9 +16,12 @@ use App\Http\Controllers\GetCartShoppingViewController;
 use App\Http\Controllers\GetViewAllItemsShoppingCart;
 use App\Http\Controllers\PayMonneyViewController;
 use App\Http\Controllers\ShoppingCartViewController;
+
+use App\Http\Controllers\EventController;
+
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,7 +37,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/testcai', [App\Http\Controllers\TestController::class, 'testcai']);
+
+
+// Route::get('/demo',TestController::class,'testcai');
+Route::get('demo',[TestController::class,'testcai']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 Route::get('category', [CategoryViewController::class, 'index']);
 Route::get('/attribute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
@@ -41,6 +56,7 @@ Route::get('/attribute',[AttributeViewController::class, 'showThemmeAttributeInd
 Route::get('/dashboard',[AdminDashboardViewController::class, 'showThemeDashBoard'])->name('index_dashboard');
 Route::get('/get-orders',[AdminDashboardViewController::class, 'showIndexDashBoard'])->name('get-orders');
 Route::get('view-detail/{id}',[AdminDashboardViewController::class,'showViewDashBoard'])->name('get_view'); // hiển thị giao diện chi tiết view
+
 
 // thực thi với chi tiết sản phẩm ở trang home
 // Route::get('product_detail/{id_product}',[DetailProductViewController::class, 'showViewProductDetail'])->name("showdetail");
@@ -56,8 +72,16 @@ Route::delete('delete/shopping-cart/{id_product}',[ShoppingCartController::class
 // test cái nha @phần này test chưa có sửa lại
 Route::get('/product',[ShoppingCartViewController::class, 'showDemoNha'])->name('showItems'); // chỉ là demo thôi nè
 
-//
+
 // hiển thị thanh toán
 Route::get('/pay-money',[PayMonneyViewController::class, 'showViewPayMoney'])->name('payMoney');
 // thực thị thanh toán
 Route::get('/make-payment',[PayMonneyController::class, 'makePaymentAllItems']);
+
+Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
+
+
+Route::get('/demo',[RegistController::class, 'showRegistrationForm'])->name('register');
+Route::post('/demo',[RegistController::class, 'register'])->name('index.register');
+
+
