@@ -185,7 +185,7 @@ Route::post('/load-more/products', [HomeController::class, 'loadMore']);
 
 //Route About
 
-// Route::get('/about', [AboutController::class, 'about'])->name('about');
+Route::get('/about', [AboutController::class, 'about'])->name('about');
 
 // hiển thị và thực thi với giỏ hàng
 Route::get('/shopping-cart',[GetViewAllItemsShoppingCart::class, 'showAllItemsShoppingCart'])->name('showShoppingCart'); //hiển thị trang giỏ hàng
