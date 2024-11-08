@@ -10,10 +10,12 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if (data.message) {
+                    console.log("Dữ liệu data là:", data);
                     document.getElementById('items-cart').innerHTML = `<li>${data.message}</li>`;
                     //bổ sung để lấy giá trị trong giỏ hàng
                     document.querySelector('.icon-header-noti').setAttribute('data-notify', '0');
                 } else {
+
                     displayCartItems(data);
                     const totalItems = data.reduce((acc, item) => acc + item.quantity, 0);
                     document.querySelector('.icon-header-noti').setAttribute('data-notify', totalItems);
