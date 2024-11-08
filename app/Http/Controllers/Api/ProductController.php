@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use DB;
+
 use function Laravel\Prompts\error;
 
 // class ProductController extends Controller
@@ -33,7 +32,7 @@ class ProductController extends Controller
 {
     public function getAllProducts()
 {
-    $products = DB::table('tbl_product')->paginate(5);
+    $products = DB::table('product')->paginate(5);
         
     return response()->json($products);
 }
