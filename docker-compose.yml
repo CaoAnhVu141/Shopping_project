@@ -16,10 +16,6 @@ services:
       - db
     expose:
       - "9000"
-    volumes:
-      - .:/var/www:cached  # Sử dụng option cached để tăng tốc độ
-      - ./storage:/var/www/storage
-      - ./public:/var/www/public  # Mount thư mục public để Nginx có thể truy cập
 
   # MySQL Service
   db:
