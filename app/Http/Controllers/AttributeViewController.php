@@ -12,8 +12,5 @@ class AttributeViewController extends Controller
         return view('Front-end-Admin.attribute.index');
     }
 
-    // public function showAttributeCreate()
-    // {
-    //     return view("Front-end-Admin.attribute.create");
-    // }
+
 }

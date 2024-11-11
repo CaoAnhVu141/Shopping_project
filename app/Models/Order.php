@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 class Order extends Model
 {
@@ -11,7 +12,6 @@ class Order extends Model
 
     protected $table = 'order';
     protected $primaryKey = 'id_order';
-
     protected $fillable = [
         'id_customer',
         'id_shipping_method',
@@ -25,33 +25,60 @@ class Order extends Model
     // thiết lập quan hệ giữa order và oder_status_history (1-n)
     public function orderStatusHistory()
     {
-        return $this->hasMany(OrderStatusHistory::class,'id_order');
+        return $this->hasMany(OrderStatusHistory::class, 'id_order');
     }
 
     // thiết lập quan hệ giữa order và payment (1-n)
     public function payment()
     {
-        return $this->belongsTo(Payment::class,'id_payment');
+        return $this->belongsTo(Payment::class, 'id_payment');
     }
 
     // thiết lập quan hệ giữa customer và order (1-n)
     public function customer()
     {
-        return $this->belongsTo(Customer::class,'id_customer');
+        return $this->belongsTo(Customer::class, 'id_customer');
     }
 
     // thiết lập quan hệ giữa shipping_method và order (1-n)
     public function shippingMethod()
     {
-        return $this->belongsTo(ShippingMethod::class,'id_shipping_method');
+        return $this->belongsTo(ShippingMethod::class, 'id_shipping_method');
     }
 
-
-    // thiết lập quan hệ giữa order và product (n-n)
-    public function product()
+    // thiết lập truy vấn lấy dữ liệu tìm kiếm dashboard
+    public function scopeFindByCustomerDashboard($query, $email = null, $status = null)
     {
-        return $this->belongsToMany(Product::class,'order_item','id_product','id_order')
-                                    ->withPivot('quantity','price','status');
+        if ($email) {
+            $query->whereHas('customer', function ($q) use ($email) {
+                $q->where('email', 'LIKE', "%$email%");
+            });
+        }
+
+        if ($status) {
+            $query->where('status', $status);
+        }
+        return $query;
     }
 
+    //@viết tính tổng số đơn hàng thành công
+    public static function modelCountSuccesItems()
+    {
+        return self::where('status','Đã Bàn Giao')->count();
+    }
+
+    //@viết phương thức lấy toàn bộ doanh thu từ order
+    public static function getAllTotal_itemOrder()
+    {
+        return self::where('status','Đã Bàn Giao')->sum('total_item');
+    }
+
+    // mã hoá id
+    protected $appends = ['encrypted_id'];
+
+    // Accessor cho encrypted_id
+    public function getEncryptedIdAttribute()
+    {
+        return Crypt::encrypt($this->attributes['id_order']);
+    }
 }

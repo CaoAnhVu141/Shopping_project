@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Shopping</title>
     {{-- @todo lai --}}
     @if (session('toastr'))
@@ -289,8 +289,6 @@
       <div class="content-wrapper">
         @yield('content')
       </div>
-      <!-- /.content-wrapper -->
-
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.4.0
@@ -348,6 +346,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="{{ asset("shopping/data_rest/dashboard.js") }}"></script>
     <script>
         if(typeof TYPE_MESSAGE != "undefined"){
             switch(TYPE_MESSAGE){

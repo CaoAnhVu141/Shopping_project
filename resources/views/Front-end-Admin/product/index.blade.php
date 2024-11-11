@@ -82,7 +82,7 @@
                     $('#js-data').html(results.data);
                     if(results.messages) {
                         toastr.success(results.messages);
-                    }         
+                    }
                 }
             });
         }

@@ -200,7 +200,7 @@
                     <tr>
                         <td>
                             <img src="https://via.placeholder.com/80" alt="Product Image">
-                            Lightweight Jacket
+                           Quá được nhở
                         </td>
                         <td>$16.00</td>
                         <td>

@@ -18,8 +18,9 @@ class Payment extends Model
     ];
 
     // thiết lập quan hệ giữa order và payment (1-n)
-    public function order()
+    public function orders()
     {
-        return $this->hasMany(Order::class,'id_payment');
+        return $this->hasMany(Order::class, 'id_payment');
     }
+    
 }
