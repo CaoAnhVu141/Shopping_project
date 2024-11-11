@@ -66,7 +66,12 @@ class LoginController extends Controller
 
         // Nếu đăng nhập thành công
         Auth::login($customer);
-        return redirect()->intended('/demo')->with('success', 'Đăng nhập thành công!');
+        // Lấy ID của người dùng đã đăng nhập
+        $userId = Auth::id();
+        return redirect()->intended('/demo')->with([
+            'success' => 'Đăng nhập thành công!',
+            'user_id' => $userId
+        ]);
     }
 
     public function logout(Request $request)
