@@ -2,51 +2,55 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable; // Thêm dòng này
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Customer extends Authenticatable // Thay đổi từ Model thành Authenticatable
+class Customer extends Authenticatable
 {
     use HasFactory;
 
+    // Thiết lập tên bảng và khóa chính
     protected $table = 'customers';
     protected $primaryKey = 'id_customer';
 
+    // Các thuộc tính có thể gán giá trị hàng loạt
     protected $fillable = [
         'name',
         'email',
-        'status',
         'password',
-        'token',
         'phone',
+        'verification_token',
+        'is_verified',
         'address',
+        'status',
+        'token'
     ];
 
-    // thực thi cấu hình quan hệ customer và shopping_cart (1-n)
+    // 1. Quan hệ 1-N với bảng ShoppingCart
     public function shoppingCart()
     {
         return $this->hasMany(ShoppingCart::class, 'id_customer');
     }
 
-    // thực thi quan hệ giữa customer và review (1-n)
+    // 2. Quan hệ 1-N với bảng Review
     public function review()
     {
         return $this->hasMany(Review::class, 'id_customer');
     }
 
-    // cấu hình quan hệ giữa customer và contact (1-n)
+    // 3. Quan hệ 1-N với bảng Contact
     public function contact()
     {
         return $this->hasMany(Contact::class, 'id_customer');
     }
 
-    // thực thi cấu hình giữa customer và product (n-n)
+    // 4. Quan hệ nhiều-nhiều với bảng Product qua bảng trung gian Favorite
     public function product()
     {
         return $this->belongsToMany(Product::class, 'favorite', 'id_customer', 'id_product');
     }
 
-    // thiết lập quan hệ giữa customer và order (1-n)
+    // 5. Quan hệ 1-N với bảng Order
     public function order()
     {
         return $this->hasMany(Order::class, 'id_customer');

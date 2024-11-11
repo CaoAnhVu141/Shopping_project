@@ -68,6 +68,7 @@ class LoginController extends Controller
         Auth::login($customer);
         // Lấy ID của người dùng đã đăng nhập
         $userId = Auth::id();
+        return $userId;
         return redirect()->intended('/demo')->with([
             'success' => 'Đăng nhập thành công!',
             'user_id' => $userId

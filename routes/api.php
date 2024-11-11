@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\Api\AtributeController;
 use App\Http\Controllers\Api\AttributeController;
 use App\Http\Controllers\Api\CategoryController;
@@ -12,6 +13,21 @@ use App\Http\Controllers\Api\ShoppingCartController;
 use App\Models\Attribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\FavoriteApiController;
+use App\Http\Controllers\Api\ShippingMethodController;
+use App\Http\Controllers\CategoryProductController;
+
+
+
+
+//use App\Http\Controllers\Api\CategoryController;
+
+//use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\CategoryProductView;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,14 +42,34 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
 });
 
+Route::get('category', [CategoryProductView::class, 'api_all_category_product']);
+Route::get('products', [ProductController::class, 'getAllProducts']);
+Route::post('toggle-product-status/{id}', [ProductController::class ,'toggleStatus']);
+Route::delete('delete-product/{id}', [ProductController::class, 'delete']);
+
+
+//Route::get('categories', [CategoryProductController::class, 'api_all_category_product']);
+// Route::apiResource('categories', CategoryProductController::class);
+// Route::patch('categories/{id}/activate', [CategoryProductController::class, 'activate']);
+// Route::patch('categories/{id}/deactivate', [CategoryProductController::class, 'deactivate']);
+//Route::get('/category-products', [CategoryProductController::class, 'all_category_product_api']);
+// Route::post('/category-products', [CategoryProductController::class, 'save_category_product_api']);
+
+
 Route::get('/category', [CategoryController::class, 'index']);
+
+
+
+
 
 // Thực thi với attribute
 Route::get('/attribute',[AttributeController::class,'getDataJson']);
 Route::delete('/attribute/{id}',[AttributeController::class, 'deteleDataAttribute']);
 Route::get('/attribute/create',[AttributeController::class, 'showCreateAttribute']);
+
 Route::post('/attribute/create', [AttributeController::class, 'createDataAttribute']);
 Route::get('attribute/update/{id}',[AttributeController::class, 'showEditAttribute']);
 Route::put('attribute/update/{id}',[AttributeController::class, 'updateDataAttribute']);
@@ -47,12 +83,37 @@ Route::put('/update/dashboard-status/{id}',[DashboardController::class, 'updateS
 // Route::get('view-detail_items/{id}',[DashboardController::class, 'getViewItemDashboard']); @todo
 Route::get('/dashboard/search',[DashboardController::class, 'findValueDashBoard']); // tìm kiếm dữ liệu dashboard
 
+
+
+Route::get('/favorites/{customerId}', [FavoriteApiController::class, 'index']); // Lấy danh sách yêu thíchRoute::post('/favorites', [FavoriteApiController::class, 'store']); // Thêm sản phẩm yêu thích
+Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'show']); // Xem sản phẩm yêu thích
+Route::delete('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'destroy']); // Xóa sản phẩm yêu thích
+
+
+
+
+Route::prefix('shipping-methods')->group(function() {
+    Route::get('/', [ShippingMethodController::class, 'index']);
+    Route::post('/', [ShippingMethodController::class, 'store']);
+    Route::get('{id}', [ShippingMethodController::class, 'show']);
+    Route::put('{id}', [ShippingMethodController::class, 'update']);
+    Route::delete('{id}', [ShippingMethodController::class, 'destroy']);
+});
+
 // thực thi với giỏ hàng và trang giỏ hàng
 Route::post('/cart/add/{Idproduct}', [ShoppingCartController::class, 'addToCartShopping']); // thêm sản phẩm vào giỏ hàng
 // Route::post('/cart/update/{Idproduct}', [ShoppingCartController::class, 'updateItemsShoppingCart']);  // cập nhập số lượng giỏ hàng
 // Route::get('/cart/update/{Idproduct}', [ShoppingCartController::class, 'updateItemsShoppingCart']); @todo đang gặp lõi
 //
+
+Route::get('/get-product/{id_product}',[ProductController::class, 'getItemsProduct']); // sản phẩm chi tiết
+
 Route::get('/get-product/{id_product}',[ProductController::class, 'getItemsProduct']); // sản phẩm chi tiết @todo làm lại sau
+
+
 
 // thực thị thanh toán
 // Route::get('/make-payment',[PayMonneyController::class, 'makePaymentAllItems'])->name('makepaymoney');
+
+
+

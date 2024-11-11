@@ -7,7 +7,6 @@ use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-
 class GetCartShoppingController extends Controller
 {
     //lấy sản phẩm trong giỏ hàng
@@ -82,33 +81,27 @@ class GetCartShoppingController extends Controller
 
     public function getItemsCartShopping(Request $request)
     {
-        $id_session = session()->getId(); // Lấy id_session hiện tại
-        $id_customer = auth()->check() ? auth()->id() : null;
-        dd($id_session);
-        // Log để kiểm tra xem `id_session` và `id_customer` có đúng không
-        Log::info("Session ID in getItemsCartShopping: " . $id_session);
-        Log::info("Customer ID in getItemsCartShopping: " . ($id_customer ?? 'Guest'));
-
-        // Lấy giỏ hàng dựa trên `id_session` hoặc `id_customer`
-        $cartItems = ShoppingCart::where(function ($query) use ($id_session, $id_customer) {
-            $query->where('id_session', $id_session);
-            if ($id_customer) {
-                $query->orWhere('id_customer', $id_customer);
-            }
-        })
-            ->with('product') // Gắn `product` vào để lấy thêm thông tin sản phẩm
-            ->get();
-
-        // Kiểm tra nếu giỏ hàng trống
-        if ($cartItems->isEmpty()) {
-            return response()->json(['message' => 'Giỏ hàng của bạn trống'], 200);
+        Log::info("Lấy giá trị id_session lần đầu nè: " . session()->getId());
+        $cartItems = null;
+        if (auth()->check()) {
+            // Nếu người dùng đã đăng nhập, lấy giỏ hàng theo `id_product`
+            $userId = auth()->id();
+            $cartItems = ShoppingCart::where('id_customer', $userId)
+                ->with('product') // Lấy thêm thông tin sản phẩm từ bảng `products`
+                ->get();
+        } else {
+            // Nếu chưa đăng nhập, lấy giỏ hàng theo `id_session`
+            $id_session = session()->getId();
+            Log::info("Lấy giá trị id_session nè: " . $id_session);
+            $cartItems = ShoppingCart::where('id_session', $id_session)
+                ->with('product') // Lấy thêm thông tin sản phẩm từ bảng `products`
+                ->get();
         }
-
-        // Định dạng lại dữ liệu giỏ hàng để dễ hiển thị ở phía client
-        $formattedCartItems = $cartItems->map(function ($item) {
+        // Chuyển đổi dữ liệu để dễ dàng hiển thị ở phía client
+        $cartItems = $cartItems->map(function ($item) {
             return [
                 'id_product' => $item->id_product,
-                'product_name' => $item->product->name,
+                'product_name' => $item->product->name, // Tên sản phẩm từ bảng `products`
                 'quantity' => $item->quantity,
                 'price' => $item->price,
                 'total_price' => $item->total_price,
@@ -116,7 +109,7 @@ class GetCartShoppingController extends Controller
                 'size' => $item->size,
             ];
         });
-
-        return response()->json($formattedCartItems, 200);
+        return response()->json($cartItems);
     }
+
 }

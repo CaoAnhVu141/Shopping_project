@@ -61,6 +61,7 @@
                                     <select class="js-select2" name="size">
                                         @foreach ($size as $items)
                                         <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
+                                            <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
                                         @endforeach
                                     </select>
                                     <div class="dropDownSelect2"></div>
@@ -76,6 +77,7 @@
                                     <select class="js-select2" name="color">
                                         @foreach ($color as $items)
                                         <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
+                                            <option value="{{ $items->id_attribute_value }}">{{ $items->value }}</option>
                                         @endforeach
                                     </select>
                                     <div class="dropDownSelect2"></div>
@@ -85,11 +87,20 @@
                         <div class="flex-w flex-r-m p-b-10">
                             <div class="size-204 flex-w flex-m respon6-next">
                                 <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+
                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" data-id="{{ $product->id_product }}">
                                         <i class="fs-16 zmdi zmdi-minus"></i>
                                     </div>
                                     <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product"
                                         id="product-quantity" value="1" min="1" readonly>
+
+                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
+                                        data-id="{{ $product->id_product }}">
+                                        <i class="fs-16 zmdi zmdi-minus"></i>
+                                    </div>
+                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product"
+                                        id="product-quantity" value="1" min="1">
+
                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
                                         data-id="{{ $product->id_product }}">
                                         <i class="fs-16 zmdi zmdi-plus"></i>
@@ -159,6 +170,27 @@
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="row">
                             <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+                                {{-- <div class="p-b-30 m-lr-15-sm" id="review-info">
+                                    @foreach($reviews as $review)
+                                        <!-- Review -->
+                                        <div class="flex-w flex-t p-b-68" data-review-id="{{$review->id_review}}">
+                                            <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+                                                <img src="images/avatar-01.jpg" alt="AVATAR">
+                                            </div>
+                                            <div class="size-207">
+                                                <div class="flex-w flex-sb-m p-b-17">
+                                                    <span class="mtext-107 cl2 p-r-20">
+                                                       {{ $review->customer->name }}
+                                                    </span>
+                                                    <span class="fs-18 cl11">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <i class="zmdi {{ $i <= $review->rating ? 'zmdi-star' : 'zmdi-star-outline' }}"></i>
+                                                        @endfor
+                                                    </span>
+                                                </div>
+                                                <p class="stext-102 cl6">
+                                                      {{ $review->comment }}
+                                                </p>
                                 <div class="p-b-30 m-lr-15-sm">
                                     <!-- Review -->
                                     <div class="flex-w flex-t p-b-68">
@@ -202,7 +234,7 @@
                                             <span class="stext-102 cl3 m-r-16">
                                                 Your Rating
                                             </span>
-
+                                        
                                             <span class="wrap-rating fs-18 cl11 pointer">
                                                 <i class="item-rating pointer zmdi zmdi-star-outline"></i>
                                                 <i class="item-rating pointer zmdi zmdi-star-outline"></i>
@@ -241,7 +273,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -307,28 +339,4 @@
         </div>
     </div>
 </section>
-<script src="{{ asset("shopping/data_rest/shopping_cart.js")}}"></script>
-{{-- <script src="{{ asset("shopping/data_rest/shopping_cart.js" --}}{{-- àm thêm giỏ hàng liên tục --}}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Truyền `session ID` từ server vào biến JavaScript
-        const sessionIdFromServer = "{{ session()->getId() }}";
-
-        // Kiểm tra nếu không có session trong Local Storage thì lưu vào
-        if (!localStorage.getItem('id_session')) {
-            localStorage.setItem('id_session', sessionIdFromServer);
-            console.log("Local Storage: Đã lưu mới session ID từ server:", sessionIdFromServer);
-        } else {
-            const storedSessionId = localStorage.getItem('id_session');
-            console.log("Local Storage: Đã tồn tại session ID:", storedSessionId);
-
-            // Cập nhật cookie dựa trên Local Storage để đảm bảo tính nhất quán
-            document.cookie = "laravel_session=" + storedSessionId + "; path=/; SameSite=Lax";
-        }
-
-        // Kiểm tra giá trị trong Console
-        console.log("Session ID từ Local Storage:", localStorage.getItem('id_session'));
-        console.log("Session ID từ Cookie:", document.cookie);
-    });
-</script>
 @endsection

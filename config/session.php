@@ -212,7 +212,7 @@ return [
     'partitioned' => false,
 
     // config/session.php
-    'lifetime' => 43200, // Thời gian session tồn tại trong 30 ngày (43200 phút)
+    'lifetime' => 120, // Thời gian session tồn tại trong 30 ngày (43200 phút)
     'expire_on_close' => false, // Không xóa session khi đóng trình duyệt
 
 

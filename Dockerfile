@@ -1,36 +1,52 @@
-# Sử dụng image PHP-FPM với các tiện ích mở rộng
-FROM php:8.2-fpm
+# Sử dụng image PHP-FPM phiên bản nhẹ hơn
+FROM php:8.2-fpm-alpine
 
-# Cài đặt các tiện ích cần thiết
-RUN apt-get update && apt-get install -y \
+# Đặt biến môi trường để giảm độ tương tác khi chạy Composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV COMPOSER_MEMORY_LIMIT=-1
+
+# Cài đặt các tiện ích cần thiết trong một lệnh duy nhất để giảm số lượng layer
+RUN apk add --no-cache \
+    freetype-dev \
+    libjpeg-turbo-dev \
     libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
     zip \
     unzip \
     git \
     curl \
-&& apt-get clean \
-&& rm -rf /var/lib/apt/lists/*
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql opcache \
+    && rm -rf /var/cache/apk/*
 
-# Cài đặt các tiện ích mở rộng cho PHP
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_mysql
-
-# Cài Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Cài Composer từ image chính thức của Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Đặt thư mục làm việc là /var/www
 WORKDIR /var/www
 
-# Sao chép tất cả các file vào container
+# Sao chép composer.json và composer.lock trước để cache layer phụ thuộc Composer
+COPY composer.json composer.lock ./
+
+# Cài đặt các phụ thuộc Composer với tối ưu hóa
+RUN composer install --prefer-dist --no-dev --optimize-autoloader --no-interaction --no-scripts \
+    && rm -rf /root/.composer/cache
+
+# Sao chép mã nguồn vào container
 COPY . .
 
-# Chạy lệnh cài đặt Composer
-RUN composer install
+# Cấp quyền cho các thư mục lưu trữ và bộ nhớ cache (tạo một layer)
+RUN chown -R www-data:www-data storage bootstrap/cache public
 
-# Cấp quyền cho thư mục lưu trữ và bộ nhớ cache
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+# Cấu hình Opcache để tăng hiệu suất PHP
+RUN { \
+    echo "opcache.enable=1"; \
+    echo "opcache.memory_consumption=128"; \
+    echo "opcache.interned_strings_buffer=8"; \
+    echo "opcache.max_accelerated_files=10000"; \
+    echo "opcache.revalidate_freq=0"; \
+    echo "opcache.fast_shutdown=1"; \
+    echo "opcache.validate_timestamps=0"; \
+} > /usr/local/etc/php/conf.d/opcache.ini
 
 # Chạy PHP-FPM
 CMD ["php-fpm"]

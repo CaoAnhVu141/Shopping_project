@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/vendor/bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css"
@@ -22,10 +23,27 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/css/util.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('shopping/css/main.css') }}">
-	{{-- --}}
+	<link rel="stylesheet" type="text/css" href="{{asset('shopping/css/product_detail.css') }}">
 </head>
 
 <body>
+	<div class="header-favorites flex-col-l p-l-65 p-r-25">
+			<div class="header-favorites-title">
+				<span class="mtext-103 cl2">
+					Your Favorites
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer js-hide-favorites">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+
+			<div class="header-favorites-content flex-w js-pscroll">
+				<ul class="header-favorites-wrapitem w-full" id="favorites-list">
+					<!-- Favorite items will be populated here dynamically -->
+				</ul>
+			</div>
+	</div>
 	<header class="header-v4">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
@@ -78,7 +96,7 @@
 								<a href="">Blog</a>
 							</li>
 							<li>
-								<a href="">About</a>
+								<a href="{{ URL::to('about') }}">About</a>
 							</li>
 							<li>
 								<a href="">Contact</a>
@@ -126,7 +144,7 @@
 				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
 					data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
+				</div>
 			</div>
 
 			<!-- Button show menu -->
@@ -136,6 +154,8 @@
 				</span>
 			</div>
 		</div>
+
+
 
 
 		<!-- Menu Mobile -->
@@ -170,12 +190,7 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul>
+					<a href="">Home</a>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
@@ -467,10 +482,34 @@
         });
     });
 	</script>
-	<!--===============================================================================================-->
-	<script src="{{ asset('shopping/js/main.js') }}"></script>
-
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="{{ asset('shopping/js/main.js') }}" defer></script>
+	<script src="{{ asset('js/home.js') }}" defer></script>
+	<script src="{{ asset('js/product_detail.js')}}" defer></script>
+	<script src="{{ asset("shopping/data_rest/shopping_cart.js")}}" defer></script>
+	<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Truyền `session ID` từ server vào biến JavaScript
+        const sessionIdFromServer = "{{ session()->getId() }}";
+
+        // Kiểm tra nếu không có session trong Local Storage thì lưu vào
+        if (!localStorage.getItem('id_session')) {
+            localStorage.setItem('id_session', sessionIdFromServer);
+            console.log("Local Storage: Đã lưu mới session ID từ server:", sessionIdFromServer);
+        } else {
+            const storedSessionId = localStorage.getItem('id_session');
+            console.log("Local Storage: Đã tồn tại session ID:", storedSessionId);
+
+            // Cập nhật cookie dựa trên Local Storage để đảm bảo tính nhất quán
+            document.cookie = "laravel_session=" + storedSessionId + "; path=/; SameSite=Lax";
+        }
+
+        // Kiểm tra giá trị trong Console
+        console.log("Session ID từ Local Storage:", localStorage.getItem('id_session'));
+        console.log("Session ID từ Cookie:", document.cookie);
+    });
+	</script>
 
 </html>
