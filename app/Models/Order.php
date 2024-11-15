@@ -14,6 +14,11 @@ class Order extends Model
     protected $primaryKey = 'id_order';
     protected $fillable = [
         'id_customer',
+        'id_session',
+        'customer_name',
+        'customer_phone',
+        'customer_email',
+        'customer_address',
         'id_shipping_method',
         'id_payment',
         'total_item',
@@ -46,6 +51,13 @@ class Order extends Model
         return $this->belongsTo(ShippingMethod::class, 'id_shipping_method');
     }
 
+    //
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class, 'id_order');
+    }
+
+
     // thiết lập truy vấn lấy dữ liệu tìm kiếm dashboard
     public function scopeFindByCustomerDashboard($query, $email = null, $status = null)
     {
@@ -64,13 +76,13 @@ class Order extends Model
     //@viết tính tổng số đơn hàng thành công
     public static function modelCountSuccesItems()
     {
-        return self::where('status','Đã Bàn Giao')->count();
+        return self::where('status', 'Đã Bàn Giao')->count();
     }
 
     //@viết phương thức lấy toàn bộ doanh thu từ order
     public static function getAllTotal_itemOrder()
     {
-        return self::where('status','Đã Bàn Giao')->sum('total_item');
+        return self::where('status', 'Đã Bàn Giao')->sum('total_item');
     }
 
     // mã hoá id

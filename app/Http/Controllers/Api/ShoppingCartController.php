@@ -44,9 +44,6 @@ class ShoppingCartController extends Controller
                     $query->orWhere('id_customer', $id_customer);
                 }
             })->first();
-
-        Log::info("Session ID in addToCart: " . $id_session);
-
         // Cập nhật nếu sản phẩm đã có trong giỏ hàng, hoặc thêm mới nếu chưa có
         if ($cartItem) {
             $cartItem->quantity += $quantity;

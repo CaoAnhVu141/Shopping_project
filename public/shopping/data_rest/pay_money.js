@@ -1,19 +1,15 @@
-
-document.addEventListener('DOMContentLoaded',function()
-{
+document.addEventListener('DOMContentLoaded', function () {
     // //@Viết hàm hiển thị toàn bộ sản phẩm ra
-    function showAllItemsPayMoney()
-    {
+    function showAllItemsPayMoney() {
         fetch(`api/make-payment`).then(response => response.json())
-        .then(data =>{
-            const container = document.getElementById('cart-items-container');
-            container.innerHTML = '';
-            let totalPrice = 0;
-            if(data.length > 0)
-            {
-                data.forEach(items => {
-                    totalPrice += parseFloat(items.total_price);
-                    const row = `
+            .then(data => {
+                const container = document.getElementById('cart-items-container');
+                container.innerHTML = '';
+                let totalPrice = 0;
+                if (data.length > 0) {
+                    data.forEach(items => {
+                        totalPrice += parseFloat(items.total_price);
+                        const row = `
             <div class="product-info">
                 <img src="" alt="Product Image">
                 <div class="ml-12">
@@ -25,23 +21,21 @@ document.addEventListener('DOMContentLoaded',function()
                     <span>${parseFloat(items.total_price).toLocaleString()} đ</span>
                 </div>
             </div>`;
-            container.insertAdjacentHTML('beforeend',row);
-            });
-            // hiển thị tổng tiền và giảm giá tạm thời cho 0
-            showAllMoneyItems(totalPrice,0);
-        }
-            else{
-                alert("Vui lòng thêm sản phẩm để tiến hành thanh toán");
-                console.log('Không có giá trị nào cả');
-            }
-        }).catch(error => console.error('Đã có lỗi xảy ra',error));
+                        container.insertAdjacentHTML('beforeend', row);
+                    });
+                    // hiển thị tổng tiền và giảm giá tạm thời cho 0
+                    showAllMoneyItems(totalPrice, 0);
+                } else {
+                    alert("Vui lòng thêm sản phẩm để tiến hành thanh toán");
+                    console.log('Không có giá trị nào cả');
+                }
+            }).catch(error => console.error('Đã có lỗi xảy ra', error));
     }
 
     // //@thực thi hiển thị tổng tiền đơn hàng
-    function showAllMoneyItems(total_price=0, discount=0)
-    {
-        const getElement =  document.getElementById('order-summary-container');
-        total_payment = total_price- discount;
+    function showAllMoneyItems(total_price = 0, discount = 0) {
+        const getElement = document.getElementById('order-summary-container');
+        total_payment = total_price - discount;
         const summaryHTML = `
             <div class="order-summary">
                 <div class="item">
@@ -62,12 +56,69 @@ document.addEventListener('DOMContentLoaded',function()
                     <span>${total_payment.toLocaleString()} đ</span>
                 </div>
             </div>
-            <button class="btn btn-order btn-block mt-4">Đặt hàng</button>
         `;
+        // <button class="btn btn-order btn-block mt-4">Đặt hàng</button>
         // getElement.innerHTML = summaryHTML;
         getElement.insertAdjacentHTML('beforeend', summaryHTML);
 
     }
+
+    //@thực thi viết hàm đặt hàng
+    function orderAllItemsShoppingCart() {
+        //thực thi lấy dữ liệu từ form
+        const name = document.querySelector('input[name="customer_name"]').value;
+        const phone = document.querySelector('input[name="customer_phone"]').value;
+        const email = document.querySelector('input[name="customer_email"]').value;
+        const address = document.querySelector('input[name="shipping_address"]').value;
+        const payment_method = document.querySelector('input[name="payment_method"]:checked').value;
+        const shipping_method = document.querySelector('input[name="shipping_method"]:checked').value;
+
+        if(!address)
+        {
+            alert("Vui lòng điền địa chỉ vào");
+            return;
+        }
+        const orderData = {
+            customer_name: name,
+            customer_phone: phone,
+            customer_email: email,
+            shipping_address: address,
+
+            shipping_method: shipping_method,
+            payment_method: payment_method,
+        };
+        console.log("Dữ liệu orderData: ", orderData);
+        // thực thi gọi api cho đặt hàng
+        fetch(`/api/order-items`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message == "Đặt hàng thành công") {
+                    alert("Bạn đã đặt hàng thành công");
+                    console.log("Đã đặt hàng thành công rồi nè");
+                } else {
+                    alert("Lỗi đặt hàng rồi bạn ơi");
+                    console.log(error);
+                }
+            })
+            .catch(error => console.error('Đã có lỗi xảy ra', error));
+    }
+
+    //@ lắng nghe sự kiện đặt hàng
+    document.addEventListener('click', function (event) {
+        if (event.target && event.target.id == 'btn-order') {
+            event.preventDefault();
+            console.log("Đóng gạch cho anh");
+            orderAllItemsShoppingCart();
+        }
+    });
+
+
+    //@ thực thi viết phương thức đặt hàng
     showAllItemsPayMoney();
 });
-

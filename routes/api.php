@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\GetAllItemsShoppingCart;
 use App\Http\Controllers\Api\GetCartShoppingController;
+use App\Http\Controllers\Api\HistoryBuyItems;
 use App\Http\Controllers\Api\PayMonneyController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RatingController;
@@ -80,7 +81,13 @@ Route::get('/get-product/{id_product}', [ProductController::class, 'getItemsProd
 // thực thị thanh toán
 // Route::get('/make-payment',[PayMonneyController::class, 'makePaymentAllItems'])->name('makepaymoney');
 Route::get('/make-payment', [PayMonneyController::class, 'makePaymentAllItems']);
-
+Route::post('/order-items',[PayMonneyController::class, 'paymentAllItems']); //tiến hành đặt hàng
+//Thực thi Rating bên admin
 Route::get('/admin-rating',[RatingController::class,'getAllRatings']); //hiên thị dữ liệu rating
 Route::delete('/delete-admin-rating/{id}',[RatingController::class, 'deleteItemsReview']); // thực thi xoá dữ liệu
 Route::get('/search-rating',[RatingController::class, 'fullTextSearchRatings'])->name('fulltextsearchRating');
+
+//Lịch sử mua hàng
+Route::get('/history-buy-items',[HistoryBuyItems::class,'getAllBuyItemsHistory']); //danh sách lịch sử mua hàng
+Route::get('/detail-history-items/{id_order}',[HistoryBuyItems::class,'getOrderHistoryDetails']); // chi tiết sản phẩm đã mua
+Route::post('/cancel-status-items/{id_order}',[HistoryBuyItems::class, 'cancelOrderItems']); // Huỷ đơn hàng khi không mua nữa

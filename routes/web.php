@@ -22,6 +22,9 @@ use App\Http\Controllers\RatingViewController;
 use App\Http\Controllers\ShoppingCartViewController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Api\ProfileCustomerViewController;
+use App\Http\Controllers\DetailViewBuyItems;
+use App\Http\Controllers\HistotyViewBuyItems;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TestController;
@@ -69,18 +72,9 @@ Route::get('/product', [ShoppingCartViewController::class, 'showDemoNha'])->name
 //
 // hiển thị thanh toán
 Route::get('/pay-money', [PayMonneyViewController::class, 'showViewPayMoney'])->name('payMoney');
-// Route::get('/demo',TestController::class,'testcai');
-
-// Route::get('demo', [Demo_OderController::class, 'showData']);
-// Route::get('view', [Demo_OderController::class, 'showView'])->name("view");
 
 
-Route::get('demo', [TestController::class, 'testcai']);
 
-//Route::get('index',[CategoryProductView::class, 'index'])->name('index');
-
-//Route::get('/category/create',[CategoryProductView::class, 'create'])->name('create');
-//Route::post('/category/store',[CategoryProductView::class, 'store'])->name('category.store');
 
 
 //Sanpham
@@ -112,8 +106,7 @@ Route::get('delete-category-product/{category_product_id}', [CategoryProductView
 
 Route::get('delete-category-product/{category_product_id}', [CategoryProductView::class, 'delete_category_product'])->name('delete_category_product');
 
-// Route::get('demo', [Demo_OderController::class, 'showData']);
-// Route::get('view', [Demo_OderController::class, 'showView'])->name("view");
+
 
 Route::get('category', [CategoryViewController::class, 'index']);
 
@@ -136,7 +129,6 @@ Route::get('/events/create', [EventController::class, 'create'])->name('create')
 Route::post('/events/store', [EventController::class, 'store'])->name('events.store');
 Route::delete('/events/{id}/delete', [EventController::class, 'destroy'])->name('deleteEvent');
 
-
 // Route Review
 // Hàm này mục đích chỉ để hiển thị trang chi tiết sản phẩm sẽ bị thay thế
 Route::get('/product-detail', [ReviewController::class, 'index'])->name('product_detail');
@@ -150,11 +142,7 @@ Route::post('/auth/forgot_password', [UserController::class, 'submitFormForgetPa
 Route::get('/auth/get_password/{customer}/{token}', [UserController::class, 'showGetPassword'])->name('auth.getPassword');
 Route::post('/auth/get_password/{customer}/{token}', [UserController::class, 'submitGetPassword'])->name('auth.submitPassword');
 
-// Route::get('/oke',TestController::class,'testcai');
-// Route::get('demo',[Demo_OderController::class,'showData']);
-// Route::get('view',[Demo_OderController::class,'showView'])->name("view");
 
-Route::get('category', [CategoryViewController::class, 'index']);
 
 
 Route::get('/register', [RegistController::class, 'showRegistrationForm'])->name('register');
@@ -163,3 +151,6 @@ Route::post('/register', [RegistController::class, 'register'])->name('index.reg
 
 Route::get('/admin-rating',[RatingViewController::class, 'showViewRating']); // hiển thị view rating
 
+Route::get('/about-me',[ProfileCustomerViewController::class, 'showViewProfileCustomer']); // hiển thị view chi tiết của khách hàng
+Route::get('/history-buy',[HistotyViewBuyItems::class,'showViewHistoryBuyItems']); // hiển thị lịch sử mua hàng
+Route::get('/detail-history/{id_order}',[DetailViewBuyItems::class, 'viewDetailBuyItems'])->name('order.details'); //hiển thị chi tiết sản phẩm đã mua
