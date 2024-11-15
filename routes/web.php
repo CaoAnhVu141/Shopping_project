@@ -22,10 +22,12 @@ use App\Http\Controllers\RatingViewController;
 use App\Http\Controllers\ShoppingCartViewController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Api\PaymentByVNPayController;
 use App\Http\Controllers\Api\ProfileCustomerViewController;
 use App\Http\Controllers\DetailViewBuyItems;
 use App\Http\Controllers\HistotyViewBuyItems;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentByVnPay;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
@@ -48,7 +50,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/testcai', [TestController::class, 'testcai']);
 
 Route::get('category', [CategoryViewController::class, 'index']);
 Route::get('/attribute', [AttributeViewController::class, 'showThemmeAttributeIndex'])->name('attribute');
@@ -154,3 +155,10 @@ Route::get('/admin-rating',[RatingViewController::class, 'showViewRating']); // 
 Route::get('/about-me',[ProfileCustomerViewController::class, 'showViewProfileCustomer']); // hiển thị view chi tiết của khách hàng
 Route::get('/history-buy',[HistotyViewBuyItems::class,'showViewHistoryBuyItems']); // hiển thị lịch sử mua hàng
 Route::get('/detail-history/{id_order}',[DetailViewBuyItems::class, 'viewDetailBuyItems'])->name('order.details'); //hiển thị chi tiết sản phẩm đã mua
+
+
+// Demo thanh toán
+Route::get('/testcai', [TestController::class, 'testcai']);
+Route::get('/payment-buy-vnpay',[PaymentByVnPay::class, 'showViewPayByVNPay']);
+Route::post('/demo-checkout',[PaymentByVNPayController::class, 'paymentItemsByVNPay'])->name('checkout');
+

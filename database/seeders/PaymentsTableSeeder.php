@@ -12,20 +12,14 @@ class PaymentsTableSeeder extends Seeder
         // Thêm dữ liệu mẫu vào bảng payments
         DB::table('payments')->insert([
             [
-                'payment_method' => 'Credit Card',
+                'payment_method' => 'Tiền mặt',
                 'describe' => 'Thanh toán bằng thẻ tín dụng',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'payment_method' => 'PayPal',
-                'describe' => 'Thanh toán qua PayPal',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'payment_method' => 'Cash on Delivery',
-                'describe' => 'Thanh toán khi nhận hàng',
+                'payment_method' => 'Ví điện tử VN PAY',
+                'describe' => 'Thanh toán qua VN PAY',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

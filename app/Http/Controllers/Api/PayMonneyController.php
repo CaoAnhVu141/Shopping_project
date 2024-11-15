@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Log;
 
 class PayMonneyController extends Controller
 {
-    // //// thực hiện thực thi để thanh toán
+    // thực hiện thực thi để thanh toán
     public function makePaymentAllItems(Request $request)
     {
         try {
@@ -67,17 +67,20 @@ class PayMonneyController extends Controller
             $name_customer = $request->input('customer_name');
             $email_customer = $request->input('customer_email');
             $phone_customer = $request->input('customer_phone');
-            $shipping_address = $request->input('shipping_address');
+            // Lấy các trường Tỉnh, Quận/Huyện, Phường/Xã và tạo địa chỉ
+            $province = $request->input('method_province');
+            $district = $request->input('method_district');
+            $commune = $request->input('method_ward');
+            $address_details = $request->input('shipping_address'); // Phần địa chỉ chi tiết người dùng nhập
+            // Kết hợp địa chỉ đầy đủ
+            $shipping_address = $address_details . ', ' . $commune . ', ' . $district . ', ' . $province;
             $id_shipping_method = $request->input('shipping_method');
             $id_payment = $request->input('payment_method');
+            Log::info("Địa chỉ là: " . $address_details);
             // Lấy id_session và id_customer
             $id_session = Session::getId();
             $id_customer = auth()->check() ? auth()->id() : null;
 
-            Log::info("Session ID và Customer ID", [
-                'id_session' => $id_session,
-                'id_customer' => $id_customer
-            ]);
             // Lấy sản phẩm từ giỏ hàng
             $cartItems = ShoppingCart::with('product')
                 ->where(function ($query) use ($id_customer, $id_session) {
@@ -89,13 +92,13 @@ class PayMonneyController extends Controller
                 })->get();
 
             if ($cartItems->isEmpty()) {
-                Log::info("Giỏ hàng trống");
                 return response()->json([
                     'message' => "Giỏ hàng không có dữ liệu",
                 ], 200);
             }
 
             $totalAmount = $cartItems->sum('total_price');
+
             // Tạo đơn hàng
             $orders = Order::create([
                 'id_customer' => $id_customer,
@@ -121,24 +124,26 @@ class PayMonneyController extends Controller
                     'status' => "Đã tiếp nhận",
                 ]);
             }
-            //lưu giá trị ở trong lịch sử đặt hàng
+
+            // Lưu giá trị ở trong lịch sử đặt hàng
             OrderStatusHistory::create([
                 'id_order' => $orders->id_order,
                 'status' => "Đặt hàng thành công",
                 'created_at' => now()
             ]);
+
             // Xóa sản phẩm trong giỏ hàng sau khi đặt hàng thành công
             if ($id_customer) {
                 ShoppingCart::where('id_customer', $id_customer)->delete();
             } else {
                 ShoppingCart::where('id_session', $id_session)->delete();
             }
+
             return response()->json([
                 'message' => "Đặt hàng thành công",
                 'order_id' => $orders->id_order,
             ], 200);
         } catch (\Exception $e) {
-            Log::error("Lỗi khi đặt hàng: " . $e->getMessage());
             return response()->json(['message' => 'Đã xảy ra lỗi khi xử lý đơn hàng', 'error' => $e->getMessage()], 500);
         }
     }
