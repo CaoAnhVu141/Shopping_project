@@ -73,7 +73,7 @@ class PayMonneyController extends Controller
             $commune = $request->input('method_ward');
             $address_details = $request->input('shipping_address'); // Phần địa chỉ chi tiết người dùng nhập
             // Kết hợp địa chỉ đầy đủ
-            $shipping_address = $address_details . ',' . $commune . ', ' . $district . ', ' . $province;
+            $shipping_address = $address_details . ', ' . $commune . ', ' . $district . ', ' . $province;
             $id_shipping_method = $request->input('shipping_method');
             $id_payment = $request->input('payment_method');
             Log::info("Địa chỉ là: " . $address_details);
