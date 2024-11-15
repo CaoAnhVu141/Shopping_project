@@ -5,10 +5,14 @@
 <div class="history-container">
     <div class="history-header">
         <h2>Lịch sử mua hàng</h2>
-        <input type="text" placeholder="Tìm kiếm...">
+        <input type="text" id="btn-buyitems" placeholder="Tìm kiếm...">
+        <button type="submit" class="btn btn-default" id="btn-search"><i class="fa fa-search"></i></button>
     </div>
     <div id="order-items">
         {{-- hiển thị giá trị sẽ ở nơi đây bằng js--}}
+    </div>
+    <div id="pagination" class="pagination">
+        {{-- Phân trang sẽ hiển thị ở nơi này --}}
     </div>
 
 </div>

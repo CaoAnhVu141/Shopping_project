@@ -34,7 +34,6 @@ class Review extends Model
 
 
     // viết model thực thi chức năng tìm kiếm Full Text Search
-
     public function scopeSearch($query, $keyword)
     {
         return $query->whereRaw("MATCH(comment) AGAINST(? IN BOOLEAN MODE)", [$keyword]);

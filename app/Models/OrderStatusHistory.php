@@ -20,6 +20,14 @@ class OrderStatusHistory extends Model
     // thiết lập quan hệ giữa oder và oder_status_history (1-n)
     public function order()
     {
-        return $this->belongsTo(Order::class,'id_order');
+        return $this->belongsTo(Order::class, 'id_order');
+    }
+
+    //Viết phương thức full text search cho lịch sử mua hàng
+    public function scopeSearch($query, $keyword)
+    {
+        return $query->whereHas('order', function ($q) use ($keyword) {
+            $q->whereRaw("MATCH(customer_name, customer_email, shipping_address, status) AGAINST(? IN BOOLEAN MODE)", [$keyword]);
+        });
     }
 }
