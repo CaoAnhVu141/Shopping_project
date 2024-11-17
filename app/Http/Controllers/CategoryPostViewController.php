@@ -15,7 +15,9 @@ class CategoryPostViewController extends Controller
         {
             $key_word = $request->input('keyword');
         }
-        $category_post = CategoryPost::where('name','LIKE',"%$key_word%")->paginate(5);
+        $category_post = CategoryPost::where('name','LIKE',"%$key_word%")
+                                    ->orWhere('describe', 'LIKE', "%$key_word%")
+                                    ->paginate(5);
 
         return view('Front-end-Admin.categorypost.index', compact('category_post'));
     }
