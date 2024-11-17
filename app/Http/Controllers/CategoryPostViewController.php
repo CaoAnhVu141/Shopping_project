@@ -8,9 +8,15 @@ use Illuminate\Http\Request;
 class CategoryPostViewController extends Controller
 {
     //hàm in ra dữ liệu
-    public function showViewCategoryPost()
+    public function showViewCategoryPost(Request $request)
     {
-        $category_post = CategoryPost::paginate(5);
+        $key_word = '';
+        if($request->input('keyword'))
+        {
+            $key_word = $request->input('keyword');
+        }
+        $category_post = CategoryPost::where('name','LIKE',"%$key_word%")->paginate(5);
+
         return view('Front-end-Admin.categorypost.index', compact('category_post'));
     }
 
