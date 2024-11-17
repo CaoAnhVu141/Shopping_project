@@ -24,7 +24,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><a href="" class="btn btn-primary">Thêm
+                        <h3 class="box-title"><a href="{{ Route('category-post-showadd') }}" class="btn btn-primary">Thêm
                                 mới </a></h3>
                         <div class="box-tools">
                             <form action="#">
@@ -47,44 +47,29 @@
                                 <th>STT</th>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>CheckActive</th>
                                 <th>Time</th>
                                 <th>Action</th>
                             </tr>
-                            {{-- @comment --}}
-                            {{-- @if($categorypost->total() > 0)
                                 @php
                                     $count = 0;
                                 @endphp
-                                @if(isset($categorypost))
-                                    @foreach ($categorypost as $item)
+                                @if(isset($category_post))
+                                    @foreach ($category_post as $items)
                                         @php
                                             $count ++;
                                         @endphp
                                         <tr>
                                             <td>{{ $count }}</td>
-
-                                            <td>{{ $item->name }}</td> --}}
-
-                                            {{-- @comment --}}
-                                            {{-- <td><span class="{{ $item->getType($item->atb_type)['class'] }}"></span></td> --}}
-                                            {{-- <td>{{ $item->discription }}</td>
+                                            <td>{{ $items->name }}</td>
+                                           {{-- <td><span class="{{ $item->getType($item->atb_type)['class'] }}"></span></td> --}}
+                                             <td>{{ $items->describe }}</td>
+                                            <td>{{ $items->created_at }}</td>
                                             <td>
-                                                @if ($item->checkstatus == 1)
-                                                    <a href="{{ route('showorhidecategorypost',['id'=>$item->id_category]) }}"
-                                                       class="label label-info status-active">Show</a>
-                                                @else
-                                                    <a href="{{ route('showorhidecategorypost',['id'=>$item->id_category]) }}"
-                                                       class="label label-default status-active">Hide</a>
-                                                @endif
-                                            </td>
-                                            <td>{{ $item->created_at }}</td>
-                                            <td>
-                                                <a href="{{ route('updatecategorypost',['id'=>$item->id_category]) }}"
+                                                <a href="{{ Route('update-category-post',['id' => $items->id_category_post]) }}"
                                                    class="btn btn-xs btn-primary"
                                                    onclick="return confirm('Bạn chắc chắn là sửa chứ')"><i
                                                         class="fa fa-pencil"></i> Edit</a>
-                                                <a href="{{ route('deletecategorypost',['id'=>$item->id_category]) }}"
+                                                <a href="{{ Route('delete-category-post',['id' => $items->id_category_post]) }}"
                                                    class="btn btn-xs btn-danger js-delete-confirm"
                                                    onclick="return confirm('Bạn chắc chắn là xoá chứ')"><i
                                                         class="fa fa-trash"></i> Delete</a>
@@ -92,10 +77,6 @@
                                         </tr>
                                     @endforeach
                                 @endif
-                            @else
-                                <h3>Rất tiêc, dữ liệu không tìm thấy</h3>
-                            @endif --}}
-
                             </tbody>
                         </table>
                         <div id="pageNavPosition" class="text-right">
@@ -125,16 +106,11 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- /.box-body -->
-                    {{--  {!! $attribute->links() !!}  --}}
                     <div></div>
                 </div>
-                <!-- /.box -->
             </div>
         </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <!-- /.row (main row) -->
+
     </section>
-    <!-- /.content -->
+
 @endsection
