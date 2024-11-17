@@ -29,7 +29,7 @@
                         <div class="box-tools">
                             <form action="#">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="key" value="{{ request()->input('key') }}"
+                                    <input type="text" name="keyword" value="{{ request()->input('keyword') }}"
                                            class="form-control pull-right" placeholder="Search">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
