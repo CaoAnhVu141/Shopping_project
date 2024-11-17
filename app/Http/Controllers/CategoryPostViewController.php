@@ -28,7 +28,7 @@ class CategoryPostViewController extends Controller
         ]);
         CategoryPost::create([
             'name' => $request->input('namecategory'),
-            'discription' => $request->input('descriptioncategory'),
+            'describe' => $request->input('descriptioncategory'),
         ]);
         return redirect()->route('indexcategorypost')->with('status', 'Thêm thành công rồi nè');
     }
@@ -60,7 +60,7 @@ class CategoryPostViewController extends Controller
         // Cập nhật thuộc tính
         $categorypost->update([
             'name' => $request->input('namecategory'),
-            'discription' => $request->input('descriptioncategory'),
+            'describe' => $request->input('descriptioncategory'),
         ]);
 
         return redirect()->route('indexcategorypost')->with('status', 'Bạn cập nhật thành công');
