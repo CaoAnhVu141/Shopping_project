@@ -62,63 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
         getElement.insertAdjacentHTML('beforeend', summaryHTML);
 
     }
-
-    // //@thực thi viết hàm đặt hàng
-    // function orderAllItemsShoppingCart() {
-    //     //thực thi lấy dữ liệu từ form
-    //     const name = document.querySelector('input[name="customer_name"]').value;
-    //     const phone = document.querySelector('input[name="customer_phone"]').value;
-    //     const email = document.querySelector('input[name="customer_email"]').value;
-    //     const address = document.querySelector('input[name="shipping_address"]').value;
-    //     const payment_method = document.querySelector('input[name="payment_method"]:checked').value;
-    //     const shipping_method = document.querySelector('input[name="shipping_method"]:checked').value;
-
-    //     if(!address)
-    //     {
-    //         alert("Vui lòng điền địa chỉ vào");
-    //         return;
-    //     }
-    //     const orderData = {
-    //         customer_name: name,
-    //         customer_phone: phone,
-    //         customer_email: email,
-    //         shipping_address: address,
-
-    //         shipping_method: shipping_method,
-    //         payment_method: payment_method,
-    //     };
-    //     console.log("Dữ liệu orderData: ", orderData);
-    //     // thực thi gọi api cho đặt hàng
-    //     fetch(`/api/order-items`, {
-    //             method: "POST",
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(orderData)
-    //         })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             if (data.message == "Đặt hàng thành công") {
-    //                 alert("Bạn đã đặt hàng thành công");
-    //                 console.log("Đã đặt hàng thành công rồi nè");
-    //             } else {
-    //                 alert("Lỗi đặt hàng rồi bạn ơi");
-    //                 console.log(error);
-    //             }
-    //         })
-    //         .catch(error => console.error('Đã có lỗi xảy ra', error));
-    // }
-
-    // //@ lắng nghe sự kiện đặt hàng
-    // document.addEventListener('click', function (event) {
-    //     if (event.target && event.target.id == 'btn-order') {
-    //         event.preventDefault();
-    //         console.log("Đóng gạch cho anh");
-    //         orderAllItemsShoppingCart();
-    //     }
-    // });
-
-
     // //@thực thi viết hàm đặt hàng
     function orderAllItemsShoppingCart() {
         // Lấy dữ liệu từ form

@@ -9,6 +9,7 @@ class PaymentByVnPay extends Controller
     //hàm trả giao diện khi thanh toán bằng vnpay
     public function showViewPayByVNPay()
     {
-        return view('Front-end-Shopping.paymentbyvnpay');
+        $amount = 200000;
+        return view('Front-end-Shopping.paymentbyvnpay',compact('amount'));
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\PayMonneyController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RatingController;
 use App\Http\Controllers\Api\ShoppingCartController;
+use App\Http\Controllers\Api\VnPayController;
 use App\Http\Controllers\RatingViewController;
 use App\Models\Attribute;
 
@@ -92,3 +93,12 @@ Route::get('/history-buy-items',[HistoryBuyItems::class,'getAllBuyItemsHistory']
 Route::get('/detail-history-items/{id_order}',[HistoryBuyItems::class,'getOrderHistoryDetails']); // chi tiết sản phẩm đã mua
 Route::post('/cancel-status-items/{id_order}',[HistoryBuyItems::class, 'cancelOrderItems']); // Huỷ đơn hàng khi không mua nữa
 Route::get('/search-history-items',[HistoryBuyItems::class,'fullTextSearchHistoryItems']); // tìm kiếm cho lịch sử mua hàng
+
+
+
+//Demo thanh toán bằng api VNPAY
+Route::post('/payment', [VnPayController::class, 'createPayment'])->name('create.payment');
+Route::get('/vnpay-return', function (Request $request) {
+    return response()->json(['status' => 'success', 'message' => 'VNPAY Return is working!'])
+        ->header('ngrok-skip-browser-warning', 'true');
+});
