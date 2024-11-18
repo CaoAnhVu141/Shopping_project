@@ -191,7 +191,7 @@ function showViewSearchDashboard(data_dashboard) {
             </td>
             <td>${item.created_at ? moment(item.created_at).format("DD/MM/YYYY") : 'N/A'}</td>
             <td>
-                <a href="/view-detail/${item.encrypted_id}" class="btn btn-xs btn-info js-preview-view" data-id="${item.id_order}">
+                <a href="/view-detail/${item.id_order}" class="btn btn-xs btn-info js-preview-view" data-id="${item.id_order}">
                     <i class="fa fa-eye"></i> View
                 </a>
                 <div class="btn-group">

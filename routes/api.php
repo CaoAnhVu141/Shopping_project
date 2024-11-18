@@ -13,6 +13,9 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RatingController;
 use App\Http\Controllers\Api\ShoppingCartController;
 use App\Http\Controllers\Api\VnPayController;
+use App\Http\Controllers\Api\StatisticalOrderController;
+use App\Http\Controllers\Api\StatisticalProductController;
+
 use App\Http\Controllers\RatingViewController;
 use App\Models\Attribute;
 
@@ -96,9 +99,22 @@ Route::get('/search-history-items',[HistoryBuyItems::class,'fullTextSearchHistor
 
 
 
+
 //Demo thanh toán bằng api VNPAY
 Route::post('/payment', [VnPayController::class, 'createPayment'])->name('create.payment');
 Route::get('/vnpay-return', function (Request $request) {
     return response()->json(['status' => 'success', 'message' => 'VNPAY Return is working!'])
         ->header('ngrok-skip-browser-warning', 'true');
 });
+
+//Thống kê cho bên admin
+Route::get('/product-staticital',[StatisticalProductController::class, 'productStatistical']); //thống kê sản phẩm
+Route::get('/out-stock-product',[StatisticalProductController::class, 'outOfStockProduct']); //thống kê sản phẩm nào gần hết
+Route::get('/top-sell-product',[StatisticalProductController::class,'bestSellProduct']); // thống kê top 10 sản phẩm bán chạy nhất
+Route::get('/order-by-status',[StatisticalOrderController::class, 'orderByStatus']); // thống kê theo trạng thái sản phẩm
+
+// Biểu đồ theo tháng
+Route::get('/revenue-by-month',[StatisticalOrderController::class, 'revenueByMonth']);
+
+
+

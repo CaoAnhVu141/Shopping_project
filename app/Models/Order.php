@@ -85,12 +85,11 @@ class Order extends Model
         return self::where('status', 'Đã Bàn Giao')->sum('total_item');
     }
 
-    // mã hoá id
-    protected $appends = ['encrypted_id'];
-
-    // Accessor cho encrypted_id
-    public function getEncryptedIdAttribute()
-    {
-        return Crypt::encrypt($this->attributes['id_order']);
-    }
+    // // mã hoá id
+    // protected $appends = ['encrypted_id'];
+    // // Accessor cho encrypted_id
+    // public function getEncryptedIdAttribute()
+    // {
+    //     return Crypt::encrypt($this->attributes['id_order']);
+    // }
 }

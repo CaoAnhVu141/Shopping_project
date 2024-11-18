@@ -43,11 +43,4 @@ class AdminDashboardViewController extends Controller
         }
     }
 
-    //@truyền qua view về đơn hàng thành công
-    // public function showItemsSuccess()
-    // {
-
-    //     return view("Front-end-Admin.transaction.view",compact('countItems'));
-    // }
-
 }

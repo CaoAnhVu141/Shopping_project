@@ -1,0 +1,135 @@
+document.addEventListener('DOMContentLoaded', function () {
+    function showDataProductStatistical(statisticalData) {
+        const getElement = document.getElementById('statistical_product');
+        getElement.innerHTML = '';
+        // Dữ liệu hàng thống kê
+        const row = `
+            <tr>
+                <td>1</td>
+                <td>${statisticalData.total_product}</td>
+                <td>${statisticalData.hot_product}</td>
+                <td>${parseFloat(statisticalData.total_revenue).toLocaleString('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                })}</td>
+            </tr>
+        `;
+        getElement.insertAdjacentHTML('beforeend', row);
+    }
+
+    function showDataOutOfProduct(statisticalData) {
+        const getElement = document.getElementById('top-out-stock');
+        getElement.innerHTML = '';
+        statisticalData.forEach((items, index) => {
+            const row = `
+        <tr>
+            <td>${index + 1}</td>
+            <td>${items.name}</td>
+            <td>${items.quantity_available}</td>
+        </tr>`;
+            getElement.insertAdjacentHTML('beforeend', row);
+        });
+    }
+
+    function showDataBestSellerProduct(statisticalData) {
+        const getElement = document.getElementById('top-best-seller');
+        getElement.innerHTML = '';
+        statisticalData.forEach((items, index) => {
+            const row = `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${items.name}</td>
+                <td>${items.total_sold}</td>
+            </tr>`;
+            getElement.insertAdjacentHTML('beforeend', row);
+        });
+
+    }
+
+    //Thống kê sản phẩm
+    function statiscialProduct() {
+        fetch(`/api/product-staticital`).then(response => response.json())
+            .then(data => {
+                if (data.message == "Lấy dữ liệu thành công") {
+                    showDataProductStatistical(data.data);
+                }
+            })
+            .catch(error => console.error('Đã có lỗi xảy ra', error));
+    }
+    //
+    function staticitalOutOfProduct() {
+        fetch(`/api/out-stock-product`).then(response => response.json())
+            .then(data => {
+                if (data.message == "Lấy dữ liệu thành công") {
+                    showDataOutOfProduct(data.data);
+                }
+            })
+            .catch(error => console.error('Đã có lỗi xảy ra', error));
+    }
+
+    //Top 10 Sản phẩm bán chạy nhất
+    function topBestSellerProduct() {
+        fetch(`/api/top-sell-product`).then(response => response.json())
+            .then(data => {
+                if (data.message == "Lấy dữ liệu thành công") {
+                    showDataBestSellerProduct(data.data);
+                }
+            })
+            .catch(error => console.error('Đã có lỗi xảy ra', error));
+    }
+    //biểu đồ nek
+    function renderRevenueChart(data) {
+        console.log('Dữ liệu truyền vào biểu đồ:', data); // Debug dữ liệu
+
+        Highcharts.chart('revenue-chart', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Doanh thu theo tháng'
+            },
+            xAxis: {
+                categories: data.map(item => `Tháng ${item.month}`),
+                title: {
+                    text: 'Tháng'
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Doanh thu (VNĐ)'
+                },
+                labels: {
+                    formatter: function () {
+                        return this.value.toLocaleString('vi-VN'); // Định dạng số VNĐ
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: 'Doanh thu: <b>{point.y:,.0f} VNĐ</b>'
+            },
+            series: [{
+                name: 'Doanh thu',
+                data: data.map(item => parseFloat(item.total_revenue)) // Chuyển đổi sang số
+            }]
+        });
+    }
+
+
+    function fetchRevenueData() {
+        fetch('/api/revenue-by-month')
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === "Lấy dữ liệu thành công") {
+                    renderRevenueChart(data.data);
+                }
+            })
+            .catch(error => console.error('Lỗi khi lấy dữ liệu doanh thu:', error));
+    }
+
+    fetchRevenueData();
+    statiscialProduct();
+    staticitalOutOfProduct();
+    topBestSellerProduct();
+
+});

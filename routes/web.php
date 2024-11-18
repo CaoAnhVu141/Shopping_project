@@ -164,4 +164,5 @@ Route::get('/payment-buy-vnpay',[PaymentByVnPay::class, 'showViewPayByVNPay']);
 // thanh toán thành công
 Route::get('/success-buy-items',[SuccessBuyItemsViewController::class, 'showViewSuccessBuyItems'])->name('success.buy');
 
-
+//Thống kê bên admin
+Route::get('/statistical',[StatisticalViewController::class, 'showStatisticalView']);
