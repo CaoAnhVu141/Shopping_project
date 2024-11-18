@@ -1,44 +1,34 @@
 @extends('LayOut.admin-dashboard.master_admin')
 @section('content')
-
 <section class="content-header">
-  <h1>
-    Thống Kê
-    <small>website</small>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">thống kê</li>
-  </ol>
+    <h1>
+        Thống Kê
+        <small>website</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">thống kê</li>
+    </ol>
 </section>
 <section class="content">
-     <div class="row" style="margin-bottom: 20px">
-
+    <div class="row" style="margin-bottom: 20px">
         <div class="col-sm-8">
             <div class="box-title">
                 <form action="" method="GET" class="form-inline">
                     <select name="mt" class="form-control">
                         <option value="">_ Tháng trong năm _</option>
-
-                            <option value="">Tháng</option>
-
+                        <option value="">Tháng</option>
                     </select>
                     <button type="submit" class="btn btn-success"><i class="fa fa-search"> </i> Search</button>
-                     <button type="submit" name="export" value="true" class="btn btn-info">
+                    <button type="submit" name="export" value="true" class="btn btn-info">
                         <i class="fa fa-save"> </i> Export
                     </button>
                 </form>
             </div><br>
             {{-- @@todo --}}
             <figure class="highcharts-figure">
-                <div id="container2"
-                data-list-day=""
-                data-money-default=""
-                data-money-process=""
-                data-money-success=""
-                data-money-cancel=""
-                data-mt = ""
-                ></div>
+                <div id="container2" data-list-day="" data-money-default="" data-money-process="" data-money-success=""
+                    data-money-cancel="" data-mt=""></div>
             </figure>
         </div>
         {{-- @@todo --}}
@@ -47,16 +37,18 @@
                 <div id="container" data-json=""></div>
             </figure>
         </div>
-    </div> 
+    </div>
     <div class="row" style="margin-bottom: 20px">
         <div class="col-md-7">
             <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title">Doanh Số</h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i>
                         </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                class="fa fa-times"></i></button>
                     </div>
                 </div>
                 <div class="box-body" style="">
@@ -64,35 +56,29 @@
                         <span style="color: red">Không chọn gì mặc định lấy các ngày trong tháng và năm hiện tại.</span>
                         <div class="box-title">
                             <form action="" method="GET" class="form-inline">
-                                <input type="date" value="{{Request::get('dateBefore')}}" name="dateBefore" class="form-control" id="validationCustom01">
-                                <input type="date" value="{{Request::get('dateAfter')}}" name="dateAfter" class="form-control {{ $errors->first('dateAfter') ? 'is-valid' : '' }}" id="validationCustom01">
-                                @if ($errors->first('dateAfter'))
-                                    <span class="text-danger">{{ $errors->first('dateAfter') }}</span>
-                                @endif
+                                <input type="date" value="" name="dateBefore" class="form-control"
+                                    id="validationCustom01">
+                                <input type="date" value="" name="dateAfter" class="form-control"
+                                    id="validationCustom01">
+                                <span class="text-danger"></span>
                                 <select name="day" class="form-control">
-                                    <option value="" >_ Ngày trong tháng _</option>
-                                    @for ($i = 1; $i <=31; $i++)
-                                        <option value="{{$i}}" {{ Request::get('day') == $i ? "selected='selected'" : "" }}>Ngày {{$i}}</option>
-                                    @endfor
+                                    <option value="">_ Ngày trong tháng _</option>
+                                    <option value="</option>
                                 </select>
-                                <select name="month" class="form-control">
+                                <select name=" month="" class="form-control">
                                     <option value="">_ Tháng trong năm _</option>
-                                    @for ($i = 1; $i <=12; $i++)
-                                        <option value="{{$i}}" {{ Request::get('month') == $i ? "selected='selected'" : "" }}>Tháng {{$i}}</option>
-                                    @endfor
+                                    <option value="">Tháng</option>
                                 </select>
                                 <select name="year" class="form-control">
                                     <option value="">_ Năm _</option>
-                                    <option value="2019" {{ Request::get('year') == 2019 ? "selected='selected'" : "" }}>Năm 2019</option>
-                                    <option value="2020" {{ Request::get('year') == 2020 ? "selected='selected'" : "" }}>Năm 2020</option>
-                                    <option value="2021" {{ Request::get('year') == 2021 ? "selected='selected'" : "" }}>Năm 2021</option>
-                                    <option value="2022" {{ Request::get('year') == 2022 ? "selected='selected'" : "" }}>Năm 2022</option>
-                                    <option value="2023" {{ Request::get('year') == 2023 ? "selected='selected'" : "" }}>Năm 2023</option>
+                                    <option value="2019">Năm 2019</option>
+                                    <option value="2020">Năm 2020</option>
+                                    <option value="2021">Năm 2021</option>
+                                    <option value="2022">Năm 2022</option>
+                                    <option value="2023">Năm 2023</option>
                                 </select>
-                                <button type="submit" class="btn btn-success"><i class="fa fa-search"> </i> Search</button>
-                                {{--  <button type="submit" name="export" value="true" class="btn btn-info">
-                                    <i class="fa fa-save"> </i> Export
-                                </button>  --}}
+                                <button type="submit" class="btn btn-success"><i class="fa fa-search"> </i>
+                                    Search</button>
                             </form>
                         </div>
                         <table class="table no-margin">
@@ -104,26 +90,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(isset($moneyTransaction))
-                                    @foreach ($moneyTransaction as $item)
-                                        <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ number_format($item->totalMoney,0,',','.') }} vnd</td>
-                                            <td> 
-                                                @if (!(empty(Request::get('year'))) && empty(Request::get('day')) && empty(Request::get('month')))
-                                                    Tháng {{ $item->day }} Năm {{Request::get('year')}}
-                                                @else
-                                                    {{ $item->day }}
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                        <tr>
-                                            <td>Tổng</td>
-                                            <td><span style="color: red">{{ number_format($totalMoneyTransaction,0,',','.') }} vnd</span></td>
-                                            <td></td>
-                                        </tr>
-                                @endif
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        Tháng Năm
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tổng</td>
+                                    <td><span style="color: red"></span></td>
+                                    <td></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -135,9 +113,11 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Top 10 khách hàng mua chi nhiều tiền nhất</h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i>
                         </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                class="fa fa-times"></i></button>
                     </div>
                 </div>
                 <div class="box-body" style="">
@@ -151,29 +131,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(isset($userTransaction))
-                                    @foreach ($userTransaction as $key =>$item)
-                                        <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>
-                                                <ul>
-                                                    <li>Name: {{ $item->user->name }}</li>
-                                                    <li>Email: {{ $item->user->email }}</li>
-                                                    <li>Phone: {{ $item->user->phone }}</li>
-                                                    <li>Address: {{ $item->user->address }}</li>
-                                                </ul>
-                                            </td>
-                                            <td>{{ number_format($item->totalMoney , 0, ',', '.') }} vnđ</td>
-                                        </tr>
-                                    @endforeach
-                                @endif
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <ul>
+                                            <li>Name: </li>
+                                            <li>Email: </li>
+                                            <li>Phone: </li>
+                                            <li>Address: </li>
+                                        </ul>
+                                    </td>
+                                    <td></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                {{-- <div class="box-footer clearfix" style="">
-                     <a href="{{ route('admin.transaction.index') }}" class="btn btn-sm btn-info btn-flat pull-right">Danh Sách</a> 
-                </div> --}}
             </div>
         </div>
         <div class="col-md-5">
@@ -181,9 +154,11 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">top sản phẩm bán trong tháng 7</h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i>
                         </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                class="fa fa-times"></i></button>
                     </div>
                 </div>
                 <div class="box-body" style="">
@@ -196,20 +171,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(isset($productsT7))
-                                    @foreach ($productsT7 as $key =>$item)
-                                        <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>
-                                                <ul>
-                                                    <li>Name: {{ $item->product->pro_name }}</li>
-                                                    {{-- <li>Email: {{ $$item->product->pro_price }}</li> --}}
-                                                    <li>tổng sô: {{$item->total}}</li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <ul>
+                                            <li>Name: </li>
+                                            {{-- <li>Email: {{ $$item->product->pro_price }}</li> --}}
+                                            <li>Tổng số: </li>
+                                        </ul>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -219,29 +190,25 @@
     </div>
 </section>
 @endsection
-
- @section('script')
-    <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script>
-        let dataTransaction = $('#container').attr('data-json');
+@section('script')
+<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script>
+    let dataTransaction = $('#container').attr('data-json');
         dataTransaction = JSON.parse(dataTransaction);
         Highcharts.chart('container', {
             chart: {
                 styledMode: true
             },
-
             title: {
                 text: 'Biểu đồ số đơn hàng'
             },
-
             xAxis: {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             },
-
             series: [{
                 type: 'pie',
                 allowPointSelect: true,
@@ -250,28 +217,17 @@
                 showInLegend: true
             }]
         });
-
-
-
-
         let listday = $('#container2').attr('data-list-day');
         listday = JSON.parse(listday);
-
         let listMoneyMonthDefault = $('#container2').attr('data-money-default');
         listMoneyMonthDefault = JSON.parse(listMoneyMonthDefault);
-
         let listMoneyMonthProcess = $('#container2').attr('data-money-process');
         listMoneyMonthProcess = JSON.parse(listMoneyMonthProcess);
-
         let listMoneyMonthSuccess = $('#container2').attr('data-money-success');
         listMoneyMonthSuccess = JSON.parse(listMoneyMonthSuccess);
-
         let listMoneyMonthCancel = $('#container2').attr('data-money-cancel');
         listMoneyMonthCancel = JSON.parse(listMoneyMonthCancel);
-
         let mt = $('#container2').attr('data-mt');
-
-
         Highcharts.chart('container2', {
             chart: {
                 type: 'spline'
@@ -339,5 +295,5 @@
                 }
             ]
         });
-    </script>
-@endsection 
+</script>
+@endsection

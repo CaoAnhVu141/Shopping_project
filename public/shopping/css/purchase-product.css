@@ -29,7 +29,7 @@
 }
 
 .history-header input:focus {
-    border-color: #007bff;
+    border-color: #717FE0;
 }
 
 .order-item {
@@ -116,9 +116,9 @@
 }
 
 .btn-readmore:hover {
-    background-color: #4684c2;
+    background-color: #717FE0;
     color: #fff;
-    border-color: #007bff;
+    border-color: #717FE0;
 }
 
 
@@ -149,7 +149,7 @@ cursor: pointer;
 }
 
 .pagination .active {
-background-color: #8234e2;
+background-color: #717FE0;
 color: white;
 font-weight: bold;
 }

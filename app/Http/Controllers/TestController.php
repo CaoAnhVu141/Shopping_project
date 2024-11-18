@@ -11,6 +11,6 @@ class TestController extends Controller
     //
     public function testcai()
     {
-        return view('Front-end-Shopping.demo-thanhtoan');
+        return view('Front-end-Admin.statistical.index');
     }
 }

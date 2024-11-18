@@ -142,6 +142,7 @@ class PayMonneyController extends Controller
             return response()->json([
                 'message' => "Đặt hàng thành công",
                 'order_id' => $orders->id_order,
+                'redirect_url' => '/success-buy-items'
             ], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Đã xảy ra lỗi khi xử lý đơn hàng', 'error' => $e->getMessage()], 500);

@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 const getDataElement = document.getElementById('view-history');
                 getDataElement.innerHTML = '';
-
                 if (data.message === "Lấy dữ liệu thành công") {
                     data.data.forEach(items => {
                         const order = items.order;
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                             <hr>`;
                         });
-
                         const row = `
                         <div class="order-summary">
                             <p><strong>Người nhận:</strong> ${order.customer_name}</p>
