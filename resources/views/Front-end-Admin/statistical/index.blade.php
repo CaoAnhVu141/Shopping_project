@@ -38,53 +38,45 @@
             <br>
         </div>
         <!-- Biểu đồ Doanh thu -->
-        <div class="col-sm-11">
+        <div class="col-sm-6">
             <figure class="highcharts-figure">
                 <div id="revenue-chart" style="height: 400px;"></div>
             </figure>
         </div>
         <!-- Biểu đồ trạng thái đơn hàng -->
-        <div class="col-sm-5">
+        <div class="col-sm-6">
             <figure class="highcharts-figure">
+                <div id="order-status-chart" style="height: 400px;"></div>
             </figure>
         </div>
     </div>
-
-    <!-- Doanh số hàng ngày -->
     <div class="row">
-        <div class="col-md-12">
+        <!-- Doanh Số Hàng Ngày -->
+        <div class="col-lg-6 col-md-6">
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Doanh Số Hàng Ngày</h3>
+                    <h3 class="box-title"><strong>DOANH SỐ HẰNG NGÀY</strong></h3>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>STT</th>
                                     <th>Ngày</th>
                                     <th>Doanh thu</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><strong>Tổng</strong></td>
-                                    <td><strong></strong></td>
-                                </tr>
+                            <tbody id="revenue_by_days">
+                                {{-- Dữ liệu sẽ được hiển thị ở đây --}}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Top khách hàng -->
-        <div class="col-md-12">
+        <!-- Thống kê sản phẩm -->
+        <div class="col-lg-6 col-md-6">
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>THỐNG KÊ SẢN PHẨM</strong></h3>
@@ -101,15 +93,17 @@
                                 </tr>
                             </thead>
                             <tbody id="statistical_product">
-                               {{-- Sẽ hiển thị chỗ này trong js --}}
+                                {{-- Sẽ hiển thị chỗ này trong js --}}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-12">
+    </div>
+    <div class="row mt-3">
+        <!-- Số lượng trong kho thấp -->
+        <div class="col-lg-6 col-md-6">
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>SỐ LƯỢNG TRONG KHO THẤP</strong></h3>
@@ -132,9 +126,9 @@
                 </div>
             </div>
         </div>
-
+    
         <!-- Top sản phẩm bán chạy -->
-        <div class="col-md-12">
+        <div class="col-lg-6 col-md-6">
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>DANH SÁCH SẢN PHẨM BÁN CHẠY NHẤT</strong></h3>
@@ -158,6 +152,7 @@
             </div>
         </div>
     </div>
+
 </section>
 @endsection
 <script src="{{ asset("shopping/data_rest/statiscical.js") }}"></script>

@@ -36,7 +36,7 @@ class StatisticalProductController extends Controller
         ], 200);
     }
 
-    //thống kê 10 sản phẩm bán chạy nhất
+    //thống kê 5 sản phẩm bán chạy nhất
     public function bestSellProduct()
     {
         $topProduct = OrderItem::join('product', 'order_item.id_product', '=', 'product.id_product') // Nối bảng product
@@ -47,7 +47,7 @@ class StatisticalProductController extends Controller
             )
             ->groupBy('product.id_product', 'product.name','order_item.id_order_item')
             ->orderByDesc('total_sold')
-            ->take(10)
+            ->take(5)
             ->get()
             ->makeHidden(['id_order_item']);
 

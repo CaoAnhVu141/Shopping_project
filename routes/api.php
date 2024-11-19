@@ -114,7 +114,8 @@ Route::get('/top-sell-product',[StatisticalProductController::class,'bestSellPro
 Route::get('/order-by-status',[StatisticalOrderController::class, 'orderByStatus']); // thống kê theo trạng thái sản phẩm
 
 // Biểu đồ theo tháng
-Route::get('/revenue-by-month',[StatisticalOrderController::class, 'revenueByMonth']);
+Route::get('/revenue-by-month',[StatisticalOrderController::class, 'revenueByMonth']); // thóng kê theo tháng
+Route::get('/revenue-by-days',[StatisticalOrderController::class, 'revenueByDays']); //thống kê theo ngày
 
 
 
