@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
@@ -18,18 +19,28 @@ class DashboardController extends Controller
         return response()->json([
             'message' => "Thành công",
             'data' => $items
-        ],200);
+        ], 200);
     }
 
     //@ lấy toàn bộ danh sách đơn hàng
-    public function getAllItemDashboard()
+    public function getAllItemDashboard(Request $request)
     {
-        $items = OrderItem::with('product', 'order.customer', 'order.payment')->get();
-
-        return response()->json([
-            'message' => 'Thành công',
-            'data' => $items
-        ]);
+        $id_session = $request->input('session_id') ?? Session::getId();
+        $id_customer = auth()->check() ? auth()->id() : null;
+        if ($id_customer) {
+            $items = OrderItem::with('product', 'order.customer', 'order.payment')->get();
+            return response()->json([
+                'message' => 'Thành công',
+                'data' => $items
+            ]);
+        }
+        if ($id_session) {
+            $items = OrderItem::with('product', 'order', 'order.payment')->get();
+            return response()->json([
+                'message' => 'Thành công',
+                'data' => $items
+            ]);
+        }
     }
 
     //@lấy dữ liệu json thực thi bên js

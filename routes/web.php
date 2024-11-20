@@ -26,6 +26,7 @@ use App\Http\Controllers\Api\PaymentByVNPayController;
 use App\Http\Controllers\Api\ProfileCustomerViewController;
 use App\Http\Controllers\Api\VnPayController;
 use App\Http\Controllers\DetailViewBuyItems;
+use App\Http\Controllers\Error404ViewController;
 use App\Http\Controllers\HistotyViewBuyItems;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentByVnPay;
@@ -165,4 +166,6 @@ Route::get('/payment-buy-vnpay',[PaymentByVnPay::class, 'showViewPayByVNPay']);
 Route::get('/success-buy-items',[SuccessBuyItemsViewController::class, 'showViewSuccessBuyItems'])->name('success.buy');
 
 //Thống kê bên admin
-Route::get('/statistical',[StatisticalViewController::class, 'showStatisticalView']);
+Route::get('/statistical',[StatisticalViewController::class, 'showStatisticalView'])->name('statistical');
+
+Route::get('/404',[Error404ViewController::class, 'showViewError404'])->name('page-404');

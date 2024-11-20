@@ -23,19 +23,19 @@
                         <tbody>
                             <tr>
                                 <td>Tên KH</td>
-                                <td>{{ $items->customer->name }}</td>
+                                <td>{{ $items->customer_name }}</td>
                             </tr>
                             <tr>
                                 <td>Email KH</td>
-                                <td>{{ $items->customer->email }}</td>
+                                <td>{{ $items->customer_email }}</td>
                             </tr>
                             <tr>
                                 <td>Phone KH</td>
-                                <td>{{ $items->customer->phone }}</td>
+                                <td>{{ $items->customer_phone }}</td>
                             </tr>
                             <tr>
                                 <td>Địa Chỉ KH</td>
-                                <td>{{ $items->customer->address }}</td>
+                                <td>{{ $items->shipping_address }}</td>
                             </tr>
                         </tbody>
                     </table>

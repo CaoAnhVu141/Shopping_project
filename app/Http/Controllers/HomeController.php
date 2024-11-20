@@ -12,7 +12,6 @@ class HomeController extends Controller
     {
         // lay danh muc
         $categories = Category::all();
-
         //lay san pham
         $products = Product::paginate(8);
 

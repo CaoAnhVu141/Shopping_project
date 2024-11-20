@@ -46,7 +46,7 @@ class OrderItem extends Model
     // thực hiện truy vấn lấy 5 sản phẩm hiển thị ra mới nhất
     public function scopeLatestGetItems($query,$limit=5)
     {
-        return $query->with('product', 'order.customer', 'order.payment')->latest()->take($limit);
+        return $query->with('product','order', 'order.customer', 'order.payment')->latest()->take($limit);
     }
 
 

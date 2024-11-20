@@ -9,20 +9,20 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             dashboard.innerHTML = ''; // Reset nội dung
             if (data.data.length > 0) {
-                data.data.forEach(item => {
+                data.data.forEach((item,index) => {
                     const formatMoney = new Intl.NumberFormat('vi-VN', {
                         style: 'currency',
                         currency: 'VND'
                     }).format(item.price);
                     const row = `
                         <tr>
-                            <td>100</td>
+                            <td>${index + 1}</td>
                             <td>
                                 <ul>
-                                    <li>Name: ${item.order.customer ? item.order.customer.name : 'N/A'}</li>
-                                    <li>Email: ${item.order.customer ? item.order.customer.email : 'N/A'}</li>
-                                    <li>Phone: ${item.order.customer ? item.order.customer.phone : 'N/A'}</li>
-                                    <li>Address: ${item.order.customer ? item.order.customer.address : 'N/A'}</li>
+                                    <li>Name: ${item.order.customer_name ? item.order.customer_name : item.order.customer.name}</li>
+                                    <li>Email: ${item.order.customer_email ? item.order.customer_email : item.order.customer.email}</li>
+                                    <li>Phone: ${item.order.customer_email ? item.order.customer_email : item.order.customer.phone}</li>
+                                    <li>Address: ${item.order.shipping_address ? item.order.shipping_address : item.order.customer.address}</li>
                                 </ul>
                             </td>
                             <td>${formatMoney}</td>
@@ -59,20 +59,20 @@ function getAllItems() {
             item_dashboard.innerHTML = ''; // Xóa nội dung cũ
             console.log(data.data);
             if (data && data.data.length > 0) {
-                data.data.forEach(item => {
+                data.data.forEach((item,index) => {
                     const formatMoney = new Intl.NumberFormat('vi-VN', {
                         style: 'currency',
                         currency: 'VND'
                     }).format(item.price);
                     const row = `
                         <tr>
-                            <td>100</td>
+                            <td>${index + 1}</td>
                             <td>
                                 <ul>
-                                    <li>Name: ${item.order.customer ? item.order.customer.name : 'N/A'}</li>
-                                    <li>Email: ${item.order.customer ? item.order.customer.email : 'N/A'}</li>
-                                    <li>Phone: ${item.order.customer ? item.order.customer.phone : 'N/A'}</li>
-                                    <li>Address: ${item.order.customer ? item.order.customer.address : 'N/A'}</li>
+                                    <li>Name: ${item.order.customer_name ? item.order.customer_name : item.order.customer.name}</li>
+                                    <li>Email: ${item.order.customer_email ? item.order.customer_email : item.order.customer.email}</li>
+                                    <li>Phone: ${item.order.customer_phone ? item.order.customer_phone : item.order.customer.phone}</li>
+                                    <li>Address: ${item.order.shipping_address ? item.order.shipping_address : item.order.customer.address}</li>
                                 </ul>
                             </td>
                             <td>${formatMoney}</td>
@@ -159,12 +159,12 @@ function updateStatusDashBoard(idOrder, newStatus) {
         })
         .catch(error => console.error('Đã có lỗi xảy ra:', error));
 }
-// Hàm hiện thị view cho tìm kiếm dashboard
+// Hàm hiện thị view cho tìm kiếm dashboard @chua fix
 function showViewSearchDashboard(data_dashboard) {
     const data_view = document.getElementById('list_item');
     data_view.innerHTML = ''; // Xóa nội dung cũ
 
-    data_dashboard.forEach(item => {
+    data_dashboard.forEach((item,index) => {
         const row = document.createElement('tr');
         // Định dạng tiền tệ
         const formatMoney = new Intl.NumberFormat('vi-VN', {
@@ -173,7 +173,7 @@ function showViewSearchDashboard(data_dashboard) {
         }).format(item.total_item || 0);
         // Nhúng HTML vào `row`
         row.innerHTML = `
-            <td>100</td>
+            <td>${index+1}</td>
             <td>
                 <ul>
                     <li>Name: ${item.customer ? item.customer.name : 'N/A'}</li>

@@ -17,7 +17,7 @@ class ShoppingCartController extends Controller
      //@thêm sản phẩm vào giỏ hàng
     public function addToCartShopping(Request $request, $Idproduct)
     {
-        // Lấy `session_id` từ yêu cầu hoặc từ session hiện tại
+        // Lấy `session_id` từ yêu cầu
         $id_session = $request->input('session_id') ?? Session::getId();
         $id_customer = auth()->check() ? auth()->id() : null;
 
