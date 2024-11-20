@@ -26,17 +26,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <p>Ngày đặt hàng: ${formattedDate}</p>
                             </div>
                             <div class="order-price">
-                                <del>118.000₫</del>
-                                <div class="new-price">89.000₫</div>
                                 <div class="order-total">
                                     <p>Thành tiền: <span class="new-price">${parseFloat(items.total_item).toLocaleString()}₫</span></p>
                                 </div>
-                                <div class="order-action">
-                                    <button class="btn-readmore" data-id="${items.id_order}">Xem chi tiết</button>
+                                <div class="order-action-container">
+                                <button class="btn-readmore" data-id="${items.id_order}">Xem chi tiết</button>
+                                <button class="btn-remove-active" data-id="${items.id_order}">Huỷ đơn hàng</button>
                                 </div>
-                                <div class="order-action">
-                                    <button class="btn-remove-active" data-id="${items.id_order}">Huỷ đơn hàng</button>
-                                </div>
+
                             </div>
                         </div>`;
                         getElement.insertAdjacentHTML('beforeend', row);

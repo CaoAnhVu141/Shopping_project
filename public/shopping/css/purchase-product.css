@@ -1,5 +1,4 @@
 
-
 .history-container {
     margin: 30px auto;
     max-width: 1100px;
@@ -29,7 +28,11 @@
 }
 
 .history-header input:focus {
+
     border-color: #717FE0;
+
+    border-color: #4684c2;
+
 }
 
 .order-item {
@@ -81,7 +84,7 @@
 }
 
 .order-price .new-price {
-    color: #ff4d4f;
+    color: #4684c2;
     font-weight: bold;
     font-size: 1.4rem;
 }
@@ -118,9 +121,11 @@
 .btn-readmore:hover {
     background-color: #717FE0;
     color: #fff;
-    border-color: #717FE0;
-}
 
+    border-color: #717FE0;
+
+    border-color: #4684c2;
+}
 
 .btn-remove-active {
     border: 1px solid #ddd;
@@ -133,6 +138,13 @@
     border-radius: 5px;
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
+
+.btn-remove-active:hover{
+    background-color: #e91d0b;
+    color: #fff;
+    border-color: #4684c2;
+}
+
 
 .pagination{
     display: flex;
@@ -153,7 +165,6 @@ background-color: #717FE0;
 color: white;
 font-weight: bold;
 }
-
 
 /* Responsive design */
 @media (max-width: 768px) {

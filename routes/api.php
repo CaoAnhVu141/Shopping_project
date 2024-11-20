@@ -101,7 +101,7 @@ Route::get('/search-history-items',[HistoryBuyItems::class,'fullTextSearchHistor
 
 
 //Demo thanh toán bằng api VNPAY
-Route::post('/payment', [VnPayController::class, 'createPayment'])->name('create.payment');
+Route::post('/payment-vnpay', [VnPayController::class, 'createPayment'])->name('create.payment');
 Route::get('/vnpay-return', function (Request $request) {
     return response()->json(['status' => 'success', 'message' => 'VNPAY Return is working!'])
         ->header('ngrok-skip-browser-warning', 'true');

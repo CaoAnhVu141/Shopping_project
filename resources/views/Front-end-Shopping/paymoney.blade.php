@@ -52,7 +52,7 @@
                 @foreach ($payment as $items)
                 <div class="payment-option">
                     <input type="radio" name="payment_method" value="{{ $items->id_payment }}">
-                    <label for="cod"><img src="" alt="COD">{{ $items->payment_method }}</label>
+                    <label for="cod"><img src="" alt="">{{ $items->payment_method }}</label>
                 </div>
                 @endforeach
             </div>

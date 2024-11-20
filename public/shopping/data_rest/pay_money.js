@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
             payment_method: payment_method,
         };
         console.log("Dữ liệu orderData: ", orderData);
+
         // Thực thi gọi API để đặt hàng
         fetch(`/api/order-items`, {
                 method: "POST",
@@ -111,6 +112,48 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
             .catch(error => console.error('Đã có lỗi xảy ra', error));
+
+        if (payment_method === '2') {
+            fetch('/api/payment-vnpay', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Chuyển hướng đến URL thanh toán
+                        window.location.href = data.payment_url;
+                    } else {
+                        alert('Không thể tạo giao dịch thanh toán!');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            // Thực thi gọi API để đặt hàng
+            fetch(`/api/order-items`, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message == "Đặt hàng thành công") {
+                        alert("Bạn đã đặt hàng thành công");
+                        console.log("Đã đặt hàng thành công rồi nè");
+                    } else {
+                        alert("Lỗi đặt hàng rồi bạn ơi");
+                        console.log(data.error);
+                    }
+                })
+                .catch(error => console.error('Đã có lỗi xảy ra', error));
+        }
+
     }
     //@ Lắng nghe sự kiện đặt hàng
     document.addEventListener('click', function (event) {

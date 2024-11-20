@@ -6,7 +6,7 @@
 
 <script>
     document.getElementById('vnpay-button').addEventListener('click', function () {
-        fetch('/api/payment', {
+        fetch('/api/payment-vnpay', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
