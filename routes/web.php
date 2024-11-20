@@ -33,6 +33,7 @@ use App\Http\Controllers\PaymentByVnPay;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\StatisticalViewController;
 use App\Http\Controllers\SuccessBuyItemsViewController;
+use App\Http\Controllers\SuccessPaymoneyViewController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -147,10 +148,16 @@ Route::post('/auth/get_password/{customer}/{token}', [UserController::class, 'su
 
 
 
+
 Route::get('/register', [RegistController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegistController::class, 'register'])->name('index.register');
 
 // Đánh giá bên Admin
+
+// Route::get('/register', [RegistController::class, 'showRegistrationForm'])->name('register');
+// Route::post('/register', [RegistController::class, 'register'])->name('index.register');
+
+
 Route::get('/admin-rating',[RatingViewController::class, 'showViewRating']); // hiển thị view rating
 
 Route::get('/about-me',[ProfileCustomerViewController::class, 'showViewProfileCustomer']); // hiển thị view chi tiết của khách hàng
@@ -162,6 +169,7 @@ Route::get('/detail-history/{id_order}',[DetailViewBuyItems::class, 'viewDetailB
 // Route::get('/testcai', [TestController::class, 'testcai']);
 Route::get('/payment-buy-vnpay',[PaymentByVnPay::class, 'showViewPayByVNPay']);
 
+
 // thanh toán thành công
 Route::get('/success-buy-items',[SuccessBuyItemsViewController::class, 'showViewSuccessBuyItems'])->name('success.buy');
 
@@ -169,3 +177,6 @@ Route::get('/success-buy-items',[SuccessBuyItemsViewController::class, 'showView
 Route::get('/statistical',[StatisticalViewController::class, 'showStatisticalView'])->name('statistical');
 
 Route::get('/404',[Error404ViewController::class, 'showViewError404'])->name('page-404');
+
+Route::get('/success-buy-items',[SuccessPaymoneyViewController::class, 'showViewSuccessPaymoney']); // trả về view thanh toán thành công
+

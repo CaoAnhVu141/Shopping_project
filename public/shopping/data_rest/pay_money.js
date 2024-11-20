@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(data => {
                     if (data.message == "Đặt hàng thành công") {
                         alert("Bạn đã đặt hàng thành công");
+                        window.location.href = data.redirect_url;
                         console.log("Đã đặt hàng thành công rồi nè");
                     } else {
                         alert("Lỗi đặt hàng rồi bạn ơi");
