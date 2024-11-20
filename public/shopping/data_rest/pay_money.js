@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span>${parseFloat(items.total_price).toLocaleString()} đ</span>
                 </div>
             </div>`;
-                    container.insertAdjacentHTML('beforeend', row);
+                        container.insertAdjacentHTML('beforeend', row);
                     });
                     // hiển thị tổng tiền và giảm giá tạm thời cho 0
                     showAllMoneyItems(totalPrice, 0);
@@ -90,29 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
             shipping_method: shipping_method,
             payment_method: payment_method,
         };
+
         console.log("Dữ liệu orderData: ", orderData);
-
-        // Thực thi gọi API để đặt hàng
-        fetch(`/api/order-items`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(orderData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message == "Đặt hàng thành công") {
-                    alert("Bạn đã đặt hàng thành công");
-                    window.location.href = data.redirect_url;
-                    console.log("Đã đặt hàng thành công rồi nè");
-                } else {
-                    alert("Lỗi đặt hàng rồi bạn ơi");
-                    console.log(data.error);
-                }
-            })
-            .catch(error => console.error('Đã có lỗi xảy ra', error));
-
         if (payment_method === '2') {
             fetch('/api/payment-vnpay', {
                     method: 'POST',
@@ -153,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(error => console.error('Đã có lỗi xảy ra', error));
         }
-
     }
     //@ Lắng nghe sự kiện đặt hàng
     document.addEventListener('click', function (event) {
