@@ -80,13 +80,10 @@ Route::get('/make-payment', [PayMonneyController::class, 'makePaymentAllItems'])
 
 Route::get('demo', [TestController::class, 'testcai']);
 
-//Route::get('index',[CategoryProductView::class, 'index'])->name('index');
-
-//Route::get('/category/create',[CategoryProductView::class, 'create'])->name('create');
-//Route::post('/category/store',[CategoryProductView::class, 'store'])->name('category.store');
 
 
-//Sanpham
+
+//Sanpham_dotiendai
 Route::get('all-product', [ProductView::class, 'all_product'])->name('all_product');
 Route::get('add-product', [ProductView::class, 'add_product'])->name('add_product');
 Route::post('save-product', [ProductView::class, 'save_product'])->name('save_product');
@@ -98,7 +95,7 @@ Route::post('update-product/{product_id}', [ProductView::class, 'update_product'
 Route::get('delete-product/{product_id}', [ProductView::class, 'delete_product'])->name('delete_product');
 
 
-//Category_product
+//Category_product_dotiendai
 Route::get('/add-category-product', [CategoryProductView::class, 'add_category_product'])->name('add_category_product');
 Route::get('/all-category-product', [CategoryProductView::class, 'all_category_product'])->name('all_category_product');
 Route::post('save-category-product', [CategoryProductView::class, 'save_category_product'])->name('save_category_product');
@@ -107,14 +104,18 @@ Route::get('search-category', [CategoryProductView::class, 'search'])->name('sea
 
 Route::get('unactive-category-product/{category_product_id}', [CategoryProductView::class, 'unactive_category_product'])->name('unactive_category_product');
 Route::get('active-category-product/{category_product_id}', [CategoryProductView::class, 'active_category_product'])->name('active_category_product');
-//Sua
+//Sua_dotiendai
 Route::get('edit-category-product/{category_product_id}', [CategoryProductView::class, 'edit_category_product'])->name('edit_category_product');
 Route::post('update-category-product/{category_product_id}', [CategoryProductView::class, 'update_category_product'])->name('update_category_product');
-// //Xoa
+// //Xoa_dotiendai
 
 Route::get('delete-category-product/{category_product_id}', [CategoryProductView::class, 'delete_category_product'])->name('delete_category_product');
 
 Route::get('delete-category-product/{category_product_id}', [CategoryProductView::class, 'delete_category_product'])->name('delete_category_product');
+
+//Route About_dotiendai
+Route::get('/about', [AboutController::class, 'about'])->name('about');
+
 
 // Route::get('demo', [Demo_OderController::class, 'showData']);
 // Route::get('view', [Demo_OderController::class, 'showView'])->name("view");
@@ -130,9 +131,7 @@ Route::post('/search/products', [HomeController::class, 'searchProducts']);
 Route::post('/load-more/products', [HomeController::class, 'loadMore']);
 
 
-//Route About
 
-Route::get('/about', [AboutController::class, 'about'])->name('about');
 
 // Route Event
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
