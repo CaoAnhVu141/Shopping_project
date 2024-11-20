@@ -171,4 +171,3 @@ Route::post('/add-categorypost',[CategoryPostViewController::class, 'addDataCate
 Route::get('/delete-category-post/{id}',[CategoryPostViewController::class, 'deleteDataCategoryPost'])->name('delete-category-post');
 Route::get('/update-category-post/{id}',[CategoryPostViewController::class, 'showUpdateDataCategoryPost'])->name('update-category-post');
 Route::post('/update-category-post/{id}',[CategoryPostViewController::class, 'UpdateDataCategoryPost'])->name('updatecategorypost');
-

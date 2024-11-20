@@ -84,25 +84,25 @@
                                 {{-- @comment --}}
 
                                 <!-- Hiển thị link đến trang trước (Previous Page) -->
-                                {{-- @if ($categorypost->onFirstPage())
-                                    <li class="disabled"><span>&laquo;</span></li>
+                                 @if ($category_post->onFirstPage())
+                                   <li class="disabled"><span>&laquo;</span></li>
                                 @else
-                                    <li><a href="{{ $categorypost->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                                    <li><a href="{{ $category_post->previousPageUrl() }}" rel="prev">&laquo;</a></li>
                                 @endif
 
                                 <!-- Hiển thị các số trang đã có -->
-                                @for ($i = 1; $i <= $categorypost->lastPage(); $i++)
-                                    <li class="{{ $i == $categorypost->currentPage() ? 'active' : '' }}">
-                                        <a href="{{ $categorypost->url($i) }}">{{ $i }}</a>
+                                @for ($i = 1; $i <= $category_post->lastPage(); $i++)
+                                    <li class="{{ $i == $category_post->currentPage() ? 'active' : '' }}">
+                                        <a href="{{ $category_post->url($i) }}">{{ $i }}</a>
                                     </li>
                                 @endfor
 
                                 <!-- Hiển thị link đến trang tiếp theo (Next Page) -->
-                                @if ($categorypost->hasMorePages())
-                                    <li><a href="{{ $categorypost->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                                @if ($category_post->hasMorePages())
+                                    <li><a href="{{ $category_post->nextPageUrl() }}" rel="next">&raquo;</a></li>
                                 @else
                                     <li class="disabled"><span>&raquo;</span></li>
-                                @endif --}}
+                                @endif 
                             </ul>
                         </div>
                     </div>

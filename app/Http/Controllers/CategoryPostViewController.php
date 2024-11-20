@@ -41,7 +41,6 @@ class CategoryPostViewController extends Controller
         return redirect()->route('indexcategorypost')->with('status', 'Thêm thành công rồi nè');
     }
 
-
     //Xoá
     public function deleteDataCategoryPost($id)
     {

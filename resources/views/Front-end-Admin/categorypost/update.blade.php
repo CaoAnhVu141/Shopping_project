@@ -14,14 +14,14 @@
 <section class="content">
     <div class="row">
         <div class="box box-primary">
-            <form action="{{ Route('updatecategorypost',$category_post->id_category_post) }}" method="POST">
+            <form action="{{ Route('updatecategorypost', $category_post->id_category_post) }}" method="POST">
                 @csrf
                 <div class="box-body">
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="name">Name <span class="text-danger">(*)</span></label>
-                            <input type="text" class="form-control" name="namecategory" value="{{ $category_post->name }}"
-                                placeholder="Name ......">
+                            <input type="text" class="form-control" name="namecategory"
+                                value="{{ $category_post->name }}" placeholder="Name ......">
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a href="" class="btn btn-danger"><i class="fa fa-undo"></i> Trở Lại</a>
+                    <a href="{{ route('indexcategorypost') }}" class="btn btn-danger"><i class="fa fa-undo"></i> Trở Lại</a>
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
                 </div>
         </div>
