@@ -57,11 +57,11 @@
 
 .form-control:focus {
     box-shadow: none;
-    border-color: #ff3e3e;
+    border-color: #4684c2;
 }
 
 .btn-order {
-    background-color: #ff3e3e;
+    background-color: #4684c2;
     color: white;
     font-size: 18px;
     border-radius: 8px;
@@ -69,15 +69,15 @@
 }
 
 .btn-order:hover {
-    background-color: #d62e2e;
+    background-color: #4684c2;
 }
 
 .custom-control-input:checked~.custom-control-label::before {
-    background-color: #ff3e3e;
+    background-color: #4684c2;
 }
 
 .custom-switch .custom-control-input:checked~.custom-control-label::before {
-    background-color: #ff3e3e;
+    background-color: #4684c2;
 }
 
 .payment-method {

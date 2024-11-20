@@ -13,38 +13,38 @@
             <div id="cart-items-container">
                 {{-- Hiển thị sản phẩm sẽ ở nơi này --}}
             </div>
-            <h6 class="mt-4">Người đặt hàng</h6>
+            <h6 class="mt-4">Thông tin người nhận</h6>
             <div class="form-group">
                 <input type="text" class="form-control" name="customer_name" placeholder="Họ và tên">
+                <span id="error-name" class="error-message text-danger"></span> <!-- Hiển thị lỗi của tên -->
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" name="customer_phone" placeholder="Số điện thoại">
+                <span id="error-phone" class="error-message text-danger"></span> <!-- Hiển thị lỗi của số điện thoại -->
             </div>
             <div class="form-group">
                 <input type="email" class="form-control" name="customer_email" placeholder="Email">
+                <span id="error-email" class="error-message text-danger"></span> <!-- Hiển thị lỗi của email -->
             </div>
             <form action="/api/order-items" method="POST" id="orderForm">
-            <h6 class="mt-4">Địa chỉ nhận hàng</h6>
-            <div class="form-group">
-                <div class="css_select_div">
-                    <select class="css_select" id="tinh" name="method_province" title="Chọn Tỉnh Thành">
-                        <option value="0">Chọn Tỉnh/Thành phố</option>
-                    </select>
-                    <select class="css_select" id="quan" name="method_district" title="Chọn Quận Huyện" disabled>
-                        <option value="0">Chọn Quận/Huyện</option>
-                    </select>
-                    <select class="css_select" id="phuong" name="method_ward" title="Chọn Phường Xã" disabled>
-                        <option value="0">Chọn Phường/Xã</option>
-                    </select>
+                <h6 class="mt-4">Địa chỉ nhận hàng</h6>
+                <div class="form-group">
+                    <div class="css_select_div">
+                        <select class="css_select" id="tinh" name="method_province" title="Chọn Tỉnh Thành">
+                            <option value="0">Chọn Tỉnh/Thành phố</option>
+                        </select>
+                        <select class="css_select" id="quan" name="method_district" title="Chọn Quận Huyện" disabled>
+                            <option value="0">Chọn Quận/Huyện</option>
+                        </select>
+                        <select class="css_select" id="phuong" name="method_ward" title="Chọn Phường Xã" disabled>
+                            <option value="0">Chọn Phường/Xã</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
             <div class="form-group">
                 <textarea class="form-control" name="shipping_address" placeholder="Nhập địa chỉ chi tiết"></textarea>
-            </div>
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="vatInvoice">
-                <label class="custom-control-label" for="vatInvoice">Xuất hóa đơn điện tử</label>
+                <span id="error-address" class="error-message text-danger"></span> <!-- Hiển thị lỗi của địa chỉ -->
             </div>
             <!-- Payment Method Section -->
             <div class="payment-method mt-4">

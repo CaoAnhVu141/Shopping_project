@@ -55,9 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span>Cần thanh toán:</span>
                     <span>${total_payment.toLocaleString()} đ</span>
                 </div>
-            </div>
-        `;
-        // <button class="btn btn-order btn-block mt-4">Đặt hàng</button>
+
+            </div>`;
+
+            </div>`;
         getElement.insertAdjacentHTML('beforeend', summaryHTML);
     }
     // //@thực thi viết hàm đặt hàng
