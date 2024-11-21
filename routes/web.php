@@ -37,8 +37,9 @@ use App\Http\Controllers\SuccessPaymoneyViewController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VerificationController;
-use App\Mail\VerifyEmail;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ShippingMethodController; // Đảm bảo bạn đã import đúng namespac
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,15 @@ Route::get('/', function () {
 });
 
 
+
 Route::get('/testcai',[TestController::class, 'testcai']);
+// Route::get('/demo',TestController::class,'testcai');
+Route::get('demo',[TestController::class,'testcai']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 
 Route::get('category', [CategoryViewController::class, 'index']);
@@ -194,4 +203,24 @@ Route::post('/add-categorypost',[CategoryPostViewController::class, 'addDataCate
 Route::get('/delete-category-post/{id}',[CategoryPostViewController::class, 'deleteDataCategoryPost'])->name('delete-category-post');
 Route::get('/update-category-post/{id}',[CategoryPostViewController::class, 'showUpdateDataCategoryPost'])->name('update-category-post');
 Route::post('/update-category-post/{id}',[CategoryPostViewController::class, 'UpdateDataCategoryPost'])->name('updatecategorypost');
+
+
+
+
+Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
+
+
+Route::get('/demo',[RegistController::class, 'showRegistrationForm'])->name('register');
+Route::post('/demo',[RegistController::class, 'register'])->name('index.register');
+
+Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index'); // Trang hiển thị danh sách
+Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteController::class, 'show'])->name('favorites.show'); // Trang xem chi tiết
+
+//Method
+Route::get('/shipping-methods', [ShippingMethodController::class, 'indexView'])->name('shipping-methods.index');
+Route::get('shipping-method/create', [ShippingMethodController::class, 'create'])->name('shipping-method.create');
+Route::post('/shipping-methods', [ShippingMethodController::class, 'store'])->name('shipping-methods.store');
+Route::get('/shipping-method/{id}/edit', [ShippingMethodController::class, 'edit'])->name('shipping-method.edit');
+Route::put('/shipping-method/{id}', [ShippingMethodController::class, 'update'])->name('shipping-method.update');
+Route::delete('/shipping-method/{id}', [ShippingMethodController::class, 'destroy'])->name('shipping-method.destroy');
 

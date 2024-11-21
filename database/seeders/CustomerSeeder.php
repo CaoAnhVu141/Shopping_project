@@ -70,5 +70,13 @@ class CustomerSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
+        Customer::create([
+            'name' => 'Tran Thi C',
+            'email' => 'banphong1101@gmail.com',
+            'password' => bcrypt('123456789@Phong'),
+            'phone' => '0987654321',
+            'address' => '456 Đường DEF, Hà Nội',
+            'token' => strtoupper(Str::random(10)),
+        ]);
     }
 }

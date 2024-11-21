@@ -1,0 +1,24 @@
+.header-favorites {
+    position: fixed;
+    z-index: 1200;
+    width: 390px;
+    max-width: calc(100% - 30px);
+    height: 100vh;
+    top: 0;
+    right: -400px;
+    background-color: #fff;
+    transition: all 0.4s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+}
+
+.header-favorites-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 24px 0;
+}
+
+.header-favorites.active {
+    right: 0;
+}

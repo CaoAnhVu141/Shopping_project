@@ -20,6 +20,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\CategoryProductView;
+use App\Http\Controllers\Api\FavoriteApiController;
+use App\Http\Controllers\Api\ShippingMethodController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +56,7 @@ Route::delete('delete-product/{id}', [ProductController::class, 'delete']);
 Route::get('/category', [CategoryController::class, 'index']);
 
 // Thực thi với attribute
+
 Route::get('/attribute', [AttributeController::class, 'getDataJson']);
 Route::delete('/attribute/{id}', [AttributeController::class, 'deteleDataAttribute']);
 Route::get('/attribute/create', [AttributeController::class, 'showCreateAttribute']);
@@ -114,4 +118,20 @@ Route::get('/revenue-by-month',[StatisticalOrderController::class, 'revenueByMon
 Route::get('/revenue-by-days',[StatisticalOrderController::class, 'revenueByDays']); //thống kê theo ngày
 
 
+
+Route::get('/attribute',[AttributeController::class,'getDataJson']);
+Route::delete('/attribute/{id}',[AttributeController::class, 'deteleDataAttribute']);
+Route::get('/attribute/create',[AttributeController::class, 'showCreateAttribute']);
+
+Route::get('/favorites/{customerId}', [FavoriteApiController::class, 'index']); // Lấy danh sách yêu thíchRoute::post('/favorites', [FavoriteApiController::class, 'store']); // Thêm sản phẩm yêu thích
+Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'show']); // Xem sản phẩm yêu thích
+Route::delete('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'destroy']); // Xóa sản phẩm yêu thích
+
+Route::prefix('shipping-methods')->group(function() {
+    Route::get('/', [ShippingMethodController::class, 'index']);
+    Route::post('/', [ShippingMethodController::class, 'store']);
+    Route::get('{id}', [ShippingMethodController::class, 'show']);
+    Route::put('{id}', [ShippingMethodController::class, 'update']);
+    Route::delete('{id}', [ShippingMethodController::class, 'destroy']);
+});
 
