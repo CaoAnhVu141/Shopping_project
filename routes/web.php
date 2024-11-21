@@ -160,16 +160,14 @@ Route::post('/auth/get_password/{customer}/{token}', [UserController::class, 'su
 
 
 
-
-
-Route::get('/register', [RegistController::class, 'showRegistrationForm'])->name('register');
+//Của Thịnh
+Route::get('register', [RegistController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegistController::class, 'register'])->name('index.register');
 Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify');
 
+
 // Đánh giá bên Admin
 
-// Route::get('/register', [RegistController::class, 'showRegistrationForm'])->name('register');
-// Route::post('/register', [RegistController::class, 'register'])->name('index.register');
 
 
 Route::get('/admin-rating',[RatingViewController::class, 'showViewRating']); // hiển thị view rating
@@ -209,13 +207,9 @@ Route::post('/update-category-post/{id}',[CategoryPostViewController::class, 'Up
 
 Route::get('/attibute',[AttributeViewController::class, 'showThemmeAttributeIndex']);
 
-
-Route::get('/demo',[RegistController::class, 'showRegistrationForm'])->name('register');
-Route::post('/demo',[RegistController::class, 'register'])->name('index.register');
-
+//Route của Phong
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index'); // Trang hiển thị danh sách
 Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteController::class, 'show'])->name('favorites.show'); // Trang xem chi tiết
-
 //Method
 Route::get('/shipping-methods', [ShippingMethodController::class, 'indexView'])->name('shipping-methods.index');
 Route::get('shipping-method/create', [ShippingMethodController::class, 'create'])->name('shipping-method.create');

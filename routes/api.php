@@ -123,10 +123,11 @@ Route::get('/attribute',[AttributeController::class,'getDataJson']);
 Route::delete('/attribute/{id}',[AttributeController::class, 'deteleDataAttribute']);
 Route::get('/attribute/create',[AttributeController::class, 'showCreateAttribute']);
 
+
+// Api của Phong
 Route::get('/favorites/{customerId}', [FavoriteApiController::class, 'index']); // Lấy danh sách yêu thíchRoute::post('/favorites', [FavoriteApiController::class, 'store']); // Thêm sản phẩm yêu thích
 Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'show']); // Xem sản phẩm yêu thích
 Route::delete('/favorites/{customerId}/{favoriteId}', [FavoriteApiController::class, 'destroy']); // Xóa sản phẩm yêu thích
-
 Route::prefix('shipping-methods')->group(function() {
     Route::get('/', [ShippingMethodController::class, 'index']);
     Route::post('/', [ShippingMethodController::class, 'store']);
