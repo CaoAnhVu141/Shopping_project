@@ -1,87 +1,52 @@
-<!-- Form Thêm Mới -->
-<form id="shipping-method-form">
-    @csrf
-    <input type="text" name="name" id="name" placeholder="Tên phương thức vận chuyển" required>
-    <input type="number" name="cost" id="cost" placeholder="Chi phí" required>
-    <button type="submit">Thêm mới</button>
-</form>
+@extends('LayOut.admin-dashboard.master_admin')
 
-<!-- Bảng Phương thức Vận Chuyển -->
-<table id="shipping-method-table">
-    <thead>
-        <tr>
-            <th>Tên</th>
-            <th>Chi phí</th>
-            <th>Hành động</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Dữ liệu bảng sẽ được cập nhật qua Ajax -->
-    </tbody>
-</table>
+@section('content')
+    <section class="content-header">
+        <h1>
+            Add New Shipping Method
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="">Shipping Methods</a></li>
+            <li class="active">Add New</li>
+        </ol>
+    </section>
 
-<!-- JavaScript và Ajax -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Create New Shipping Method</h3>
+                    </div>
+
+                    <div class="box-body">
+                        <form action="{{ route('shipping-methods.store') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="method_name">Method Name</label>
+                                <input type="text" class="form-control" id="method_name" name="method_name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cost">Cost</label>
+                                <input type="number" class="form-control" id="cost" name="cost" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="estimated_time">Estimated Time</label>
+                                <input type="text" class="form-control" id="estimated_time" name="estimated_time" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a href="{{ route('shipping-methods.index') }}" class="btn btn-default">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    // Gửi form và cập nhật bảng sau khi thêm mới
-    $('#shipping-method-form').on('submit', function(event) {
-        event.preventDefault(); // Ngăn form gửi thông thường
 
-        // Gửi yêu cầu Ajax để thêm mới phương thức vận chuyển
-        $.ajax({
-            url: '{{ route('shipping-methods.store') }}', // Đảm bảo sử dụng đúng route
-            method: 'POST',
-            data: $(this).serialize(), // Lấy dữ liệu từ form
-            success: function(response) {
-                if (response.status === 'success') {
-                    // Thêm phương thức vận chuyển mới vào bảng
-                    var newRow = `
-                        <tr>
-                            <td>${response.data.name}</td>
-                            <td>${response.data.cost}</td>
-                            <td>
-                                <!-- Hành động sửa, xóa có thể thêm vào đây -->
-                                <button class="edit-btn" data-id="${response.data.id}">Sửa</button>
-                                <button class="delete-btn" data-id="${response.data.id}">Xóa</button>
-                            </td>
-                        </tr>
-                    `;
-                    $('#shipping-method-table tbody').append(newRow); // Thêm dòng mới vào bảng
-                    alert('Phương thức vận chuyển đã được thêm thành công!');
-                }
-            },
-            error: function(error) {
-                alert('Có lỗi xảy ra, vui lòng thử lại.');
-            }
-        });
-    });
-
-    // Hàm tải lại dữ liệu bảng khi trang được tải
-    function loadShippingMethods() {
-        $.ajax({
-            url: '{{ route('shipping-methods.index') }}', // Đảm bảo sử dụng đúng route
-            method: 'GET',
-            success: function(response) {
-                var rows = '';
-                response.data.forEach(function(method) {
-                    rows += `
-                        <tr>
-                            <td>${method.name}</td>
-                            <td>${method.cost}</td>
-                            <td>
-                                <button class="edit-btn" data-id="${method.id}">Sửa</button>
-                                <button class="delete-btn" data-id="${method.id}">Xóa</button>
-                            </td>
-                        </tr>
-                    `;
-                });
-                $('#shipping-method-table tbody').html(rows); // Cập nhật bảng với dữ liệu mới
-            }
-        });
-    }
-
-    // Gọi hàm để tải lại bảng khi trang tải
-    $(document).ready(function() {
-        loadShippingMethods();
-    });
-</script>

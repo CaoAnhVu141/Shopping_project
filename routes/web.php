@@ -58,3 +58,9 @@ Route::get('/favorites/{customerId}/{favoriteId}', [FavoriteController::class, '
 
 //Method
 Route::get('/shipping-methods', [ShippingMethodController::class, 'indexView'])->name('shipping-methods.index');
+Route::get('shipping-method/create', [ShippingMethodController::class, 'create'])->name('shipping-method.create');
+Route::post('/shipping-methods', [ShippingMethodController::class, 'store'])->name('shipping-methods.store');
+Route::get('/shipping-method/{id}/edit', [ShippingMethodController::class, 'edit'])->name('shipping-method.edit');
+Route::put('/shipping-method/{id}', [ShippingMethodController::class, 'update'])->name('shipping-method.update');
+Route::delete('/shipping-method/{id}', [ShippingMethodController::class, 'destroy'])->name('shipping-method.destroy');
+

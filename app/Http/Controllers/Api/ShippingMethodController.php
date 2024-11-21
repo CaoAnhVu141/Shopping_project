@@ -26,26 +26,26 @@ class ShippingMethodController extends Controller
 
     // Thêm phương thức vận chuyển mới
     // Hàm để thêm phương thức vận chuyển mới
-    public function store(Request $request)
-    {
-        // Xác thực dữ liệu đầu vào
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'cost' => 'required|numeric',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     // Xác thực dữ liệu đầu vào
+    //     $validated = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'cost' => 'required|numeric',
+    //     ]);
 
-        // Tạo phương thức vận chuyển mới
-        $shippingMethod = ShippingMethod::create([
-            'name' => $validated['name'],
-            'cost' => $validated['cost'],
-        ]);
+    //     // Tạo phương thức vận chuyển mới
+    //     $shippingMethod = ShippingMethod::create([
+    //         'name' => $validated['name'],
+    //         'cost' => $validated['cost'],
+    //     ]);
 
-        // Trả về phản hồi dưới dạng JSON
-        return response()->json([
-            'status' => 'success',
-            'data' => $shippingMethod
-        ]);
-    }
+    //     // Trả về phản hồi dưới dạng JSON
+    //     return response()->json([
+    //         'status' => 'success',
+    //         'data' => $shippingMethod
+    //     ]);
+    // }
 
 
     // Xem chi tiết phương thức vận chuyển
@@ -108,7 +108,7 @@ class ShippingMethodController extends Controller
         // Xóa phương thức vận chuyển
         $shippingMethod->delete();
 
-        return response()->json([
+        return view response()->json([
             'status' => 'success',
             'message' => 'Phương thức vận chuyển đã được xóa.'
         ]);
