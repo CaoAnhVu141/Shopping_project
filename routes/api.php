@@ -13,7 +13,6 @@ use App\Http\Controllers\Api\ShoppingCartController;
 use App\Http\Controllers\Api\VnPayController;
 use App\Http\Controllers\Api\StatisticalOrderController;
 use App\Http\Controllers\Api\StatisticalProductController;
-
 use App\Http\Controllers\RatingViewController;
 use App\Models\Attribute;
 use Illuminate\Http\Request;
