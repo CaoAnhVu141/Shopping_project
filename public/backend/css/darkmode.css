@@ -1,0 +1,21 @@
+body {
+    background-color: #222;
+    color: #fff;
+  }
+  
+  a {
+    color: #eee;
+  }
+  
+  /* Specific element styles for DarkMode */
+  .header {
+    background-color: #333;
+  }
+  
+  .sidebar {
+    background-color: #444;
+  }
+  
+  .main-content {
+    background-color: #555;
+  }

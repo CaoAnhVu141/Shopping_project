@@ -1,0 +1,4 @@
+[2024-11-11 01:32:13] local.ERROR: Cannot use App\Http\Controllers\EventController as EventController because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Http\\Controllers\\EventController as EventController because the name is already in use at /var/www/routes/web.php:35)
+[stacktrace]
+#0 {main}
+"} 
