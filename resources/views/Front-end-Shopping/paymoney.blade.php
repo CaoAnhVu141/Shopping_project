@@ -16,15 +16,15 @@
             <h6 class="mt-4">Thông tin người nhận</h6>
             <div class="form-group">
                 <input type="text" class="form-control" name="customer_name" placeholder="Họ và tên">
-                <span id="error-name" class="error-message text-danger"></span> <!-- Hiển thị lỗi của tên -->
+                <span id="error-customer_name" class="text-danger"></span> <!-- Hiển thị lỗi của tên -->
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" name="customer_phone" placeholder="Số điện thoại">
-                <span id="error-phone" class="error-message text-danger"></span> <!-- Hiển thị lỗi của số điện thoại -->
+                <span id="error-customer_phone" class="text-danger"></span> <!-- Hiển thị lỗi của số điện thoại -->
             </div>
             <div class="form-group">
                 <input type="email" class="form-control" name="customer_email" placeholder="Email">
-                <span id="error-email" class="error-message text-danger"></span> <!-- Hiển thị lỗi của email -->
+                <span id="error-customer_email" class="text-danger"></span> <!-- Hiển thị lỗi của email -->
             </div>
             <form action="/api/order-items" method="POST" id="orderForm">
                 <h6 class="mt-4">Địa chỉ nhận hàng</h6>
@@ -44,7 +44,7 @@
             </form>
             <div class="form-group">
                 <textarea class="form-control" name="shipping_address" placeholder="Nhập địa chỉ chi tiết"></textarea>
-                <span id="error-address" class="error-message text-danger"></span> <!-- Hiển thị lỗi của địa chỉ -->
+                <span id="error-shipping_address" class="text-danger"></span> <!-- Hiển thị lỗi của địa chỉ -->
             </div>
             <!-- Payment Method Section -->
             <div class="payment-method mt-4">

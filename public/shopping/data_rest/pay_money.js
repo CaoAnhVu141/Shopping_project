@@ -59,30 +59,124 @@ document.addEventListener('DOMContentLoaded', function () {
         getElement.insertAdjacentHTML('beforeend', summaryHTML);
 
     }
-    // //@thực thi viết hàm đặt hàng
+    // // //@thực thi viết hàm đặt hàng
+    // function orderAllItemsShoppingCart() {
+    //     // Lấy dữ liệu từ form
+    //     const name = document.querySelector('input[name="customer_name"]').value;
+    //     const phone = document.querySelector('input[name="customer_phone"]').value;
+    //     const email = document.querySelector('input[name="customer_email"]').value;
+    //     // Lấy giá trị từ dropdown Tỉnh, Quận/Huyện, Phường/Xã
+    //     const province = document.querySelector('select[name="method_province"]').selectedOptions[0].text;
+    //     const district = document.querySelector('select[name="method_district"]').selectedOptions[0].text;
+    //     const commune = document.querySelector('select[name="method_ward"]').selectedOptions[0].text;
+
+    //     // Lấy địa chỉ chi tiết
+    //     const address_details = document.querySelector('textarea[name="shipping_address"]').value;
+
+    //     // Kết hợp thành địa chỉ đầy đủ
+    //     const shipping_address = `${address_details}, ${commune}, ${district}, ${province}`;
+    //     if (province === "0" || district === "0" || commune === "0" || !address_details) {
+    //         alert("Vui lòng điền đầy đủ thông tin địa chỉ.");
+    //         return;
+    //     }
+    //     // Lấy phương thức thanh toán và phương thức vận chuyển
+    //     const payment_method = document.querySelector('input[name="payment_method"]:checked').value;
+    //     const shipping_method = document.querySelector('input[name="shipping_method"]:checked').value;
+
+    //     // Dữ liệu đặt hàng
+    //     const orderData = {
+    //         customer_name: name,
+    //         customer_phone: phone,
+    //         customer_email: email,
+    //         shipping_address: shipping_address,
+    //         shipping_method: shipping_method,
+    //         payment_method: payment_method,
+    //     };
+
+    //     console.log("Dữ liệu orderData: ", orderData);
+    //     if (payment_method === '2') {
+    //         fetch('/api/payment-vnpay', {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    //                 },
+    //                 body: JSON.stringify({})
+    //             })
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 if (data.success) {
+    //                     // Chuyển hướng đến URL thanh toán
+    //                     window.location.href = data.payment_url;
+    //                 } else {
+    //                     alert('Không thể tạo giao dịch thanh toán!');
+    //                 }
+    //             })
+    //             .catch(error => console.error('Error:', error));
+    //     } else {
+    //         // Thực thi gọi API để đặt hàng
+    //         fetch(`/api/order-items`, {
+    //                 method: "POST",
+    //                 headers: {
+    //                     'Content-Type': 'application/json'
+    //                 },
+    //                 body: JSON.stringify(orderData)
+    //             })
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 if (data.message == "Đặt hàng thành công") {
+    //                     alert("Bạn đã đặt hàng thành công");
+    //                     window.location.href = data.redirect_url;
+    //                     console.log("Đã đặt hàng thành công rồi nè");
+    //                 } else {
+    //                     alert("Lỗi đặt hàng rồi bạn ơi");
+    //                     console.log(data.error);
+    //                 }
+    //             })
+    //             .catch(error => console.error('Đã có lỗi xảy ra', error));
+    //     }
+    // }
+
+    //fix validation
     function orderAllItemsShoppingCart() {
         // Lấy dữ liệu từ form
         const name = document.querySelector('input[name="customer_name"]').value;
         const phone = document.querySelector('input[name="customer_phone"]').value;
         const email = document.querySelector('input[name="customer_email"]').value;
-        // Lấy giá trị từ dropdown Tỉnh, Quận/Huyện, Phường/Xã
         const province = document.querySelector('select[name="method_province"]').selectedOptions[0].text;
         const district = document.querySelector('select[name="method_district"]').selectedOptions[0].text;
         const commune = document.querySelector('select[name="method_ward"]').selectedOptions[0].text;
-
-        // Lấy địa chỉ chi tiết
         const address_details = document.querySelector('textarea[name="shipping_address"]').value;
-
-        // Kết hợp thành địa chỉ đầy đủ
-        const shipping_address = `${address_details}, ${commune}, ${district}, ${province}`;
-        if (province === "0" || district === "0" || commune === "0" || !address_details) {
+        // Kiểm tra phương thức thanh toán và vận chuyển
+        const payment_method = document.querySelector('input[name="payment_method"]:checked').value;
+        const shipping_method = document.querySelector('input[name="shipping_method"]:checked').value;
+        // Validation dữ liệu
+        if (!name.trim()) {
+            alert("Họ và tên không được để trống.");
+            return;
+        }
+        if (!/^(0[3-9])[0-9]{8}$/.test(phone)) {
+            alert("Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng.");
+            return;
+        }
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            alert("Email không hợp lệ.");
+            return;
+        }
+        if (province === "0" || district === "0" || commune === "0" || !address_details.trim()) {
             alert("Vui lòng điền đầy đủ thông tin địa chỉ.");
             return;
         }
-        // Lấy phương thức thanh toán và phương thức vận chuyển
-        const payment_method = document.querySelector('input[name="payment_method"]:checked').value;
-        const shipping_method = document.querySelector('input[name="shipping_method"]:checked').value;
-
+        if (!shipping_method) {
+            alert("Vui lòng chọn phương thức vận chuyển.");
+            return;
+        }
+        if (!payment_method) {
+            alert("Vui lòng chọn phương thức thanh toán.");
+            return;
+        }
+        // Kết hợp thành địa chỉ đầy đủ
+        const shipping_address = `${address_details}, ${commune}, ${district}, ${province}`;
         // Dữ liệu đặt hàng
         const orderData = {
             customer_name: name,
@@ -92,8 +186,6 @@ document.addEventListener('DOMContentLoaded', function () {
             shipping_method: shipping_method,
             payment_method: payment_method,
         };
-
-        console.log("Dữ liệu orderData: ", orderData);
         if (payment_method === '2') {
             fetch('/api/payment-vnpay', {
                     method: 'POST',
@@ -136,6 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .catch(error => console.error('Đã có lỗi xảy ra', error));
         }
     }
+
     //@ Lắng nghe sự kiện đặt hàng
     document.addEventListener('click', function (event) {
         if (event.target && event.target.id == 'btn-order') {
