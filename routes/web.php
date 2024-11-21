@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\GetCartShoppingController;
 use App\Http\Controllers\AttributeViewController;
 use App\Http\Controllers\CategoryProductController;
-
 use App\Http\Controllers\CategoryProductView;
 use App\Http\Controllers\ProductView;
 use App\Http\Controllers\CategoryViewController;
@@ -27,6 +26,8 @@ use App\Http\Controllers\Api\ProfileCustomerViewController;
 use App\Http\Controllers\Api\VnPayController;
 use App\Http\Controllers\DetailViewBuyItems;
 use App\Http\Controllers\Error404ViewController;
+use App\Http\Controllers\CategoryPostViewController;
+use App\Http\Controllers\DetailViewBuyItems;
 use App\Http\Controllers\HistotyViewBuyItems;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentByVnPay;
@@ -55,7 +56,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/testcai',[TestController::class, 'testcai']);
+
 
 Route::get('category', [CategoryViewController::class, 'index']);
 Route::get('/attribute', [AttributeViewController::class, 'showThemmeAttributeIndex'])->name('attribute');
@@ -112,6 +115,8 @@ Route::get('delete-category-product/{category_product_id}', [CategoryProductView
 
 
 
+
+
 Route::get('category', [CategoryViewController::class, 'index']);
 
 // Route home
@@ -151,6 +156,7 @@ Route::post('/auth/get_password/{customer}/{token}', [UserController::class, 'su
 
 Route::get('/register', [RegistController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegistController::class, 'register'])->name('index.register');
+Route::get('/verify/{token}', [RegistController::class, 'verify'])->name('verify');
 
 // Đánh giá bên Admin
 
@@ -159,6 +165,7 @@ Route::post('/register', [RegistController::class, 'register'])->name('index.reg
 
 
 Route::get('/admin-rating',[RatingViewController::class, 'showViewRating']); // hiển thị view rating
+
 
 Route::get('/about-me',[ProfileCustomerViewController::class, 'showViewProfileCustomer']); // hiển thị view chi tiết của khách hàng
 Route::get('/history-buy',[HistotyViewBuyItems::class,'showViewHistoryBuyItems'])->name('history-buy'); // hiển thị lịch sử mua hàng
@@ -179,4 +186,13 @@ Route::get('/statistical',[StatisticalViewController::class, 'showStatisticalVie
 Route::get('/404',[Error404ViewController::class, 'showViewError404'])->name('page-404');
 
 Route::get('/success-buy-items',[SuccessPaymoneyViewController::class, 'showViewSuccessPaymoney']); // trả về view thanh toán thành công
+
+
+//Danh mục bài viết
+Route::get('/category-post',[CategoryPostViewController::class, 'showViewCategoryPost'])->name('indexcategorypost');
+Route::get('/add-categorypost',[CategoryPostViewController::class,'showViewAddCategoryPost'])->name('category-post-showadd');
+Route::post('/add-categorypost',[CategoryPostViewController::class, 'addDataCategoryPost'])->name('adddatacategorypost');
+Route::get('/delete-category-post/{id}',[CategoryPostViewController::class, 'deleteDataCategoryPost'])->name('delete-category-post');
+Route::get('/update-category-post/{id}',[CategoryPostViewController::class, 'showUpdateDataCategoryPost'])->name('update-category-post');
+Route::post('/update-category-post/{id}',[CategoryPostViewController::class, 'UpdateDataCategoryPost'])->name('updatecategorypost');
 

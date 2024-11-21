@@ -19,6 +19,8 @@ class Customer extends Model
         'password',
         'token',
         'phone',
+        'verification_token',
+        'is_verified',
         'address',
     ];
 

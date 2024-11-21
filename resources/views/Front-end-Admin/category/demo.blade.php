@@ -36,7 +36,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>STT</th>
+                                <th class="er">STT</th>
                                 <th>ID</th>
                                 <th>Hình ảnh</th>
                                 <th>Tên</th>
@@ -57,10 +57,14 @@
         </div>
     </div>
 </section>
-
+<style>
+.er{
+    color: pink;
+}
+</style>
 <script>
     // Gọi API khi trang load
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         fetch('/api/category')  // Gọi API
             .then(response => response.json())  // Chuyển đổi phản hồi thành JSON
             .then(categories => {

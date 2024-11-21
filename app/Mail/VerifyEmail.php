@@ -12,17 +12,19 @@ use Illuminate\Queue\SerializesModels;
 class VerifyEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $token;
+    public $customer;
 
-    public function __construct($token)
+    public function __construct($customer)
     {
-        $this->token = $token;
+        $this->customer = $customer;
     }
 
     public function build()
     {
-        return $this->view('front-end-admin.auth.verify')
-            ->with(['token' => $this->token]);
+        $verificationUrl = route('verify', ['token' => $this->customer->verification_token]);
+        return $this->subject('Xác thực tài khoản')
+            ->view('emails.verify')
+            ->with(['verificationUrl' => $verificationUrl, 'customer' => $this->customer]);
     }
     /**
      * Get the message envelope.
@@ -33,17 +35,6 @@ class VerifyEmail extends Mailable
             subject: 'Verify Email',
         );
     }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'view.name',
-        );
-    }
-
     /**
      * Get the attachments for the message.
      *
