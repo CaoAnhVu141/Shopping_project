@@ -27,7 +27,6 @@ use App\Http\Controllers\Api\VnPayController;
 use App\Http\Controllers\DetailViewBuyItems;
 use App\Http\Controllers\Error404ViewController;
 use App\Http\Controllers\CategoryPostViewController;
-use App\Http\Controllers\DetailViewBuyItems;
 use App\Http\Controllers\HistotyViewBuyItems;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentByVnPay;
