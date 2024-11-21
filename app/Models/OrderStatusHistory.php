@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 class OrderStatusHistory extends Model
 {
@@ -30,4 +31,10 @@ class OrderStatusHistory extends Model
             $q->whereRaw("MATCH(customer_name, customer_email, shipping_address, status) AGAINST(? IN BOOLEAN MODE)", [$keyword]);
         });
     }
+
+    // //thực thi mã hoá id cho xem chi tiết lịch sử mua hàng
+    // public function getEncryptedIdAttribute()
+    // {
+    //     return Crypt::encryptString($this->id);
+    // }
 }

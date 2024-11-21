@@ -1,6 +1,4 @@
 <?php
-
-
 use App\Http\Controllers\Api\AtributeController;
 use App\Http\Controllers\Api\AttributeController;
 use App\Http\Controllers\Api\CategoryController;
@@ -18,8 +16,6 @@ use App\Http\Controllers\Api\StatisticalProductController;
 
 use App\Http\Controllers\RatingViewController;
 use App\Models\Attribute;
-
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryProductController;

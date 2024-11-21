@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const paginationElement = document.getElementById('pagination');
                 getElement.innerHTML = '';
                 paginationElement.innerHTML = '';
-
                 if (data.data && data.data.data.length > 0) {
                     data.data.data.forEach(items => {
                         const [year, month, day] = items.created_at.split('T')[0].split('-');
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <button class="btn-readmore" data-id="${items.id_order}">Xem chi tiết</button>
                                 <button class="btn-remove-active" data-id="${items.id_order}">Huỷ đơn hàng</button>
                                 </div>
-
                             </div>
                         </div>`;
                         getElement.insertAdjacentHTML('beforeend', row);
@@ -184,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => console.error('Đã có lỗi xảy ra', error));
     }
-
 
     //viết sự kiện click btn-buyitems
     const button_data = document.getElementById('btn-search');
