@@ -252,8 +252,8 @@
             </li>
 
             <li class="{{ Request::is('admin-datn/article*') ? 'active' : '' }}">
-              <a href="">
-                  <i class="fa fa-circle-o-notch"></i> <span>Nhà cung cấp</span>
+              <a href="{{ Route('shipping-methods.index') }}">
+                  <i class="fa fa-circle-o-notch"></i> <span>Nhà vận chuyển</span>
               </a>
             </li>
 

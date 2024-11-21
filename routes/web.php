@@ -146,11 +146,11 @@ Route::post('/events/store', [EventController::class, 'store'])->name('events.st
 Route::delete('/events/{id}/delete', [EventController::class, 'destroy'])->name('deleteEvent');
 
 // Route Review
-// Hàm này mục đích chỉ để hiển thị trang chi tiết sản phẩm sẽ bị thay thế
-Route::get('/product-detail', [ReviewController::class, 'index'])->name('product_detail');
-Route::post('/submit-review', [ReviewController::class, 'saveReview']);
-Route::delete('/reviews/{id}', [ReviewController::class, 'removeReview']);
-Route::put('/reviews/{id}', [ReviewController::class, 'updateReview']);
+// Hàm này mục đích chỉ để hiển thị trang chi tiết sản phẩm sẽ bị thay thế @note lại
+// Route::get('/product-detail', [ReviewController::class, 'index'])->name('product_detail');
+// Route::post('/submit-review', [ReviewController::class, 'saveReview']);
+// Route::delete('/reviews/{id}', [ReviewController::class, 'removeReview']);
+// Route::put('/reviews/{id}', [ReviewController::class, 'updateReview']);
 
 // Route User
 Route::get('/auth/forgot_password', [UserController::class, 'showForgotPassword'])->name('auth.password');
