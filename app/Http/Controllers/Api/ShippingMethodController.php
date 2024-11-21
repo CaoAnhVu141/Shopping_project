@@ -25,36 +25,28 @@ class ShippingMethodController extends Controller
     }
 
     // Thêm phương thức vận chuyển mới
+    // Hàm để thêm phương thức vận chuyển mới
     public function store(Request $request)
     {
-        // Validation
-        $validator = Validator::make($request->all(), [
-            'method_name' => 'required|string|max:50|regex:/^[a-zA-Z\s]+$/',
-            'cost' => 'nullable|numeric|min:0',
-            'estimated_time' => 'nullable|string|max:255',
+        // Xác thực dữ liệu đầu vào
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'cost' => 'required|numeric',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Validation error',
-                'errors' => $validator->errors()
-            ], 400);
-        }
 
         // Tạo phương thức vận chuyển mới
         $shippingMethod = ShippingMethod::create([
-            'method_name' => trim($request->method_name),
-            'cost' => $request->cost ?? 0,
-            'estimated_time' => $request->estimated_time ?? now()->format('d/m/Y'),
+            'name' => $validated['name'],
+            'cost' => $validated['cost'],
         ]);
 
+        // Trả về phản hồi dưới dạng JSON
         return response()->json([
             'status' => 'success',
-            'message' => 'Phương thức vận chuyển đã được tạo thành công',
             'data' => $shippingMethod
-        ], 201);
+        ]);
     }
+
 
     // Xem chi tiết phương thức vận chuyển
     public function show($id)
