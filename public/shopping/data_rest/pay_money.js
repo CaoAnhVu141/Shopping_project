@@ -55,11 +55,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span>Cần thanh toán:</span>
                     <span>${total_payment.toLocaleString()} đ</span>
                 </div>
-
-            </div>`;
-
             </div>`;
         getElement.insertAdjacentHTML('beforeend', summaryHTML);
+
     }
     // //@thực thi viết hàm đặt hàng
     function orderAllItemsShoppingCart() {
@@ -67,12 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const name = document.querySelector('input[name="customer_name"]').value;
         const phone = document.querySelector('input[name="customer_phone"]').value;
         const email = document.querySelector('input[name="customer_email"]').value;
-        // Lấy giá trị từ api phường,quận,thành phố
+        // Lấy giá trị từ dropdown Tỉnh, Quận/Huyện, Phường/Xã
         const province = document.querySelector('select[name="method_province"]').selectedOptions[0].text;
         const district = document.querySelector('select[name="method_district"]').selectedOptions[0].text;
         const commune = document.querySelector('select[name="method_ward"]').selectedOptions[0].text;
+
         // Lấy địa chỉ chi tiết
         const address_details = document.querySelector('textarea[name="shipping_address"]').value;
+
         // Kết hợp thành địa chỉ đầy đủ
         const shipping_address = `${address_details}, ${commune}, ${district}, ${province}`;
         if (province === "0" || district === "0" || commune === "0" || !address_details) {
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Lấy phương thức thanh toán và phương thức vận chuyển
         const payment_method = document.querySelector('input[name="payment_method"]:checked').value;
         const shipping_method = document.querySelector('input[name="shipping_method"]:checked').value;
+
         // Dữ liệu đặt hàng
         const orderData = {
             customer_name: name,
@@ -139,10 +140,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function (event) {
         if (event.target && event.target.id == 'btn-order') {
             event.preventDefault();
-            console.log("Đang thực hiện việc đặt hàng");
+            console.log("Đang thực hiện đặt hàng");
             orderAllItemsShoppingCart();
         }
     });
+
     //@ thực thi viết phương thức đặt hàng
     showAllItemsPayMoney();
 });
