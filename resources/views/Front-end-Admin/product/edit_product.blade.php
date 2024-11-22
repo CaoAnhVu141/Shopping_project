@@ -18,25 +18,25 @@
                         
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên sản phẩm</label>
-                            <input type="text" name="product_name" class="form-control" onkeyup="ChangeToSlug();" id="slug" value="{{ old('product_name', $pro->product_name) }}">
-                            @error('product_name')
+                            <input type="text" name="name" class="form-control" onkeyup="ChangeToSlug();" id="slug" value="{{ old('name', $pro->name) }}">
+                            @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">SL sản phẩm</label>
-                            <input type="text" name="product_quantity" class="form-control" id="convert_slug" value="{{ old('product_quantity') }}">
+                            <input type="text" name="quantity_available" class="form-control" id="convert_slug" value="{{ old('quantity_available') }}">
                                                   
-                            @error('product_quantity')
+                            @error('quantity_available')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
-                            <input type="text" name="product_price" class="form-control" id="exampleInputEmail1" value="{{ old('product_price', $pro->product_price) }}">
-                            @error('product_price')
+                            <input type="text" name="price" class="form-control" id="exampleInputEmail1" value="{{ old('price', $pro->price) }}">
+                            @error('price')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -51,9 +51,9 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
-                            <img src="{{URL::to('uploads/product/'.$pro->product_image)}}" height="100" width="100">
-                            @error('product_image')
+                            <input type="file" name="images" class="form-control" id="exampleInputEmail1">
+                            <img src="{{URL::to('uploads/product/'.$pro->images)}}" height="100" width="100">
+                            @error('images')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

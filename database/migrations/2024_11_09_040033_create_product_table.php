@@ -12,22 +12,22 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('product', function (Blueprint $table) {
-            $table->bigIncrements('id_product');
+            $table->Increments('id_product');
             $table->string('name');
-            $table->text('describe')->nullable();
-            $table->boolean('hot')->default(0);
-            $table->unsignedBigInteger('id_category');
+            $table->integer('id_category');
+            $table->text('product_desc');
+            $table->text('product_content');
+            $table->string('price');
             $table->string('images');
-            $table->string('category_status')->default(0);
-            $table->string('product_status')->default(0);
-            $table->boolean('is_active')->default(1);
-            $table->integer('number_of_purchases')->default(0);
-            $table->integer('price');
-            $table->integer('quantity_available');
-            $table->integer('sale')->default(0);
+            $table->boolean('hot')->default(0); // 0 = không hot, 1 = hot
+            $table->integer('sale')->default(0); // giá trị % giảm giá
+            $table->integer('quantity_available')->default(0); // số lượng sản phẩm
+            $table->integer('product_status');
+           
+             $table->integer('discounted_price')->default(0); // Giá sau khi giảm
+             $table->fullText(['name', 'product_desc']);
             $table->timestamps();
         });
-        
     }
 
     /**

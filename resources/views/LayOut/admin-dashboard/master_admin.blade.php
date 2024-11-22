@@ -205,7 +205,7 @@
 
              {{-- @comment --}}
             <li class="{{ Request::is('admin-datn/menu*') ? 'active' : '' }}">
-              <a href="{{Route('all_category_product')}}">
+              <a href="{{ URL::to('all-category-product') }}">
                   <i class="fa fa-list"></i> <span>Danh mục</span>
               </a>
             </li>
@@ -222,7 +222,7 @@
             </li>
 
             <li class="{{ Request::is('admin-datn/product*') ? 'active' : '' }}">
-              <a href="{{Route('all_product')}}">
+              <a href="{{ URL::to('all-product') }}">
                     <i class="fa fa-fw fa-anchor"></i> <span>Sản phẩm</span>
                 </a>
             </li>

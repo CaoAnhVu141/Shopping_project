@@ -62,13 +62,13 @@
                 @foreach($all_product as $key => $pro)
             <tr>
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>{{ $pro->product_name }}</td>
-              <td>{{ number_format($pro->product_price, 0, ',', '.') }}đ</td>
-              <td>{{ $pro->product_quantity }}</td>
+              <td>{{ $pro->name }}</td>
+              <td>{{ number_format($pro->price, 0, ',', '.') }}đ</td>
+              <td>{{ $pro->quantity_available }}</td>
               <td>{{ $pro->hot ? 'Có' : 'Không' }}</td>
               <td>{{ $pro->sale }}%</td>
               <td>{{ number_format($pro->discounted_price, 0, ',', '.') }}đ</td>
-              <td><img src="uploads/product/{{ $pro->product_image }}" height="100" width="100"></td>
+              <td><img src="uploads/product/{{ $pro->images }}" height="100" width="100"></td>
               <td>{{ $pro->category_name }}</td>
               <td>
               <span class="text-ellipsis">

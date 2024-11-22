@@ -100,11 +100,11 @@ Route::get('all-product', [ProductView::class, 'all_product'])->name('all_produc
 Route::get('add-product', [ProductView::class, 'add_product'])->name('add_product');
 Route::post('save-product', [ProductView::class, 'save_product'])->name('save_product');
 Route::get('search-product', [ProductView::class, 'searchProduct'])->name('search.product');
-Route::get('unactive-product/{product_id}', [ProductView::class, 'unactive_product'])->name('unactive_product');
-Route::get('active-product/{product_id', [ProductView::class, 'active_product'])->name('active_product');
-Route::get('edit-product/{product_id}', [ProductView::class, 'edit_product'])->name('edit_product');
-Route::post('update-product/{product_id}', [ProductView::class, 'update_product'])->name('updatate_product');
-Route::get('delete-product/{product_id}', [ProductView::class, 'delete_product'])->name('delete_product');
+Route::get('unactive-product/{id_product}', [ProductView::class, 'unactive_product'])->name('unactive_product');
+Route::get('active-product/{id_product', [ProductView::class, 'active_product'])->name('active_product');
+Route::get('edit-product/{id_product}', [ProductView::class, 'edit_product'])->name('edit_product');
+Route::post('update-product/{id_product}', [ProductView::class, 'update_product'])->name('updatate_product');
+Route::get('delete-product/{id_product}', [ProductView::class, 'delete_product'])->name('delete_product');
 
 //Category_product
 //Category_product

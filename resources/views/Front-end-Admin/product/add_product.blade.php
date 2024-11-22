@@ -22,26 +22,26 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên sản phẩm</label>
-                            <input type="text" name="product_name" class="form-control" placeholder="Tên sản phẩm"
-                                value="{{ old('product_name') }}">
-                            @if ($errors->has('product_name'))
-                                <span class="text-danger">{{ $errors->first('product_name') }}</span>
+                            <input type="text" name="name" class="form-control" placeholder="Tên sản phẩm"
+                                value="{{ old('name') }}">
+                            @if ($errors->has('name'))
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
-                            <input type="text" name="product_price" class="form-control" placeholder="Giá"
-                                value="{{ old('product_price') }}">
-                            @if ($errors->has('product_price'))
-                                <span class="text-danger">{{ $errors->first('product_price') }}</span>
+                            <input type="text" name="price" class="form-control" placeholder="Giá"
+                                value="{{ old('price') }}">
+                            @if ($errors->has('price'))
+                                <span class="text-danger">{{ $errors->first('price') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">SL sản phẩm</label>
-                            <input type="text" name="product_quantity" class="form-control" id="convert_slug"
-                                value="{{ old('product_quantity') }}">
-                            @error('product_quantity')
+                            <input type="text" name="quantity_available" class="form-control" id="convert_slug"
+                                value="{{ old('quantity_available') }}">
+                            @error('quantity_available')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
