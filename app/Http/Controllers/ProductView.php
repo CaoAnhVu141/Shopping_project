@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Crypt;
 use DB;
 use Session;
 use App\Models\Slider;
