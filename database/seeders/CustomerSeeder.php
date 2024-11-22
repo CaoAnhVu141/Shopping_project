@@ -62,7 +62,16 @@ class CustomerSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Đặng Văn Thuận',
+                'email' => 'thuandang021102@gmail.com',
+                'password' => Hash::make('password123'),
+                'token' => Str::random(10),
+                'phone' => '0945678901',
+                'address' => '654 Đường Hùng Vương, Quận 7, TP.HCM',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
-    
 }

@@ -199,11 +199,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l ">
                             <a href="/product-detail/${product.id_product}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                ${product.product_name}
+                                ${product.name}
                             </a>
 
                             <span class="stext-105 cl3">
-                                ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.product_price)}
+                                ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)}
                             </span>
                         </div>
 

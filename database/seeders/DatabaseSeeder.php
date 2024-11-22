@@ -26,9 +26,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AttributeValueSeeder::class);
         $this->call(ProductAttributeTableSeeder::class);
         $this->call(FavoriteTableSeeder::class);
-        $this->call(ProductSeeder::class);
         $this->call(ReviewSeeder::class);
         $this->call(OrderItemAttributesTableSeeder::class);
         $this->call(PostProductTableSeeder::class);
+        $this->call(ProductTableSeeder::class);
     }
 }
