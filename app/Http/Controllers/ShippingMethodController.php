@@ -13,20 +13,27 @@ class ShippingMethodController extends Controller
     // ShippingMethodController.php
     public function indexView(Request $request)
     {
-        // Lấy danh sách phương thức vận chuyển với phân trang (nếu cần)
-        $shippingMethods = ShippingMethod::paginate(3);
+        // Khởi tạo query builder
+        $query = ShippingMethod::query();
+        // Nếu có từ khóa tìm kiếm, áp dụng điều kiện tìm kiếm
+        if ($request->has('search') && $request->search != '') {
+            $query->where('method_name', 'like', '%' . $request->search . '%');
+        }
+        // Phân trang kết quả
+        $shippingMethods = $query->paginate(3);
 
-        // Nếu yêu cầu là AJAX, trả về dữ liệu dưới dạng JSON
+        // Trả về dữ liệu dưới dạng JSON cho Ajax
         if ($request->ajax()) {
             return response()->json([
-                'shippingMethods' => $shippingMethods,
-                'pagination' => (string) $shippingMethods->links(), // Trả về các liên kết phân trang dưới dạng chuỗi HTML
+                'shippingMethods' => $shippingMethods->items(),
+                'pagination' => $shippingMethods->links()->toHtml(), // Lấy phân trang dưới dạng HTML
             ]);
         }
 
         // Trả về view với biến shippingMethods
         return view('Front-end-Admin.shipping_methods.index', compact('shippingMethods'));
     }
+
 
 
     // Hiển thị form tạo phương thức vận chuyển
@@ -44,14 +51,13 @@ class ShippingMethodController extends Controller
                 'required',
                 'string',
                 'max:255',
-                'regex:/^[a-zA-Z0-9\s]+$/', // Điều kiện: không có ký tự đặc biệt, chỉ cho phép chữ và số
+                'regex:/^[a-zA-Z0-9\s]+$/', // Điều kiện: chỉ cho phép chữ, số và khoảng trắng
             ],
             'cost' => 'required|numeric',
             'estimated_time' => [
                 'required',
                 'string',
                 'max:255',
-                'regex:/^\d+\s+days$/', // Điều kiện: phải có số + ngày, ví dụ: "2 days"
             ],
         ]);
 
@@ -87,14 +93,13 @@ class ShippingMethodController extends Controller
                 'required',
                 'string',
                 'max:255',
-                'regex:/^[a-zA-Z0-9\s]+$/',
+                'regex:/^[a-zA-Z0-9\s]+$/', // Điều kiện: chỉ cho phép chữ, số và khoảng trắng
             ],
             'cost' => 'required|numeric',
             'estimated_time' => [
                 'required',
                 'string',
                 'max:255',
-
             ],
         ]);
 

@@ -18,10 +18,17 @@ class ShippingMethod extends Model
         'estimated_time',
     ];
 
-
     // thiết lập quan hệ giữa shipping_method và order (1-n)
     public function order()
     {
         return $this->hasMany(Order::class,'id_shipping_method');
+    }
+    public function scopeSearch($query, $search)
+    {
+        if ($search) {
+            return $query->whereRaw("MATCH(method_name) AGAINST(? IN NATURAL LANGUAGE MODE)", [$search]);
+        }
+
+        return $query;
     }
 }

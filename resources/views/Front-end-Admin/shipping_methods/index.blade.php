@@ -15,6 +15,14 @@
             <div class="box-header">
                 <h3 class="box-title">Shipping Methods</h3>
                 <a href="{{ route('shipping-method.create') }}" class="btn btn-primary">Add New</a>
+                <div class="box-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="box-body">
@@ -67,76 +75,68 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
+    $(document).ready(function() {
+        // Tìm kiếm
+        $('input[name="table_search"]').on('input', function() {
+            let searchKey = $(this).val();
+            loadShippingMethods(1, searchKey);
+        });
+
+        // Xử lý phân trang
+        $(document).on('click', '.pagination a', function(e) {
+            e.preventDefault();
+            let page = $(this).attr('href').split('page=')[1];
+            let searchKey = $('input[name="table_search"]').val();
+            loadShippingMethods(page, searchKey);
+        });
+
+        // Xử lý xóa phương thức vận chuyển
+        $(document).on('click', '.delete-btn', function() {
+            let methodId = $(this).data('id');
+            if (confirm('Are you sure you want to delete this shipping method?')) {
+                $.ajax({
+                    url: `/shipping-methods/${methodId}`,
+                    method: 'DELETE',
+                    success: function(response) {
+                        alert(response.message);
+                        loadShippingMethods();
+                    },
+                    error: function(xhr) {
+                        alert('An error occurred while deleting the shipping method');
+                    }
+                });
+            }
+        });
+    });
+
     // Hàm load phương thức vận chuyển
     function loadShippingMethods(page = 1, searchKey = '') {
         $.ajax({
-            url: "{{ route('shipping-methods.index') }}", // Laravel route to fetch data
+            url: "{{ route('shipping-methods.index') }}",
             method: "GET",
-            data: {
-                page: page,
-                search: searchKey
-            },
+            data: { page: page, search: searchKey },
             dataType: "json",
             success: function(response) {
-                // Cập nhật danh sách phương thức vận chuyển
                 let shippingMethodsHtml = '';
                 response.shippingMethods.forEach(function(method) {
                     shippingMethodsHtml += `
-                    <tr>
-                        <td>${method.id_shipping_method}</td>
-                        <td>${method.method_name}</td>
-                        <td>${method.cost}</td>
-                        <td>${method.estimated_time}</td>
-                        <td>
-                            <a href="/shipping-method/${method.id_shipping_method}/edit" class="btn btn-info btn-sm">Edit</a>
-                            <form action="{{ route('shipping-method.destroy', $method->id_shipping_method) }}" method="POST" style="display:inline-block;">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this shipping method?')">
-                Delete
-            </button>
-        </form>
-                        </td>
-                    </tr>`;
+                        <tr>
+                            <td>${method.id_shipping_method}</td>
+                            <td>${method.method_name}</td>
+                            <td>${method.cost}</td>
+                            <td>${method.estimated_time}</td>
+                            <td>
+                                <a href="/shipping-method/${method.id_shipping_method}/edit" class="btn btn-info btn-sm">Edit</a>
+                                <button data-id="${method.id_shipping_method}" class="btn btn-danger btn-sm delete-btn">Delete</button>
+                            </td>
+                        </tr>`;
                 });
-
-                // Cập nhật nội dung bảng phương thức vận chuyển
                 $('#shipping-methods-table tbody').html(shippingMethodsHtml);
-
-                // Cập nhật phân trang
-                $('#pagination-links').html(response.pagination); // Phân trang sẽ được hiển thị ở đây
+                $('#pagination-links').html(response.pagination);
             },
             error: function(xhr) {
                 alert('An error occurred while loading shipping methods: ' + xhr.statusText);
             }
         });
     }
-    // Xử lý xóa phương thức vận chuyển
-    $(document).on('click', '.delete-btn', function() {
-        let methodId = $(this).data('id');
-
-        if (!methodId) {
-            alert('Shipping method ID is missing.');
-            return;
-        }
-
-        // Xác nhận hành động xóa
-        if (confirm('Are you sure you want to delete this shipping method?')) {
-            $.ajax({
-                url: `api/shipping-methods/${methodId}`, // Chỉnh sửa URL cho phù hợp
-                method: 'DELETE',
-                dataType: 'json',
-                success: function(response) {
-                    alert(response.message);
-                    location.reload(); // Tải lại trang sau khi xóa thành công
-                },
-                error: function(xhr) {
-                    let errorMessage = xhr.responseJSON ?
-                        xhr.responseJSON.message :
-                        'An error occurred while deleting the shipping method';
-                    alert(errorMessage);
-                },
-            });
-        }
-    });
 </script>
