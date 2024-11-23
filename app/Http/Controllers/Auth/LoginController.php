@@ -64,16 +64,25 @@ class LoginController extends Controller
             ]);
         }
 
-        // Nếu đăng nhập thành công
+        // Đăng nhập thành công
         Auth::login($customer);
-        // Lấy ID của người dùng đã đăng nhập
+
+        // Kiểm tra ID người dùng
         $userId = Auth::id();
-        return $userId;
-        return redirect()->intended('/demo')->with([
-            'success' => 'Đăng nhập thành công!',
-            'user_id' => $userId
-        ]);
+
+        if ($userId == 1) {
+            // Nếu ID là 1, chuyển hướng đến trang admin
+            return redirect()->route('index_dashboard')->with([
+                'success' => 'Chào mừng Admin!',
+            ]);
+        } else {
+            // Nếu ID khác 1, chuyển hướng đến trang shop
+            return view('/')->with([
+                'success' => 'Đăng nhập thành công, chào mừng bạn đến với Shop!',
+            ]);
+        }
     }
+
 
     public function logout(Request $request)
     {
