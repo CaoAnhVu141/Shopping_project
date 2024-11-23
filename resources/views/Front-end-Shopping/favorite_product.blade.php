@@ -21,6 +21,17 @@
 
             loadFavorites(1); // Load trang đầu tiên khi vào trang
 
+            // Sự kiện click cho nút "Xem"
+            $(document).on('click', '.btn-view', function() {
+                const idProduct = $(this).data('id');
+                if (idProduct) {
+                    // Chuyển hướng đến trang chi tiết sản phẩm
+                    window.location.href = `/product-detail/${idProduct}`;
+                } else {
+                    alert('ID sản phẩm không hợp lệ!');
+                }
+            });
+
             // Hàm loadFavorites để gọi API và hiển thị dữ liệu
             function loadFavorites(page) {
                 $.ajax({
@@ -61,7 +72,7 @@
                         </div>
                         <div class="col-md-2 buttons">
                             <button class="btn btn-remove" data-id="${favorite.id_favorite}">Xóa</button>
-                            <button class="btn btn-view">Xem</button>
+                            <button class="btn btn-view" data-id="${favorite.id_product}">Xem</button>
                         </div>
                     </div>`;
                 });
@@ -102,7 +113,7 @@
                         alert("Đã xóa sản phẩm yêu thích.");
                         // Xóa sản phẩm khỏi giao diện ngay lập tức
                         $(`.product-card[data-id="${favoriteId}"]`)
-                    .remove(); // Gọi lại DOM element phù hợp và xóa
+                            .remove(); // Gọi lại DOM element phù hợp và xóa
                     },
                     error: function(xhr) {
                         console.error('Error:', xhr.responseText);
