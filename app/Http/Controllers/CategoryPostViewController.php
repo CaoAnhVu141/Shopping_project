@@ -32,7 +32,7 @@ class CategoryPostViewController extends Controller
     {
         $request->validate([
             'namecategory' => 'required|string|max:20|unique:category_posts,name',
-            'descriptioncategory' => 'required|string|max:50',
+            'descriptioncategory' => 'required|string|max:200',
         ]);
         CategoryPost::create([
             'name' => $request->input('namecategory'),
@@ -68,7 +68,7 @@ class CategoryPostViewController extends Controller
         }
         $request->validate([
             'namecategory' => 'required|string|max:20|unique:category_posts,name',
-            'descriptioncategory' => 'required|string|max:50',
+            'descriptioncategory' => 'required|string|max:200',
         ]);
         // Cập nhật thuộc tính
         $categorypost->update([
