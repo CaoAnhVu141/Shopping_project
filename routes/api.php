@@ -24,7 +24,6 @@ use App\Http\Controllers\Api\FavoriteApiController;
 use App\Http\Controllers\Api\ShippingMethodController;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,12 +34,10 @@ use App\Http\Controllers\Api\ShippingMethodController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/category', [CategoryController::class, 'index']);
+// Route::get('/category', [CategoryController::class, 'index']);
 
 
 //@Cao Anh Vũ
